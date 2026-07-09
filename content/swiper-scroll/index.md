@@ -131,6 +131,8 @@ markup exactly as Webflow renders it — no unwrapping. Two things change in thi
 | `data-swiper-free-mode` | `true` · `sticky` | — | Forces free-scroll; `sticky` adds gentle snap momentum. |
 | `data-swiper-slides-per-view` | number · `auto` | `3` | Desktop slides visible. `auto` = each slide's own width. |
 | `data-swiper-slides-per-view-mobile` | number · `auto` | `1.15` | Slides visible below the breakpoint (the `.15` peek hints there's more). |
+| `data-swiper-slides-per-view-mobile-landscape` | number · `auto` | = mobile | Slides visible from `480px` (mobile landscape) up to `768px`. Falls back to the mobile value. |
+| `data-swiper-slides-per-view-tablet` | number · `auto` | = mobile landscape | Slides visible from `768px` (tablet) up to the breakpoint. Falls back to the mobile-landscape value. |
 | `data-swiper-breakpoint` | px | `992` | Min width at which desktop values apply. |
 | `data-swiper-space-between` | px | `0` | Gap between slides on desktop. |
 | `data-swiper-space-between-mobile` | px | = desktop | Gap below the breakpoint. |
