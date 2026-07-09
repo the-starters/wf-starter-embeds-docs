@@ -60,6 +60,46 @@ visible child (skipping `w-condition-invisible`) is promoted into the slot and e
 was in the slot — including the Collection List wrappers — is removed. Put
 `data-accordion="component"` on that inner element.
 
+## xAttribute JSON
+
+Applying the hooks with the **xAttribute** Webflow app (by xAtom)? Select the element in the
+Designer and paste the matching block — one per element of the markup contract above.
+
+`wrapper` — the root element, shown with the two options from the example (all options are
+optional; see [API](#api) for the full list):
+
+```json
+{
+  "data-accordion": "wrapper",
+  "data-close-previous": "true",
+  "data-close-on-second-click": "true"
+}
+```
+
+`list` — the direct parent of the cards:
+
+```json
+{ "data-accordion": "list" }
+```
+
+`component` — each accordion card:
+
+```json
+{ "data-accordion": "component" }
+```
+
+`toggle-button` — the button inside the heading:
+
+```json
+{ "data-accordion": "toggle-button" }
+```
+
+`content-wrap` — the collapsible panel:
+
+```json
+{ "data-accordion": "content-wrap" }
+```
+
 ## API
 
 Options sit on the `data-accordion="wrapper"` element.

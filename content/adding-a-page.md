@@ -81,6 +81,14 @@ Note any dependencies here (GSAP, jQuery, WF-Algolia, load order).
 </div>
 ```
 
+## xAttribute JSON
+
+```json
+{
+  "data-my-component": ""
+}
+```
+
 ## API
 
 | Attribute | On | Values | Purpose |
@@ -98,6 +106,9 @@ Conventions to keep:
   (e.g. `Global Embeds / Form Embeds / Checkbox Toggle`). Use a GitHub repo path only when the
   script is actually loaded through a jsDelivr CDN URL.
 - **File names** — as they appear in Webflow: `My Component - CSS`, `My Component - JS`.
+- **`xAttribute JSON` section** — one fenced ` ```json ` block per element that takes attributes
+  (keys and values as strings), so hooks can be pasted straight into the xAttribute Webflow app
+  instead of typed one by one. See the [Accordions page](global-embeds/accordions) for the shape.
 
 ## Adding a whole new main group
 
