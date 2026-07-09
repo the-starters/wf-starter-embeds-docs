@@ -3,7 +3,7 @@
 Self-hosted docs site (Next.js + [Fumadocs](https://fumadocs.dev)).
 
 **Content lives in [`content/`](content/).** Every markdown page, `meta.json` sidebar file,
-and the [Adding a Page](content/adding-a-page.md) walkthrough are in that folder — pushes to
+and the [Documenting your own embed](content/adding-a-page.md) walkthrough are in that folder — pushes to
 `main` redeploy the site on Vercel automatically.
 
 ## Local development

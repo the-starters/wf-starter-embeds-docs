@@ -69,8 +69,8 @@ The remaining main groups cover scripts that live outside `embed-wrapper`:
 - **[Starters List Filter](starters-list-filter/index.md)** — the starters list filter UI and its
   custom Algolia scripts.
 
-More groups will be added as the Webflow site grows — see **[Adding a Page](adding-a-page.md)**
-for how to document your own embed.
+More groups will be added as the Webflow site grows — see
+**[Documenting your own embed](adding-a-page.md)** for how to add your own page.
 
 ## How to read a component page
 

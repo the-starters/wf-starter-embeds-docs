@@ -8,4 +8,5 @@ The sidebar mirrors the Webflow **Navigator**: folders are groups, `meta.json` f
 order, and each page follows the same shape (What it is, Markup contract, API, File structure,
 Notes & gotchas).
 
-To add or edit a page, follow the **Adding a Page** walkthrough: [adding-a-page.md](adding-a-page.md).
+To add or edit a page, follow the **Documenting your own embed** walkthrough:
+[adding-a-page.md](adding-a-page.md).

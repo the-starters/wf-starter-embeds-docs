@@ -1,5 +1,5 @@
 ---
-title: "Adding a Page"
+title: "Documenting your own embed"
 description: "How to document your own embed in these docs."
 ---
 
