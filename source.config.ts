@@ -12,7 +12,7 @@ export const docs = defineDocs({
       'adding-a-page.md',
       'algolia-result-modifiers/**/*.md',
       'freelancer-cms/**/*.md',
-      'global-embeds/**/*.md',
+      'global-embeds/**/*.{md,mdx}',
       'starters-list-filter/**/*.md',
       'swiper-scroll/**/*.md',
     ],
