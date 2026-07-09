@@ -1,6 +1,6 @@
-// Pulls the canonical docs content (jericolawrence/wf-starter-docs) into ./content.
-// On Vercel, CONTENT_REPO_PAT (fine-grained PAT, Contents: read-only) authenticates the
-// clone; locally your own git credentials are used. ./content is gitignored — the content
+// Pulls the canonical docs content (the-starters/wf-starter-docs) into ./content.
+// The content repo is public, so no auth is needed; CONTENT_REPO_PAT (fine-grained PAT,
+// Contents: read-only) is still honoured if set. ./content is gitignored — the content
 // repo stays the single source of truth.
 import { execSync } from 'node:child_process';
 import { existsSync, rmSync } from 'node:fs';
@@ -13,8 +13,8 @@ const branch = process.env.CONTENT_REPO_BRANCH || 'main';
 
 const pat = process.env.CONTENT_REPO_PAT;
 const repoUrl = pat
-  ? `https://x-access-token:${pat}@github.com/jericolawrence/wf-starter-docs.git`
-  : 'https://github.com/jericolawrence/wf-starter-docs.git';
+  ? `https://x-access-token:${pat}@github.com/the-starters/wf-starter-docs.git`
+  : 'https://github.com/the-starters/wf-starter-docs.git';
 
 const run = (cmd, cwd = root) => execSync(cmd, { cwd, stdio: 'inherit' });
 
