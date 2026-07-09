@@ -40,6 +40,17 @@ The CSS must be on the page for the pre-hydration hiding and the validation outl
 If you also use [Panel Nav Flow](/global-embeds/step-flow/panel-nav-flow), load that script
 alongside it.
 
+## Flow map
+
+Everything in this map is one page of plain Webflow markup — a hub, a linear wizard, and a
+branching flow — and every arrow is driven by an attribute, no custom JS. Edge colors match
+the engine's actions: `next`, `branch`, dashed `back` (history-aware), dashed `reset`
+(returns to the hub), and `panel-nav` (opening a flow from the hub, via
+[Panel Nav Flow](/global-embeds/step-flow/panel-nav-flow)). Walk it with the buttons under
+the chart — they are the same buttons the real markup would have:
+
+<StepFlowChart />
+
 ## Markup contract
 
 Linear flow — content steps in DOM order plus one shared footer with a button group per step:
@@ -62,6 +73,11 @@ Linear flow — content steps in DOM order plus one shared footer with a button 
   </div>
 </div>
 ```
+
+Click through it below — the left pane is the rendered flow, the right pane shows which
+elements of the markup above the engine is currently showing or hiding:
+
+<StepFlowDemo variant="linear" />
 
 Multi-sub flow — `data-form-flow-type="multi-sub"`, a radio gate in a `data-form-flow-entry`
 wrapper, and one `data-form-flow-subflow` wrapper per branch (each with its own steps and footer):
@@ -90,6 +106,11 @@ wrapper, and one `data-form-flow-subflow` wrapper per branch (each with its own 
   <!-- repeat for step-2b -->
 </div>
 ```
+
+Same demo for the branching version — pick a reason and the radio gate routes you into
+that subflow (Continue with nothing selected reproduces the `console.warn`):
+
+<StepFlowDemo variant="multi-sub" />
 
 Optional hub — several flows inside `data-form-flow="main-container"` with a
 `reset-panel` shown on load (panel switching itself needs Panel Nav Flow):
