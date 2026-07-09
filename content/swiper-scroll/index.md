@@ -12,6 +12,21 @@ everything is controlled by `data-*` attributes. The script auto-inits every
 `[data-swiper-scroll="swiper"]` on the page, scopes each scrollbar to its own swiper, and is safe on
 pages with no matching blocks. An optional Algolia bridge re-measures after WF-Algolia renders hits.
 
+## File structure
+
+```
+Swiper Scroll
+├── Swiper CDN (library)
+├── Swiper Scroll - CSS
+├── Scrollbar Theme - CSS
+├── Swiper Scroll - JS
+└── Algolia Bridge - JS (optional)
+```
+
+Order matters: **Swiper CDN → Swiper Scroll - CSS → Scrollbar Theme - CSS → Swiper Scroll - JS**.
+The library must load before the init script; the scrollbar styling must be present for the thumb
+to show. The Algolia bridge, if used, goes after `Swiper Scroll - JS` and the WF-Algolia CDN.
+
 ## Markup contract
 
 The scrollbar lives **inside** the swiper as a direct child (not a sibling outside it):
@@ -141,21 +156,6 @@ Re-measures on WfAlgolia `ready` / `response`. Public API: `window.SwiperScrollA
 | --- | --- | --- |
 | `scroll` *(default)* | Free, momentum-based horizontal scroll. Doesn't snap (~3 up on desktop, ~1.15 mobile). | Logo strips, card rails, galleries. |
 | `slide` | Snap carousel (~450ms), rests on slide boundaries with end resistance. | One-at-a-time carousels, testimonial decks, hero sliders. |
-
-## File structure
-
-```
-Swiper Scroll
-├── Swiper CDN (library)
-├── Swiper Scroll - CSS
-├── Scrollbar Theme - CSS
-├── Swiper Scroll - JS
-└── Algolia Bridge - JS (optional)
-```
-
-Order matters: **Swiper CDN → Swiper Scroll - CSS → Scrollbar Theme - CSS → Swiper Scroll - JS**.
-The library must load before the init script; the scrollbar styling must be present for the thumb
-to show. The Algolia bridge, if used, goes after `Swiper Scroll - JS` and the WF-Algolia CDN.
 
 ## Notes & gotchas
 

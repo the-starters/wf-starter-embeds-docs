@@ -18,6 +18,12 @@ element is actually at `display: none`, so the script's own write never re-trigg
 observer into a loop. Each element gets a `data-hide-on-empty-inited` guard so wiring is
 one-time.
 
+## File structure
+
+```
+Filter Visibility Empty - JS
+```
+
 ## Markup contract
 
 ```html
@@ -33,12 +39,6 @@ one-time.
 | Attribute | Values | Default | Description |
 | --- | --- | --- | --- |
 | `starters-algolia-hide-on-empty="false"` | `false` (literal) | off | Keeps the element visible even when WF-Algolia inline-hides it. Works on any element the bundle hides, not just groups. |
-
-## File structure
-
-```
-Filter Visibility Empty - JS
-```
 
 ## Notes & gotchas
 

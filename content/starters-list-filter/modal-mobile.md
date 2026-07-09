@@ -16,6 +16,14 @@ A five-line layout kick for the mobile filter modal. When a `modal-open` event f
 Widgets inside the modal that measure themselves on `resize` (range sliders and similar) would
 otherwise have been measured while hidden and render with zero/stale dimensions.
 
+## File structure
+
+```
+Modal Mobile - JS
+```
+
+For pages that open the filter modal.
+
 ## Markup contract
 
 None — the script binds to a window event, not to markup:
@@ -31,14 +39,6 @@ window.dispatchEvent(new Event('modal-open'));
 | --- | --- | --- |
 | `modal-open` (on `window`) | listened to | Triggers the double `resize` re-dispatch. |
 | `resize` (on `window`) | dispatched | Fired twice so size-aware widgets recalculate. |
-
-## File structure
-
-```
-Modal Mobile - JS
-```
-
-For pages that open the filter modal.
 
 ## Notes & gotchas
 

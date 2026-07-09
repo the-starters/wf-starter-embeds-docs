@@ -19,6 +19,15 @@ Updates arrive three ways:
 - **Safety net** — an unconditional 400ms interval re-reads the committed state forever, in
   case an event is missed.
 
+## File structure
+
+```
+Total Filters - JS
+```
+
+For pages using WF-Algolia filters. Works regardless of load order relative to the WF-Algolia
+bundle (it polls for the API).
+
 ## Markup contract
 
 ```html
@@ -31,15 +40,6 @@ Updates arrive three ways:
 | Hook | On | Purpose |
 | --- | --- | --- |
 | `data-total-filter-count` | any text element | Its `textContent` is replaced with the current active-filter count. Multiple elements are all updated. |
-
-## File structure
-
-```
-Total Filters - JS
-```
-
-For pages using WF-Algolia filters. Works regardless of load order relative to the WF-Algolia
-bundle (it polls for the API).
 
 ## Notes & gotchas
 

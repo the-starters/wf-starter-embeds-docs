@@ -17,6 +17,15 @@ behavior). Requiring both avoids false positives when `.w-form-done` is styled v
 Designer. A global guard (`window.__modalReloadOnSubmitInited`) makes the script safe to include
 twice.
 
+## File structure
+
+```
+Modal
+└── Reset on Close - JS
+```
+
+Only reacts to the `modal-close` event — it does nothing without `Modal - JS` on the page.
+
 ## Markup contract
 
 ```html
@@ -31,15 +40,6 @@ twice.
 | Attribute | On | Purpose |
 | --- | --- | --- |
 | `data-modal-reload-on-submit` | the `.modal_dialog` element | Opt in to the reload-after-successful-submit behavior. Any value works except `off` or `false` (case-insensitive), which disable it. |
-
-## File structure
-
-```
-Modal
-└── Reset on Close - JS
-```
-
-Only reacts to the `modal-close` event — it does nothing without `Modal - JS` on the page.
 
 ## Notes & gotchas
 

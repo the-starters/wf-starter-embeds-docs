@@ -12,6 +12,14 @@ each toggle click flips the input's `type` between `password` and `text`. While 
 visible, the toggle carries the `show-password` class — style your eye/eye-off icon states off
 that. Small and dependency-free.
 
+## File structure
+
+```
+Password Toggle
+├── Password Toggle - CSS
+└── Password Toggle - JS
+```
+
 ## Markup contract
 
 ```html
@@ -41,14 +49,6 @@ The companion CSS styles the toggle:
 | `::before` with `inset: -4px` | Invisible overlay that enlarges the click target by 4px on every side. |
 | transparent 5px outline + 2px radius + 200ms transition | Resting state that transitions smoothly into hover. |
 | hover: outline and background set to `var(--colors--silver)` | Soft highlight around the icon on hover. |
-
-## File structure
-
-```
-Password Toggle
-├── Password Toggle - CSS
-└── Password Toggle - JS
-```
 
 ## Notes & gotchas
 

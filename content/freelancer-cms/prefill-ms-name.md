@@ -22,6 +22,15 @@ Each target is only filled if its current value is empty (whitespace counts as e
 target gets bubbling `input` and `change` events. A run-once guard on the `html` element keeps a
 double paste harmless.
 
+## File structure
+
+```
+Prefill Memberstack Name - JS
+```
+
+Memberstack (the DOM package that exposes `window.$memberstackDom`) must be installed on the
+site; the script waits for it rather than requiring a load order.
+
 ## Markup contract
 
 ```html
@@ -37,15 +46,6 @@ Any number of inputs can carry the attribute; all empty ones are filled with the
 | `data-mscustom-fullname` | input | Marks the field to receive the member's full name. Value-less — the attribute's presence is all that matters. |
 
 No options. Poll interval (100ms) and retry cap (50) are constants in the script.
-
-## File structure
-
-```
-Prefill Memberstack Name - JS
-```
-
-Memberstack (the DOM package that exposes `window.$memberstackDom`) must be installed on the
-site; the script waits for it rather than requiring a load order.
 
 ## Notes & gotchas
 

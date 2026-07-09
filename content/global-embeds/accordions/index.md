@@ -18,6 +18,17 @@ The companion CSS only affects the Webflow Designer (`.wf-design-mode`): it forc
 `data-accordion="content-wrap"` panels to `display: block` so you can edit collapsed content, and
 adds design-mode styling for the site's `all-starters_filter-accordion` classes.
 
+## File structure
+
+```
+Accordions
+├── Accordions - CSS
+└── Accordions - JS
+```
+
+GSAP must load before the JS. ScrollTrigger is optional — when present it is refreshed
+after every open/close so pinned/triggered sections stay measured.
+
 ## Markup contract
 
 ```html
@@ -67,17 +78,6 @@ Options sit on the `data-accordion="wrapper"` element.
 | `data-accordion="component"` | card | One accordion item; gets `is-active` when open. |
 | `data-accordion="toggle-button"` | button | The toggle. Gets `aria-expanded` and a generated id. |
 | `data-accordion="content-wrap"` | panel | Collapsible region. `display: none` when closed; height animated. |
-
-## File structure
-
-```
-Accordions
-├── Accordions - CSS
-└── Accordions - JS
-```
-
-GSAP must load before the JS. ScrollTrigger is optional — when present it is refreshed
-after every open/close so pinned/triggered sections stay measured.
 
 ## Notes & gotchas
 

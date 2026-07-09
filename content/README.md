@@ -5,7 +5,7 @@ for [the-starters-3-0.webflow.io](https://the-starters-3-0.webflow.io). The Next
 app in the repo root renders this folder; every push to `main` redeploys the site on Vercel.
 
 The sidebar mirrors the Webflow **Navigator**: folders are groups, `meta.json` files set the
-order, and each page follows the same shape (What it is, Markup contract, API, File structure,
+order, and each page follows the same shape (What it is, File structure, Markup contract, API,
 Notes & gotchas).
 
 To add or edit a page, follow the **Documenting your own embed** walkthrough:

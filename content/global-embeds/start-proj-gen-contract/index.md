@@ -17,6 +17,17 @@ Scoping is per form instance: each `form[data-form-flow="generate-contract"]` re
 (its `.w-form` wrapper, else the enclosing `[data-modal-target]`, else the form's parent), and all
 source/destination lookups happen inside that scope — multiple modals on a page stay independent.
 
+## File structure
+
+```
+Start Project / Gen Contract
+├── Start Project / Gen Contract - CSS
+└── Contract Preview - JS
+```
+
+The CSS is one rule (hides the even-row pad items on mobile). The JS has no dependencies —
+no GSAP, no jQuery — and is init-guarded via a window flag, so double-inclusion is safe.
+
 ## Markup contract
 
 ```html
@@ -107,17 +118,6 @@ Field labels are resolved best-effort: a `label[for]` match, then a wrapping lab
 nearest preceding label up the ancestor chain, then `data-name` / `placeholder` / `name`. Checkbox
 and radio inputs contribute their `value` only when checked; selects contribute the selected
 option's text.
-
-## File structure
-
-```
-Start Project / Gen Contract
-├── Start Project / Gen Contract - CSS
-└── Contract Preview - JS
-```
-
-The CSS is one rule (hides the even-row pad items on mobile). The JS has no dependencies —
-no GSAP, no jQuery — and is init-guarded via a window flag, so double-inclusion is safe.
 
 ## Notes & gotchas
 

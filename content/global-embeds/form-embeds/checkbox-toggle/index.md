@@ -13,6 +13,14 @@ the DOM is already ready). Idempotent: each wrapper is stamped with
 Visibility is driven by the native `hidden` attribute on the item, synced on every checkbox
 `change` and once on init.
 
+## File structure
+
+```
+Checkbox Toggle
+├── Checkbox Toggle - CSS
+└── Checkbox Toggle - JS
+```
+
 ## Markup contract
 
 ```html
@@ -49,14 +57,6 @@ The companion CSS does two things:
 | --- | --- |
 | item hidden until wrapper has `data-checkbox-toggle-inited` | Avoids a flash of the item before JS wires the toggle (safe for the default "show when checked" with an unchecked start). |
 | `[hidden]` forced to `display: none !important` on the item | The item may carry a `.display-contents` utility (`display: contents`), which would beat the `hidden` attribute's UA style — this makes `hidden` win. |
-
-## File structure
-
-```
-Checkbox Toggle
-├── Checkbox Toggle - CSS
-└── Checkbox Toggle - JS
-```
 
 ## Notes & gotchas
 

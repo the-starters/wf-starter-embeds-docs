@@ -25,6 +25,14 @@ Rewrites run on init, after WF-Algolia `response` and `filter` events (on the ne
 frame, i.e. after the bundle's own render), and via a body-wide `MutationObserver` that
 disconnects while writing so its own text changes do not re-trigger it.
 
+## File structure
+
+```
+Filters Text - JS
+```
+
+For pages that show filter chips or selected-value text.
+
 ## Markup contract
 
 No authoring needed beyond the standard WF-Algolia slots — the script finds them itself:
@@ -48,14 +56,6 @@ No authoring needed beyond the standard WF-Algolia slots — the script finds th
 
 The field label map is hard-coded in the script — adding a new facet label means editing
 `FIELD_LABELS` in the source, not an attribute.
-
-## File structure
-
-```
-Filters Text - JS
-```
-
-For pages that show filter chips or selected-value text.
 
 ## Notes & gotchas
 

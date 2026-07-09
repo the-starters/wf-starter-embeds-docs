@@ -16,6 +16,14 @@ aggressively — on scroll, resize, `ResizeObserver` changes, image loads, font 
 mutations inside the scroller, and whenever the wrapper scrolls into view — because `scrollWidth`
 for an overflow scroller can report stale values until layout settles.
 
+## File structure
+
+```
+Custom Scrollbar
+├── Custom Scrollbar - CSS
+└── Custom Scrollbar - JS
+```
+
 ## Markup contract
 
 ```html
@@ -43,14 +51,6 @@ classes; the script only sets the thumb's `width` and `left` (in pixels) and tog
 | `data-scrollbar-track` | track | Container the thumb moves within; hidden (`display: none`) when the content does not overflow. |
 | `data-scrollbar-thumb` | thumb | Draggable handle. Width is proportional to the visible fraction of the content. |
 | `data-scrollbar-theme` | track | `green` or `blue` — CSS-only color presets (silver track, 1rem tall, site color variables for the thumb). The preset styles the element carrying the attribute as the bar, so put it on the track itself. Optional; style the track/thumb yourself instead if you prefer. |
-
-## File structure
-
-```
-Custom Scrollbar
-├── Custom Scrollbar - CSS
-└── Custom Scrollbar - JS
-```
 
 ## Notes & gotchas
 

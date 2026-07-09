@@ -14,6 +14,16 @@ gets `is-collapsed-only` and the toggle row is hidden entirely. Expanded content
 `min(20rem, 50vh)` and scrolls inside the wrapper. Without GSAP — or when the visitor prefers
 reduced motion — the toggle still works, just instantly (a `console.warn` notes the missing GSAP).
 
+## File structure
+
+```
+Application Card
+├── Application Card - CSS
+└── Application Card - JS
+```
+
+GSAP is optional but recommended for the animations.
+
 ## Markup contract
 
 ```html
@@ -57,16 +67,6 @@ No configuration attributes — everything is class-driven.
 | --- | --- | --- |
 | `--application-card-msg-expand-max` | `20rem` | Absolute cap on the expanded message height. |
 | `--application-card-msg-expand-max-vh` | `50vh` | Viewport-relative cap; the smaller of the two wins. |
-
-## File structure
-
-```
-Application Card
-├── Application Card - CSS
-└── Application Card - JS
-```
-
-GSAP is optional but recommended for the animations.
 
 ## Notes & gotchas
 

@@ -48,6 +48,15 @@ body-wide `MutationObserver` (class, `aria-pressed`, `data-wf-algolia-active`,
 settle loop that re-runs every 250ms for about 10 seconds after boot while the bundle and UI
 finish rendering.
 
+## File structure
+
+```
+Disable Apply - JS
+```
+
+For pages with a deferred-apply filter UI. Load order relative to the WF-Algolia bundle does
+not matter — the script polls for `window.WfAlgolia` and works from the DOM until it appears.
+
 ## Markup contract
 
 ```html
@@ -84,15 +93,6 @@ State the script writes:
 | `data-button-theme` | button | Swapped to the disabled theme and back. |
 | `data-active-theme` | button | Parking spot for the original theme while disabled. |
 | `disabled` | inner `button` elements | Kept in sync for keyboard and assistive tech. |
-
-## File structure
-
-```
-Disable Apply - JS
-```
-
-For pages with a deferred-apply filter UI. Load order relative to the WF-Algolia bundle does
-not matter — the script polls for `window.WfAlgolia` and works from the DOM until it appears.
 
 ## Notes & gotchas
 

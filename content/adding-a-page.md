@@ -63,6 +63,16 @@ Source: Webflow — `Global Embeds / My Component`
 A one-paragraph summary of the behaviour: what the script does, how it inits, whether it is
 idempotent.
 
+## File structure
+
+```
+My Component
+├── My Component - CSS
+└── My Component - JS
+```
+
+Note any dependencies here (GSAP, jQuery, WF-Algolia, load order).
+
 ## Markup contract
 
 ```html
@@ -76,16 +86,6 @@ idempotent.
 | Attribute | On | Values | Purpose |
 | --- | --- | --- | --- |
 | `data-my-component` | wrapper | — | … |
-
-## File structure
-
-```
-My Component
-├── My Component - CSS
-└── My Component - JS
-```
-
-Note any dependencies here (GSAP, jQuery, WF-Algolia, load order).
 
 ## Notes & gotchas
 

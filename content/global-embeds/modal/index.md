@@ -20,6 +20,17 @@ close-all trigger, and can auto-open from a `modal-id` URL parameter. Custom `mo
 The companion CSS keeps the native `::backdrop` invisible (the design's own `.modal_backdrop`
 element is animated instead) and adds Designer-only rules so modals can be previewed while editing.
 
+## File structure
+
+```
+Modal
+├── Modal - CSS
+└── Modal - JS
+```
+
+GSAP is optional — load it first if you want animations; without it modals still open and
+close, just instantly.
+
 ## Markup contract
 
 ```html
@@ -71,17 +82,6 @@ only) `modal_slot`, scoped to that modal.
 | URL parameter | Behavior |
 | --- | --- |
 | `?modal-id=id` | Opens the matching modal on load, then removes the parameter from the URL via `history.replaceState`. |
-
-## File structure
-
-```
-Modal
-├── Modal - CSS
-└── Modal - JS
-```
-
-GSAP is optional — load it first if you want animations; without it modals still open and
-close, just instantly.
 
 ## Notes & gotchas
 

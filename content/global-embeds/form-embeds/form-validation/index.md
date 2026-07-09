@@ -21,6 +21,19 @@ actual email checking and sets the attributes this CSS styles.
 > the group/Continue-button gating attributes below are documented as the surface this CSS and the
 > email script target.
 
+## File structure
+
+```
+Form Validation
+├── Form Validation - JS
+├── Form Validation v2 - JS
+├── Email Validate - JS
+└── Form Validation - CSS
+```
+
+Use `Email Validate - JS` for the email checking; skip `Form Validation - JS` until the
+wrong-file copy noted above is fixed — as shipped it only duplicates the datepicker embed.
+
 ## Markup contract
 
 The email outline needs nothing but an email input plus the CSS and the email script:
@@ -88,19 +101,6 @@ the invalid outline on every email field in the matching group.
 
 Both must exist in your Webflow project's variables (Lumos naming) or the outlines render with no
 color.
-
-## File structure
-
-```
-Form Validation
-├── Form Validation - JS
-├── Form Validation v2 - JS
-├── Email Validate - JS
-└── Form Validation - CSS
-```
-
-Use `Email Validate - JS` for the email checking; skip `Form Validation - JS` until the
-wrong-file copy noted above is fixed — as shipped it only duplicates the datepicker embed.
 
 ## Notes & gotchas
 

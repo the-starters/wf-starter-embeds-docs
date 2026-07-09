@@ -16,6 +16,15 @@ left untouched.
 The `$` sign is not added here — it comes from the CSS `::before` rule in
 [`featured-expert-card.css`](./).
 
+## File structure
+
+```
+Featured Expert Card
+└── Featured Expert Card Price - JS
+```
+
+Pair with `Featured Expert Card - CSS` if you want the `$` prefix.
+
 ## Markup contract
 
 ```html
@@ -30,15 +39,6 @@ The `$` sign is not added here — it comes from the CSS `::before` rule in
 | --- | --- | --- |
 | `data-price-text` | price element | Marks text to abbreviate; CMS-bound number, commas OK. |
 | `data-price-abbrev="1"` | set by JS | Processed marker — prevents double-abbreviating on re-run. |
-
-## File structure
-
-```
-Featured Expert Card
-└── Featured Expert Card Price - JS
-```
-
-Pair with `Featured Expert Card - CSS` if you want the `$` prefix.
 
 ## Notes & gotchas
 

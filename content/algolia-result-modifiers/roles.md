@@ -20,6 +20,14 @@ After every pass it dispatches an `expert-cards:relayout` custom event on `windo
 60ms) so a card-layout script can re-measure. A `MutationObserver` on the results container
 re-runs the pass whenever results are re-rendered.
 
+## File structure
+
+```
+Roles - JS
+```
+
+Load after the Algolia integration script, on pages that render Algolia expert cards.
+
 ## Markup contract
 
 ```html
@@ -44,14 +52,6 @@ No options — the field name is hard-coded to `roles`.
 | Event | Fired on | When |
 | --- | --- | --- |
 | `expert-cards:relayout` | `window` | 60ms after each processing pass. |
-
-## File structure
-
-```
-Roles - JS
-```
-
-Load after the Algolia integration script, on pages that render Algolia expert cards.
 
 ## Notes & gotchas
 

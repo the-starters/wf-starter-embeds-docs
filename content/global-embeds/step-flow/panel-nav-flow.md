@@ -18,6 +18,17 @@ flow**. Step Flow also listens for `data-panel-nav-target` clicks and resets the
 step-1, so opening a flow from the hub always lands on its first step. You only need this script
 when a hub launches into separate flows; a single standalone wizard needs Step Flow alone.
 
+## File structure
+
+```
+Step Flow
+└── Panel Nav Flow - JS
+```
+
+Use on pages with the hub pattern, together with `Step Flow - JS` and `Step Flow - CSS`
+(see [Step Flow](/global-embeds/step-flow)) — the Step Flow CSS also keeps child flows of
+`main-container` hidden before hydration, preventing a flash of all panels on load.
+
 ## Markup contract
 
 ```html
@@ -65,17 +76,6 @@ Requirements found in the code:
 | `data-script-initialized` | Parent (JS-set) | Init guard — re-running the script won't double-bind. |
 
 There is no JS API; the script is attribute-only.
-
-## File structure
-
-```
-Step Flow
-└── Panel Nav Flow - JS
-```
-
-Use on pages with the hub pattern, together with `Step Flow - JS` and `Step Flow - CSS`
-(see [Step Flow](/global-embeds/step-flow)) — the Step Flow CSS also keeps child flows of
-`main-container` hidden before hydration, preventing a flash of all panels on load.
 
 ## Notes & gotchas
 

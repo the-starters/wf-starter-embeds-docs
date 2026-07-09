@@ -28,6 +28,18 @@ until JS shows them), the red invalid-field outline for validation, and a large 
 `.wf-design-mode` rules so step-1 previews correctly inside the Webflow Designer without touching
 the published render.
 
+## File structure
+
+```
+Step Flow
+├── Step Flow - CSS
+└── Step Flow - JS
+```
+
+The CSS must be on the page for the pre-hydration hiding and the validation outline to work.
+If you also use [Panel Nav Flow](/global-embeds/step-flow/panel-nav-flow), load that script
+alongside it.
+
 ## Markup contract
 
 Linear flow — content steps in DOM order plus one shared footer with a button group per step:
@@ -204,18 +216,6 @@ window.lumos.formFlow.showResetPanel()
 | Button group + child-flow hiding | Hides all `data-form-flow-button-group` rows and all direct child flows of `main-container` until JS shows the active ones (prevents a flash before hydration). |
 | Invalid field outline | Red `2px` outline + border on `input[data-form-flow-field-invalid="true"]` — required for validation error styling. |
 | `.wf-design-mode` preview rules | Designer-only: reveal a flow root marked `data-preview="true-contents"` (honoring its `data-panel-nav-display`), hide subflows and all steps except step-1, show step-1 with its `data-form-flow-stored-display`, show only the step-1 button group (honoring `data-form-flow-button-group-display`), show the shared footer and the `reset-panel` hub. Never affects the published site. |
-
-## File structure
-
-```
-Step Flow
-├── Step Flow - CSS
-└── Step Flow - JS
-```
-
-The CSS must be on the page for the pre-hydration hiding and the validation outline to work.
-If you also use [Panel Nav Flow](/global-embeds/step-flow/panel-nav-flow), load that script
-alongside it.
 
 ## Notes & gotchas
 

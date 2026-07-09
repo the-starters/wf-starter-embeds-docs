@@ -20,6 +20,16 @@ It does three things:
    `expert-card_item--jobs-open` class (plus `aria-expanded="true"` while open). On hover-capable
    devices nothing is toggled, and switching from touch to hover clears any open cards.
 
+## File structure
+
+```
+Expert Card
+└── Expert Card - JS
+```
+
+No companion CSS — the reveal/equalize styles consuming the class and variable above are
+built in Webflow.
+
 ## Markup contract
 
 ```html
@@ -48,16 +58,6 @@ No configuration attributes.
 | --- | --- | --- |
 | `--expert-card-jobs-open-height` | CSS variable on the card | Pixel height of the fully open jobs list. |
 | `expert-cards:relayout` | `window` event | Dispatch this after mutating card content to force a re-measure. |
-
-## File structure
-
-```
-Expert Card
-└── Expert Card - JS
-```
-
-No companion CSS — the reveal/equalize styles consuming the class and variable above are
-built in Webflow.
 
 ## Notes & gotchas
 

@@ -18,6 +18,14 @@ WF-Algolia's own handler sees the value — on any `wf-algolia-element="range-mi
 own `min` / `max` attributes. An init guard on the root element makes re-running the script a
 no-op.
 
+## File structure
+
+```
+Range Backfill Rate - JS
+```
+
+For pages with a range filter.
+
 ## Markup contract
 
 ```html
@@ -42,14 +50,6 @@ No options — behavior is driven entirely by the standard attributes:
 | `fs-rangeslider-min` / `fs-rangeslider-max` | group | Primary source for the authored bounds. |
 | `min` / `max` | the range inputs | Fallback bounds when the wrapper attributes are absent. |
 | `wf-algolia-element="range-min"` / `"range-max"` | inputs | The inputs whose values get backfilled. |
-
-## File structure
-
-```
-Range Backfill Rate - JS
-```
-
-For pages with a range filter.
 
 ## Notes & gotchas
 

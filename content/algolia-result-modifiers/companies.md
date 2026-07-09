@@ -19,6 +19,14 @@ skipped, which prevents a mutation loop.
 A `MutationObserver` on the results container re-runs the whole pass whenever results are
 re-rendered (new search, pagination, load more).
 
+## File structure
+
+```
+Companies - JS
+```
+
+Load after the Algolia integration script, on pages that render Algolia expert cards.
+
 ## Markup contract
 
 ```html
@@ -44,14 +52,6 @@ No options — the field name is hard-coded to `also-worked-with`.
 | Event | Fired on | When |
 | --- | --- | --- |
 | `expert-cards:relayout` | `window` | 60ms after any text actually changed. |
-
-## File structure
-
-```
-Companies - JS
-```
-
-Load after the Algolia integration script, on pages that render Algolia expert cards.
 
 ## Notes & gotchas
 

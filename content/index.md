@@ -79,10 +79,10 @@ More groups will be added as the Webflow site grows — see
 Every component page follows the same shape, so you can scan for what you need:
 
 1. **What it is** — a one-paragraph summary of the behaviour.
-2. **Markup contract** — the HTML structure / `data-*` attributes the script expects.
-3. **API** — the `data-*` options and classes, as a table.
-4. **File structure** — the embed files in Webflow, named as they appear in the Navigator
+2. **File structure** — the embed files in Webflow, named as they appear in the Navigator
    (e.g. `Modal - CSS`, `Modal - JS`), plus any dependencies.
+3. **Markup contract** — the HTML structure / `data-*` attributes the script expects.
+4. **API** — the `data-*` options and classes, as a table.
 5. **Notes & gotchas** — accessibility, idempotency, mobile/touch behaviour, integration caveats.
 
 ## The contract

@@ -15,6 +15,14 @@ fields — all of it restored when the block is shown again. Runs on `DOMContent
 immediately if the DOM is ready) and re-applies on every `change` of the control. Idempotent via
 `data-input-filter-inited` on the list.
 
+## File structure
+
+```
+Form Input Filter
+├── Form Input Filter - CSS
+└── Form Input Filter - JS
+```
+
 ## Markup contract
 
 ```html
@@ -66,14 +74,6 @@ The companion CSS is one rule:
 | Rule | Purpose |
 | --- | --- |
 | `[data-input-filter-item][hidden]` forced to `display: none !important` | Items often use `display: contents`, which would beat the `hidden` attribute's UA style — this makes `hidden` win. |
-
-## File structure
-
-```
-Form Input Filter
-├── Form Input Filter - CSS
-└── Form Input Filter - JS
-```
 
 ## Notes & gotchas
 

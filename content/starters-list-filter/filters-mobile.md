@@ -21,6 +21,15 @@ breakpoint (`max-width: 767px` via `matchMedia`):
 - **Breakpoint change** — crossing the breakpoint re-places the panel and runs a commit, so
   picks staged on mobile are flushed when the viewport enters desktop.
 
+## File structure
+
+```
+Filters Mobile - JS
+```
+
+For pages that have the filter panel. Load it alongside the WF-Algolia bundle; the commit
+call is guarded, so it is safe even if `window.WfAlgolia` is not ready yet.
+
 ## Markup contract
 
 ```html
@@ -49,15 +58,6 @@ All three attributes are required — if any one is missing the script silently 
 The script also reads (does not set) `data-wf-algolia-staged` on
 `wf-algolia-element="filter-group"` elements inside the panel — that attribute is written by
 the WF-Algolia bundle.
-
-## File structure
-
-```
-Filters Mobile - JS
-```
-
-For pages that have the filter panel. Load it alongside the WF-Algolia bundle; the commit
-call is guarded, so it is safe even if `window.WfAlgolia` is not ready yet.
 
 ## Notes & gotchas
 

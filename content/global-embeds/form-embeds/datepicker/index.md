@@ -17,6 +17,17 @@ self-loads jQuery UI 1.14.1 from the jQuery CDN if `datepicker` isn't already av
 guarded through a `window.__wfInputDatepicker` namespace, so multiple copies of the embed on one page
 fetch jQuery UI only once. Everything runs as a plain IIFE.
 
+## File structure
+
+```
+Datepicker
+├── Datepicker - CSS
+└── Datepicker - JS
+```
+
+The script self-loads jQuery UI — it only needs jQuery on the page (Webflow includes it by
+default), so load order relative to other embeds doesn't matter.
+
 ## Markup contract
 
 Standalone field:
@@ -106,17 +117,6 @@ window.dispatchEvent(new CustomEvent('modal-open', { detail: { modal: modalEl } 
 
 A `max-width: 767px` media query caps the picker at `calc(100vw - 6rem)`, switches the calendar table
 to fixed layout, and shrinks day cells to 2.5rem so all seven columns fit on phones.
-
-## File structure
-
-```
-Datepicker
-├── Datepicker - CSS
-└── Datepicker - JS
-```
-
-The script self-loads jQuery UI — it only needs jQuery on the page (Webflow includes it by
-default), so load order relative to other embeds doesn't matter.
 
 ## Notes & gotchas
 

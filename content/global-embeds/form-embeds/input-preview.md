@@ -18,6 +18,16 @@ delegates `change`/`input` through jQuery, because jQuery UI datepicker/timepick
 programmatically and fire a jQuery-only `change` that native listeners never see. Both the jQuery
 bridge and a re-paint run again on `window` `load` in case jQuery finishes wiring late.
 
+## File structure
+
+```
+Form Embeds
+└── Input Preview - JS
+```
+
+JS only — no CSS file. If you use the jQuery-based Datepicker/Timepicker embeds, load order
+does not matter: the script re-binds its jQuery bridge on `window` `load`.
+
 ## Markup contract
 
 ```html
@@ -72,16 +82,6 @@ How values are read:
 | group wrapper with non-toggle controls | The last filled non-toggle control acts as a fallback when no toggle is checked. |
 
 Disabled and `type="hidden"` controls inside a group wrapper are skipped.
-
-## File structure
-
-```
-Form Embeds
-└── Input Preview - JS
-```
-
-JS only — no CSS file. If you use the jQuery-based Datepicker/Timepicker embeds, load order
-does not matter: the script re-binds its jQuery bridge on `window` `load`.
 
 ## Notes & gotchas
 

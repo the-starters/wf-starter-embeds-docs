@@ -16,6 +16,16 @@ The CSS handles the selected-state checkmark: the `.icon-12` icon inside each
 `fs-list-element="dropdown-label"` element so the checkmark never appears in the closed dropdown's
 label.
 
+## File structure
+
+```
+List's Sort Dropdown
+├── List's Sort Dropdown - CSS
+└── List's Sort Dropdown - JS
+```
+
+Finsweet Attributes must be on the page for the click to do anything.
+
 ## Markup contract
 
 ```html
@@ -41,16 +51,6 @@ embed actually touches.
 | `fs-list-element="clear"` | default option link | Auto-clicked once, 1s after `DOMContentLoaded`. |
 | `.list-sort_dropdown-link` and `.icon-12` | option links / checkmark icon | CSS shows the icon only on the `aria-selected="true"` option. |
 | `fs-list-element="dropdown-label"` | dropdown toggle label | CSS hides any `.icon-12` inside it. |
-
-## File structure
-
-```
-List's Sort Dropdown
-├── List's Sort Dropdown - CSS
-└── List's Sort Dropdown - JS
-```
-
-Finsweet Attributes must be on the page for the click to do anything.
 
 ## Notes & gotchas
 

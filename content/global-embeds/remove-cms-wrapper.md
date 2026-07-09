@@ -16,6 +16,14 @@ removes everything that was originally in it — the `.w-dyn-list`, its `.w-dyn-
 Useful when the CMS wrappers break layouts that need the cards to be direct children of a grid or
 flex parent, or when a script (slider, accordion, etc.) expects a flat list of items.
 
+## File structure
+
+```
+Remove CMS Wrapper - JS
+```
+
+No CSS.
+
 ## Markup contract
 
 ```html
@@ -43,14 +51,6 @@ flex parent, or when a script (slider, accordion, etc.) expects a flat list of i
 | Attribute | On | Purpose |
 | --- | --- | --- |
 | `data-remove-cms` | the layout element that directly contains the Collection List | Opt in to unwrapping. No value needed. |
-
-## File structure
-
-```
-Remove CMS Wrapper - JS
-```
-
-No CSS.
 
 ## Notes & gotchas
 

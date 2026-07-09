@@ -14,6 +14,15 @@ It uses the CSS grid `grid-template-rows: 0fr → 1fr` trick, scoped to the **li
 dropdown root and toggle button keep their Designer styles untouched, so nothing about the toggle
 moves or resizes while the list reveals. No JS, no GSAP.
 
+## File structure
+
+```
+Location Dropdown Filter - CSS
+```
+
+CSS-only — no GSAP, no JS, no load-order constraints. It coexists with the component's existing
+inline embed (chevron rotation + outline/background).
+
 ## Markup contract
 
 Standard Webflow dropdown, with the list `nav` wrapping a single inner wrapper that holds the search
@@ -48,15 +57,6 @@ No configurable attributes — it's a styling embed. The selectors are the contr
 
 Timing is `240ms cubic-bezier(0.4, 0, 0.2, 1)`; automatically disabled under
 `prefers-reduced-motion: reduce`.
-
-## File structure
-
-```
-Location Dropdown Filter - CSS
-```
-
-CSS-only — no GSAP, no JS, no load-order constraints. It coexists with the component's existing
-inline embed (chevron rotation + outline/background).
 
 ## Notes & gotchas
 

@@ -30,6 +30,14 @@ Values are applied per field type:
 
 Disabled fields are always skipped (their value would not submit anyway).
 
+## File structure
+
+```
+Pre-fill Attribute Value - JS
+```
+
+No dependencies.
+
 ## Markup contract
 
 ```html
@@ -69,14 +77,6 @@ A target tagged on a non-field element (like the wrapper `div` above) resolves t
 
 There are no other options. Pairs with an empty category are skipped; a category with no tagged
 field, or a tagged wrapper containing no fields, is skipped with a warning.
-
-## File structure
-
-```
-Pre-fill Attribute Value - JS
-```
-
-No dependencies.
 
 ## Notes & gotchas
 

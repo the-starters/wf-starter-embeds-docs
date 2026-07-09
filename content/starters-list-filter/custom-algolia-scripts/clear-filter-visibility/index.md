@@ -28,6 +28,17 @@ browse-search fields, and via a 350ms polling backstop that diffs a snapshot of 
 state plus all search values — so it stays correct even when custom filter UIs bypass the
 events.
 
+## File structure
+
+```
+Clear Filter Visibility
+├── Clear Filter Visibility - CSS
+└── Clear Filter Visibility - JS
+```
+
+Without the CSS the JS still toggles the class, but nothing hides. Load order relative to
+the WF-Algolia bundle does not matter — the boot poll waits for it.
+
 ## Markup contract
 
 ```html
@@ -53,17 +64,6 @@ The CSS file contains that single rule:
 ```css
 [wf-algolia-button="reset"].wf-reset-hidden { display: none !important; }
 ```
-
-## File structure
-
-```
-Clear Filter Visibility
-├── Clear Filter Visibility - CSS
-└── Clear Filter Visibility - JS
-```
-
-Without the CSS the JS still toggles the class, but nothing hides. Load order relative to
-the WF-Algolia bundle does not matter — the boot poll waits for it.
 
 ## Notes & gotchas
 

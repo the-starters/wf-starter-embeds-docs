@@ -23,6 +23,15 @@ reopen, script pasted twice) never clobber a date the user has since edited. The
 listens for a `modal-open` custom event on `window` and re-fills any tagged elements inside
 `event.detail.modal` — for modal content that renders or enables late.
 
+## File structure
+
+```
+Datepicker Current - JS
+```
+
+jQuery / jQuery UI datepicker are optional — with them you get the full jQuery UI
+format-token set; without them only `mm`, `dd`, and `yy` are understood.
+
 ## Markup contract
 
 ```html
@@ -49,15 +58,6 @@ listens for a `modal-open` custom event on `window` and re-fills any tagged elem
 
 Format resolution order: `data-set-current-date` value, then `data-input-datepicker-format`,
 then the `mm/dd/yy` default.
-
-## File structure
-
-```
-Datepicker Current - JS
-```
-
-jQuery / jQuery UI datepicker are optional — with them you get the full jQuery UI
-format-token set; without them only `mm`, `dd`, and `yy` are understood.
 
 ## Notes & gotchas
 

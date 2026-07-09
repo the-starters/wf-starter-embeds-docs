@@ -20,6 +20,14 @@ The CSS also carries a few card-formatting rules: a `$` prefix before `[data-pri
 rendering for the company list, and hiding `.details-wrapper_description` when its paragraph is
 empty.
 
+## File structure
+
+```
+Featured Expert Card
+├── Featured Expert Card - CSS
+└── Featured Expert Card - JS
+```
+
 ## Markup contract
 
 ```html
@@ -57,14 +65,6 @@ grid trick collapses that one row).
 | `details-wrapper_description` | description | Hidden entirely when it contains an empty `p` (CMS field unset). |
 | `data-price-text` | price element | Gets a `$` prefix via a CSS `::before`. |
 | `data-company-list="item"` | company item | Rendered inline; a `, ` separator is appended to all but the last. |
-
-## File structure
-
-```
-Featured Expert Card
-├── Featured Expert Card - CSS
-└── Featured Expert Card - JS
-```
 
 ## Notes & gotchas
 

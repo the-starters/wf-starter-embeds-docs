@@ -20,6 +20,14 @@ The script waits for the global `WfAlgolia` API (polling every 100ms, giving up 
 10 seconds), then re-applies on every `response` event, on any mutation of the results container,
 and once on init — so labels stay correct through searches, pagination, and load-more.
 
+## File structure
+
+```
+Price Label - JS
+```
+
+Depends on the global `WfAlgolia` API — load after the WfAlgolia integration.
+
 ## Markup contract
 
 ```html
@@ -45,14 +53,6 @@ No options.
 
 For mutation-watching it observes, in order of preference: `wf-algolia-element="results"`, then
 `wf-algolia-element="browse"`, then the parent of the first `.expert-card_item`, then `body`.
-
-## File structure
-
-```
-Price Label - JS
-```
-
-Depends on the global `WfAlgolia` API — load after the WfAlgolia integration.
 
 ## Notes & gotchas
 

@@ -19,6 +19,18 @@ nested Webflow Collection List is unwrapped on init, so CMS items behave as plai
 panels. The companion CSS handles the pre-init state (only the first panel visible before JS runs)
 plus Designer preview rules and disabled-control cursors.
 
+## File structure
+
+```
+Tabs
+├── Tabs - CSS
+└── Tabs - JS
+```
+
+The CSS is what prevents the flash of all panels before the JS runs. GSAP is optional — load
+it before the JS for the fade/slide transitions or autoplay; without it panels switch
+instantly. ScrollTrigger, if present, is refreshed after each transition.
+
 ## Markup contract
 
 ```html
@@ -113,18 +125,6 @@ from the URL. With `data-tab-lock-links` the deep-linked step counts as reached.
 For custom code, each initialized wrapper exposes a controller at `wrapper._tabController` with
 `makeActive(index, focus, animate)`, `updateNavState(index)`, `updateTabLinkStates(index)`,
 `getActiveIndex()`, `getFurthestReachedIndex()`, and `unlockTabLinksUpTo(index)`.
-
-## File structure
-
-```
-Tabs
-├── Tabs - CSS
-└── Tabs - JS
-```
-
-The CSS is what prevents the flash of all panels before the JS runs. GSAP is optional — load
-it before the JS for the fade/slide transitions or autoplay; without it panels switch
-instantly. ScrollTrigger, if present, is refreshed after each transition.
 
 ## Notes & gotchas
 

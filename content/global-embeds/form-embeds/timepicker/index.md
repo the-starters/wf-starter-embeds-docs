@@ -18,6 +18,17 @@ addon's JS and CSS from CDNs if they aren't already present, deduplicating loads
 `window.__wfInputTimepicker` namespace and by checking for existing script/link tags. Everything runs
 as a plain IIFE.
 
+## File structure
+
+```
+Timepicker
+├── Timepicker - CSS
+└── Timepicker - JS
+```
+
+The script self-loads jQuery UI and the addon (JS + CSS) — it only needs jQuery on the page
+(Webflow includes it by default), so load order relative to other embeds doesn't matter.
+
 ## Markup contract
 
 Standalone field:
@@ -112,17 +123,6 @@ window.dispatchEvent(new CustomEvent('modal-open', { detail: { modal: modalEl } 
 A `max-width: 30rem` media query caps the picker at `calc(100vw - 1.5rem)` wide and
 `calc(100vh - 1.5rem)` tall with internal scrolling, so the dropdowns and Done button stay reachable
 on short viewports.
-
-## File structure
-
-```
-Timepicker
-├── Timepicker - CSS
-└── Timepicker - JS
-```
-
-The script self-loads jQuery UI and the addon (JS + CSS) — it only needs jQuery on the page
-(Webflow includes it by default), so load order relative to other embeds doesn't matter.
 
 ## Notes & gotchas
 

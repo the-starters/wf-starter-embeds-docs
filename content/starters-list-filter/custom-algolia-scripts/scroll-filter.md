@@ -17,6 +17,12 @@ bundle's re-render has happened) and then scrolls the group's
 `starters-algolia-scroll-list` element to the top. The scroll is smooth, or instant when the
 user has `prefers-reduced-motion: reduce`. Already-at-top lists are a no-op.
 
+## File structure
+
+```
+Scroll Filter - JS
+```
+
 ## Markup contract
 
 ```html
@@ -36,12 +42,6 @@ user has `prefers-reduced-motion: reduce`. Already-at-top lists are a no-op.
 | --- | --- | --- | --- |
 | `starters-algolia-scroll-on-select="true"` | `true` (literal) | off | Opts a group into scroll-to-top on selection. |
 | `starters-algolia-scroll-list` | presence | — | Marks the scrollable list element inside the group (the first match is used). |
-
-## File structure
-
-```
-Scroll Filter - JS
-```
 
 ## Notes & gotchas
 

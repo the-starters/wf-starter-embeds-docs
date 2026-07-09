@@ -21,6 +21,16 @@ The script also seeds a tiny plugin registry at `window.lumos.validateForm`
 separate form-gating script can reuse the same validity logic. Email validation itself works with no
 other script loaded.
 
+## File structure
+
+```
+Form Validation
+└── Email Validate - JS
+```
+
+Ships no styles of its own — `Form Validation - CSS` provides the red outline. No attributes
+are required for plain email fields: every `type="email"` input on the site validates.
+
 ## Markup contract
 
 Nothing but the input:
@@ -87,16 +97,6 @@ script), errors are force-shown on every email field in the matching group:
 | --- | --- |
 | `window.lumos.validateForm` | Created if absent: `{ fieldValidators: [], groupInitHooks: [], registerFieldValidator(fn), registerGroupInitHook(fn) }`. |
 | registered field validator | The script registers one: given a field, returns `true`/`false` for email fields and `undefined` for anything else — so a gating script can ask "is this field valid?" without duplicating the email rules. |
-
-## File structure
-
-```
-Form Validation
-└── Email Validate - JS
-```
-
-Ships no styles of its own — `Form Validation - CSS` provides the red outline. No attributes
-are required for plain email fields: every `type="email"` input on the site validates.
 
 ## Notes & gotchas
 
