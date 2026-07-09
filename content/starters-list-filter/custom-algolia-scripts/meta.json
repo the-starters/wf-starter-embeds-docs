@@ -1,0 +1,11 @@
+{
+  "title": "Custom Algolia Scripts",
+  "pages": [
+    "clear-filter-visibility",
+    "disable-apply",
+    "filter-visibility-empty",
+    "filters-text",
+    "range-backfill-rate",
+    "scroll-filter"
+  ]
+}

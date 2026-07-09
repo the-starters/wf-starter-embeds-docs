@@ -1,0 +1,10 @@
+{
+  "pages": [
+    "index",
+    "adding-a-page",
+    "global-embeds",
+    "algolia-result-modifiers",
+    "freelancer-cms",
+    "starters-list-filter"
+  ]
+}

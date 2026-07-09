@@ -1,10 +1,9 @@
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
 
-// Content is the wf-starter-docs repo, cloned into ./content by scripts/sync-content.mjs.
-// The globs exclude its GitHub-facing README.md and the legacy GitBook SUMMARY.md.
-// The sidebar mirrors the starters-webflow repo: one glob entry per main group folder —
-// add new main groups (e.g. 'page-embeds/**/*.md') here as they land.
+// Docs content lives in ./content. The globs exclude its README.md and the legacy
+// GitBook SUMMARY.md. The sidebar mirrors the Webflow Navigator: one glob entry per
+// main group folder — add new main groups (e.g. 'page-embeds/**/*.md') here as they land.
 export const docs = defineDocs({
   dir: 'content',
   docs: {

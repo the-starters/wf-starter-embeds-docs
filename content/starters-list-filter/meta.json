@@ -1,0 +1,10 @@
+{
+  "title": "Starters List Filter",
+  "pages": [
+    "filters-mobile",
+    "modal-mobile",
+    "total-filters",
+    "location-dropdown",
+    "custom-algolia-scripts"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Global Embeds",
+  "defaultOpen": true,
+  "pages": [
+    "remove-cms-wrapper",
+    "list-sort-dropdown",
+    "expert-card",
+    "featured-expert-card",
+    "tabs-radio-filter",
+    "custom-scrollbar",
+    "form-embeds",
+    "modal",
+    "application-card",
+    "application-form",
+    "accordions",
+    "step-flow",
+    "tabs",
+    "start-proj-gen-contract"
+  ]
+}

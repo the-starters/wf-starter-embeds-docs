@@ -3,10 +3,10 @@ export const docsRoute = '/docs';
 export const docsImageRoute = '/og/docs';
 export const docsContentRoute = '/llms.mdx/docs';
 
-// The CONTENT repo — edit links point at the-starters/wf-starter-docs,
-// not this site repo.
+// Edit links point at the content/ folder of this repo.
 export const gitConfig = {
   user: 'the-starters',
-  repo: 'wf-starter-docs',
+  repo: 'wf-starter-embeds-docs',
   branch: 'main',
+  contentDir: 'content',
 };
