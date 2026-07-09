@@ -62,6 +62,8 @@ Extra Embeds) have no behaviour to walk through and aren't documented yet.
 
 The remaining main groups cover scripts that live outside `embed-wrapper`:
 
+- **[Swiper Scroll](swiper-scroll/index.md)** — attribute-driven horizontal scroll / carousel
+  regions built on Swiper 11.
 - **[Algolia Result Modifiers](algolia-result-modifiers/index.md)** — post-render tweaks to Algolia
   result cards (companies, price label, roles).
 - **[Freelancer CMS](freelancer-cms/index.md)** — freelancer CMS page scripts (datepicker,

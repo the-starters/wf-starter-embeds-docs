@@ -2,7 +2,7 @@
 title: "Swiper Scroll"
 ---
 
-Source: Webflow — `Global Embeds / Swiper Scroll`
+Source: Webflow — `Swiper Scroll`
 
 ## What it is
 

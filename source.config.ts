@@ -14,6 +14,7 @@ export const docs = defineDocs({
       'freelancer-cms/**/*.md',
       'global-embeds/**/*.md',
       'starters-list-filter/**/*.md',
+      'swiper-scroll/**/*.md',
     ],
     schema: pageSchema,
     postprocess: {
@@ -27,6 +28,7 @@ export const docs = defineDocs({
       'freelancer-cms/**/meta.json',
       'global-embeds/**/meta.json',
       'starters-list-filter/**/meta.json',
+      'swiper-scroll/**/meta.json',
     ],
     schema: metaSchema,
   },
