@@ -1,4 +1,4 @@
-export const appName = 'WF Starter Docs';
+export const appName = 'WF Starter Embeds Docs';
 export const docsRoute = '/docs';
 export const docsImageRoute = '/og/docs';
 export const docsContentRoute = '/llms.mdx/docs';

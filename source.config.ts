@@ -3,17 +3,32 @@ import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
 
 // Content is the wf-starter-docs repo, cloned into ./content by scripts/sync-content.mjs.
 // The globs exclude its GitHub-facing README.md and the legacy GitBook SUMMARY.md.
+// The sidebar mirrors the starters-webflow repo: one glob entry per main group folder —
+// add new main groups (e.g. 'page-embeds/**/*.md') here as they land.
 export const docs = defineDocs({
   dir: 'content',
   docs: {
-    files: ['index.md', 'conventions/**/*.md', 'components/**/*.md'],
+    files: [
+      'index.md',
+      'adding-a-page.md',
+      'algolia-result-modifiers/**/*.md',
+      'freelancer-cms/**/*.md',
+      'global-embeds/**/*.md',
+      'starters-list-filter/**/*.md',
+    ],
     schema: pageSchema,
     postprocess: {
       includeProcessedMarkdown: true,
     },
   },
   meta: {
-    files: ['meta.json', 'conventions/**/meta.json', 'components/**/meta.json'],
+    files: [
+      'meta.json',
+      'algolia-result-modifiers/**/meta.json',
+      'freelancer-cms/**/meta.json',
+      'global-embeds/**/meta.json',
+      'starters-list-filter/**/meta.json',
+    ],
     schema: metaSchema,
   },
 });
