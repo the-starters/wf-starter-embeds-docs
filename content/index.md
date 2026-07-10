@@ -54,11 +54,15 @@ embed-wrapper (Webflow component)          →  Global Embeds
 ├── Step Flow                              →  Step Flow
 │   └── Panel Nav Flow                     →  Panel Nav Flow
 ├── Tabs                                   →  Tabs
-└── Start Project / Gen Contract           →  Start Project — Generate Contract
+├── Start Project / Gen Contract           →  Start Project — Generate Contract
+├── Loader                                 →  Loader
+├── Text Methods                           →  Text Methods
+└── (style-only CSS embeds)                →  Style Embeds
 ```
 
-Style-only embeds in `embed-wrapper` (Global Styles, the card CSS embeds, Loader, Text Methods,
-Extra Embeds) have no behaviour to walk through and aren't documented yet.
+Style-only embeds in `embed-wrapper` (Global Styles, the card CSS embeds, Extra Embeds) are
+inventoried on the **[Style Embeds](global-embeds/style-embeds.md)** page; their CSS mirrors
+live under `global-embeds/*.css` in the repo.
 
 The remaining main groups cover scripts that live outside `embed-wrapper`:
 

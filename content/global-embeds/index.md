@@ -25,6 +25,10 @@ group in this sidebar; a component's page documents its JS and CSS together.
 - **Tabs** — attribute-driven tabs.
 - **Tabs Radio Filter** — reserved; no scripts yet.
 - **Remove CMS Wrapper** — unwraps Webflow Collection List wrappers.
+- **Loader** — the shared `setLoader()` loading-overlay helper.
+- **Text Methods** — shared text helpers (`truncateText`).
+- **Style Embeds** — inventory of the style-only CSS embeds (global styles, buttons, cards,
+  spinner, scrollbar hiding, Quill overrides).
 
 ## Conventions
 
