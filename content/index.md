@@ -61,8 +61,8 @@ embed-wrapper (Webflow component)          →  Global Embeds
 ```
 
 Style-only embeds in `embed-wrapper` (Global Styles, the card CSS embeds, Extra Embeds) are
-inventoried on the **[Style Embeds](global-embeds/style-embeds.md)** page; their CSS mirrors
-live under `global-embeds/*.css` in the repo.
+documented per file under **[Style Embeds](global-embeds/style-embeds/index.md)**; their CSS
+mirrors live under `global-embeds/*.css` in the repo.
 
 The remaining main groups cover scripts that live outside `embed-wrapper`:
 
