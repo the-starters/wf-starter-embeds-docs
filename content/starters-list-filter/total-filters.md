@@ -12,11 +12,11 @@ state field: an array counts its length, any other truthy value counts as 1.
 
 Updates arrive three ways:
 
-- **Events** — it subscribes to WF-Algolia's `ready` and `filter` events and re-renders on
+- **Events.** It subscribes to WF-Algolia's `ready` and `filter` events and re-renders on
   each.
-- **API polling on boot** — if `window.WfAlgolia` is not ready when the script runs, it
+- **API polling on boot.** If `window.WfAlgolia` is not ready when the script runs, it
   retries wiring every 100ms for up to 10 seconds.
-- **Safety net** — an unconditional 400ms interval re-reads the committed state forever, in
+- **Safety net.** An unconditional 400ms interval re-reads the committed state forever, in
   case an event is missed.
 
 ## File structure
@@ -43,7 +43,7 @@ bundle (it polls for the API).
 
 ## Notes & gotchas
 
-- If `getFilterState()` is unavailable, nothing is written — placeholder text you put in the
+- If `getFilterState()` is unavailable, nothing is written; placeholder text you put in the
   element stays until the API appears, then gets replaced.
 - The count is of state fields/values, not visible chips: a range filter stored as a single
   value counts as 1, a multi-select array counts once per selected value.

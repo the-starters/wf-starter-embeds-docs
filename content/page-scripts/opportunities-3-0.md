@@ -1,5 +1,5 @@
 ---
-title: "Opportunities 3.0 — Core"
+title: "Opportunities 3.0: Core"
 ---
 
 Source: `opportunities-3.0.js` (repo root)
@@ -9,7 +9,7 @@ Source: `opportunities-3.0.js` (repo root)
 The shared **Webflow ↔ Xano binder** for the Opportunities 3.0 pages. It wires the existing
 3.0 UI (the opportunities pages plus the modals on `/all-modals`) to the authenticated
 "Opportunities 3.0" Xano API group, and exposes the core as **`window.Opp30`** for page
-controllers like [Opportunities — Create](opportunities-create.md) to build on.
+controllers like [Opportunities: Create](opportunities-create.md) to build on.
 
 **Auth model** (the part that most often breaks):
 
@@ -23,17 +23,17 @@ logged-in member, or the trade-token call 404s.
 
 Beyond the API bridge, the core owns:
 
-- **Role switching** — reveals the `[data-opp-role]` wrapper matching the member's role
+- **Role switching.** Reveals the `[data-opp-role]` wrapper matching the member's role
   (`talent` | `brand`); both wrappers stay hidden until the role is known so neither flashes.
-- **List rendering** — clones a `[data-opp-card]` template inside `[data-opp-list="<key>"]`
+- **List rendering.** Clones a `[data-opp-card]` template inside `[data-opp-list="<key>"]`
   and fills child `[data-opp-bind="<field>"]` slots; `[data-opp-empty="<key>"]` shows when a
   list is empty, and `[data-opp-state]` / `[data-opp-if]` drive per-card status pills.
-- **The freelancer feed** — a wf-algolia browse feed that the core keeps hidden
+- **The freelancer feed.** A wf-algolia browse feed that the core keeps hidden
   (`visibility: hidden` on the results, injected synchronously) until the member's category
   filter is applied, so cards from a previously-signed-in account never flash. Feed health is
   mirrored into `data-opp30-talent-*` attributes on `<html>` for debugging.
-- **Apply / edit-application modals** — cover-letter submission and the success states.
-- **Funnel analytics** — capture points route through the shared
+- **Apply / edit-application modals.** Cover-letter submission and the success states.
+- **Funnel analytics.** Capture points route through the shared
   [PostHog Track](../utils/posthog-track.md) helper.
 
 ## File structure
@@ -63,10 +63,10 @@ early once `window.Opp30` exists.
 ## Notes & gotchas
 
 - `Opp30.diagnoseFreelancerFeed()` (run it in the console) reports feed health: script tags
-  found, wf-algolia state, category refs, leftover filter attributes — first stop when the
-  talent feed shows nothing.
+  found, wf-algolia state, category refs, leftover filter attributes. It is the first stop
+  when the talent feed shows nothing.
 - The `DEBUG_LOG` flag at the top of the file controls the verbose `[opp30]` console logging.
-- `/opportunities-freelancer-view` must be wired as a **wf-algolia browse feed** — the legacy
+- `/opportunities-freelancer-view` must be wired as a **wf-algolia browse feed**; the legacy
   CMS-list markup is detected and warned about, not rendered.
 - The core and the create controller share run-once flags, so loading both on one page never
   double-binds the create form.

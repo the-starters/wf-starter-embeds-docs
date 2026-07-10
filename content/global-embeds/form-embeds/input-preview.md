@@ -2,14 +2,14 @@
 title: "Input Preview"
 ---
 
-Source: Webflow — `Global Embeds / Form Embeds / Input Preview - JS`
+Source: Webflow, `Global Embeds / Form Embeds / Input Preview - JS`
 
 ## What it is
 
 Global, per-field live preview. Mirrors a single input's value into a matching preview slot as
 the user types or selects, keyed by a unique field name. It is 1:1 and controlled: only inputs
 inside a `data-input-preview` wrapper are ever scanned, and each field writes to exactly the
-slot(s) whose name matches — no mass collection of a whole section.
+slot(s) whose name matches, so there is no mass collection of a whole section.
 
 The script is a plain IIFE with a global init guard (`window.__inputValuePreviewInited`), listens
 for `input`/`change` in the capture phase on `document`, and does an initial paint on init (so
@@ -25,7 +25,7 @@ Form Embeds
 └── Input Preview - JS
 ```
 
-JS only — no CSS file. If you use the jQuery-based Datepicker/Timepicker embeds, load order
+JS only; there is no CSS file. If you use the jQuery-based Datepicker/Timepicker embeds, load order
 does not matter: the script re-binds its jQuery bridge on `window` `load`.
 
 ## Markup contract
@@ -58,7 +58,7 @@ does not matter: the script re-binds its jQuery bridge on `window` `load`.
 </div>
 ```
 
-Matching is by the **field name** (`first-name`, `plan`), not by the wrapper's value — the value
+Matching is by the **field name** (`first-name`, `plan`), not by the wrapper's value; the value
 on `data-input-preview` itself is just a marker/label. Field names are whitespace-normalized
 before matching.
 
@@ -89,11 +89,11 @@ Disabled and `type="hidden"` controls inside a group wrapper are skipped.
   `data-input-preview-value` destination simply writes nowhere; a destination with no matching
   source stays empty.
 - Fields with a `data-input-preview-field` attribute **outside** any `data-input-preview` wrapper
-  are ignored — the wrapper is the opt-in scope.
+  are ignored; the wrapper is the opt-in scope.
 - Webflow's default checkbox value `on` is deliberately treated as empty so the visible label
   text wins. Set an explicit `value` on the input if you want something other than the label.
 - The destination is filled via `textContent`, so HTML in values is rendered as plain text.
-- `data-input-preview-field-value` is declared in the source but never used — it is not a working
+- `data-input-preview-field-value` is declared in the source but never used; it is not a working
   option.
 - The init guard is global: the script runs once per page no matter how many times it is included,
   but it also means fields added to the DOM later are still picked up (listeners are delegated on

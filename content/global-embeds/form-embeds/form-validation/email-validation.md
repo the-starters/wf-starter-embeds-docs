@@ -2,17 +2,17 @@
 title: "Email Validation"
 ---
 
-Source: Webflow — `Global Embeds / Form Embeds / Form Validation / Email Validate - JS`
+Source: Webflow, `Global Embeds / Form Embeds / Form Validation / Email Validate - JS`
 
 ## What it is
 
 Standalone email-format validation for Webflow. On `DOMContentLoaded` the script inits every
-`input[type="email"]` on the page — plus any `input[data-validate-email]`, for fields the Designer
-forced to `type="text"` — with no wrapper or configuration required. Invalid fields get
+`input[type="email"]` on the page (plus any `input[data-validate-email]`, for fields the Designer
+forced to `type="text"`), with no wrapper or configuration required. Invalid fields get
 `data-validate-field-invalid="true"`, which [Form Validation](./)'s CSS renders as a red outline.
 
 The outline is deliberately quiet: it appears only after the field is **touched** (blur or `change`),
-or when the user presses a blocked Continue button — never on page load and never on the first
+or when the user presses a blocked Continue button; never on page load and never on the first
 keystrokes. Once a field is touched, every keystroke re-validates, so fixing the address clears the
 outline immediately.
 
@@ -28,7 +28,7 @@ Form Validation
 └── Email Validate - JS
 ```
 
-Ships no styles of its own — `Form Validation - CSS` provides the red outline. No attributes
+It ships no styles of its own; `Form Validation - CSS` provides the red outline. No attributes
 are required for plain email fields: every `type="email"` input on the site validates.
 
 ## Markup contract
@@ -51,7 +51,7 @@ Skip a field:
 <input type="email" data-validate-ignore name="optional-email">
 ```
 
-Blocked-Continue integration — when a press lands on a button wrapper carrying both
+Blocked-Continue integration: when a press lands on a button wrapper carrying both
 `data-validate-element="button"` and `data-validate-disabled` (the latter is set by a gating
 script), errors are force-shown on every email field in the matching group:
 
@@ -83,7 +83,7 @@ script), errors are force-shown on every email field in the matching group:
 | --- | --- | --- |
 | `data-validate-field-invalid="true"` | input | Present while the field is invalid **and** allowed to show it. The CSS red-outline hook. |
 | `data-validate-touched="true"` | input | Set on blur/`change`; gates when the invalid state may appear. |
-| `data-validate-email-inited` (dataset) | input | Idempotency guard — listeners bind once per input. |
+| `data-validate-email-inited` (dataset) | input | Idempotency guard; listeners bind once per input. |
 
 ### Expected from a gating script (observed, not set)
 
@@ -96,7 +96,7 @@ script), errors are force-shown on every email field in the matching group:
 | Member | What it does |
 | --- | --- |
 | `window.lumos.validateForm` | Created if absent: `{ fieldValidators: [], groupInitHooks: [], registerFieldValidator(fn), registerGroupInitHook(fn) }`. |
-| registered field validator | The script registers one: given a field, returns `true`/`false` for email fields and `undefined` for anything else — so a gating script can ask "is this field valid?" without duplicating the email rules. |
+| registered field validator | The script registers one: given a field, returns `true`/`false` for email fields and `undefined` for anything else, so a gating script can ask "is this field valid?" without duplicating the email rules. |
 
 ## Notes & gotchas
 
@@ -106,18 +106,18 @@ script), errors are force-shown on every email field in the matching group:
 - **Two different validators.** `type="email"` inputs defer to the browser's `checkValidity()`
   (which also honors native constraints on the element); `data-validate-email` text inputs use the
   script's regex. Edge-case addresses can pass one and fail the other.
-- **Outline timing:** `input` events re-validate only after the field is touched — before the first
+- **Outline timing:** `input` events re-validate only after the field is touched; before the first
   blur/`change`, typing never raises an outline. After touch, re-validation runs on every keystroke
   (both clearing and raising).
 - The blocked-Continue listener runs on `pointerdown` in the **capture** phase, so errors flash even
   when the gating script swallows the click. It only fires while `data-validate-disabled` is present
-  on the wrapper — a script such as a step-flow gate has to manage that attribute; this embed never
+  on the wrapper. A script such as a step-flow gate has to manage that attribute; this embed never
   sets it.
 - Init runs once on `DOMContentLoaded`. Load the file with `defer` (not injected after the page has
-  loaded), and note that fields added to the DOM later are not picked up automatically — there is no
+  loaded), and note that fields added to the DOM later are not picked up automatically; there is no
   mutation observer or re-init event in this script.
 - Idempotent per input via `data-validate-email-inited`; safe if the embed is pasted twice. The
   `window.lumos.validateForm` registry is shared and created with nullish assignment, so load order
   relative to other `lumos` scripts doesn't matter.
-- Modern-syntax script (optional chaining, nullish assignment) — it does not run on legacy browsers,
-  and it needs no jQuery.
+- The script uses modern syntax (optional chaining, nullish assignment), so it does not run on
+  legacy browsers, and it needs no jQuery.

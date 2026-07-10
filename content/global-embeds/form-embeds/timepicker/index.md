@@ -2,14 +2,14 @@
 title: "Timepicker"
 ---
 
-Source: Webflow — `Global Embeds / Form Embeds / Timepicker`
+Source: Webflow, `Global Embeds / Form Embeds / Timepicker`
 
 ## What it is
 
 Attribute-driven time picker for Webflow, built on jQuery UI plus the Trent Richardson
 timepicker-addon (v1.6.3). Tag any input with `data-input-timepicker` and it opens a time widget with
 hour/minute dropdowns (or sliders) and Now/Done buttons. Supports standalone time fields and linked
-start/end ranges, and shares the datepicker embed's modal-reparenting and scroll-tracking behavior —
+start/end ranges, and shares the datepicker embed's modal-reparenting and scroll-tracking behavior,
 plus one extra trick: because the time widget is tall, it flips **above** the input when there's more
 room above than below.
 
@@ -26,7 +26,7 @@ Timepicker
 └── Timepicker - JS
 ```
 
-The script self-loads jQuery UI and the addon (JS + CSS) — it only needs jQuery on the page
+The script self-loads jQuery UI and the addon (JS + CSS); it only needs jQuery on the page
 (Webflow includes it by default), so load order relative to other embeds doesn't matter.
 
 ## Markup contract
@@ -46,7 +46,7 @@ Standalone, 12-hour with AM/PM and 15-minute steps:
        data-input-timepicker-step="15">
 ```
 
-Linked start/end range — both inputs inside one group wrapper:
+A linked start/end range puts both inputs inside one group wrapper:
 
 ```html
 <div data-input-timepicker-group>
@@ -78,7 +78,7 @@ be earlier than start; an equal time is allowed.
 A group missing one of the two roles falls back to initializing every `data-input-timepicker` inside
 it as an independent picker.
 
-### Optional — per input
+### Optional (per input)
 
 | Attribute | Default | Maps to (addon) | Purpose |
 | --- | --- | --- | --- |
@@ -106,7 +106,7 @@ window.dispatchEvent(new CustomEvent('modal-open', { detail: { modal: modalEl } 
 
 | Attribute / data | On | Purpose |
 | --- | --- | --- |
-| `data-input-timepicker-initialized="true"` | group wrapper | Idempotency guard — a group inits once. |
+| `data-input-timepicker-initialized="true"` | group wrapper | Idempotency guard; a group inits once. |
 | jQuery data `wfTimepickerInited` | input | Per-input idempotency guard. |
 
 ### CSS hooks (from `timepicker.css`)
@@ -115,7 +115,7 @@ window.dispatchEvent(new CustomEvent('modal-open', { detail: { modal: modalEl } 
 | --- | --- |
 | `.ui-datepicker` (shell) | Self-contained copy of the picker shell styling, so the timepicker looks right even on pages without the datepicker embed (identical values; harmless if both load). |
 | `.ui-timepicker-div` (and descendants) | The addon's body: section header, styled hour/minute selects with an inline SVG chevron, themed slider fallback. |
-| `.ui-timepicker-div dl dt.ui_tpicker_time_label`, `dd.ui_tpicker_time` | The read-only selected-time preview row — hidden. |
+| `.ui-timepicker-div dl dt.ui_tpicker_time_label`, `dd.ui_tpicker_time` | The read-only selected-time preview row; hidden. |
 | `.ui-datepicker .ui-datepicker-buttonpane` | Now/Done button row; the Done (close) button is styled as the primary dark action. |
 | `[data-input-timepicker-modal]`, `.modal_dialog` | Forced to `overflow: visible` so the reparented picker isn't clipped. |
 | `#ui-datepicker-div` (also scoped inside the two modal selectors) | `z-index: 999999` so the picker sits above modal chrome. |
@@ -132,18 +132,19 @@ on short viewports.
 - **Default format is `HH:mm` (24-hour)** to match a `00:00` placeholder. Switch to `hh:mm tt` for
   AM/PM.
 - **Pair bounds allow equal times** (unlike the datepicker embed, which keeps start and end a day
-  apart). Also note the pair locks only fire on `onSelect` — values prefilled before init do **not**
+  apart). Also note the pair locks only fire on `onSelect`; values prefilled before init do **not**
   constrain the sibling picker.
 - **Flips above the input** when the widget is taller than the space below and there's more room
-  above — re-evaluated on every scroll/resize tick while open.
+  above; this is re-evaluated on every scroll/resize tick while open.
 - **Inside a modal**, the same positioning fix as the datepicker applies: the shared
   `#ui-datepicker-div` is reparented into the modal, forced to `position: absolute`, re-anchored
   against its real offset parent, clamped to the modal width, and tracked on scroll (capture phase)
   and resize via `requestAnimationFrame`.
 - The addon renders inside jQuery UI's shared singleton `#ui-datepicker-div`, so the timepicker and
-  datepicker embeds coexist — they share the same floating element, never open at once.
+  datepicker embeds coexist: they share the same floating element and never open at once.
 - The addon's own CSS is injected from cdnjs at runtime (in addition to `timepicker.css`); the embed
   CSS then overrides the addon look.
-- If jQuery never appears on the page, the script polls forever and nothing initializes — it does not
+- If jQuery never appears on the page, the script polls forever and nothing initializes; it does not
   load jQuery itself.
-- No ES modules, no wrapper `script` tags in the file — raw IIFE, per the repo's CDN-embed rules.
+- The file is a raw IIFE, with no ES modules and no wrapper `script` tags, per the repo's
+  CDN-embed rules.

@@ -2,12 +2,12 @@
 title: "Global Styles"
 ---
 
-Source: Webflow — `Global Embeds / Global Styles` · repo mirror: `global-embeds/global.css`
+Source: Webflow, `Global Embeds / Global Styles` · repo mirror: `global-embeds/global.css`
 
 ## What it is
 
 The site-wide CSS foundation (~610 lines). Everything in here is global: the fluid type scale,
-element resets, utility classes, and — most importantly — three attribute-driven systems that
+element resets, utility classes, and, most importantly, three attribute-driven systems that
 other embeds and scripts build on (the **state manager**, the **slot styler**, and the **hide
 utilities**).
 
@@ -16,13 +16,13 @@ utilities**).
 ### Fluid type scale
 
 `html { font-size }` steps through viewport-based `calc()` values at 1600px, 767px, 479px,
-390px and 240px breakpoints — every `rem` in the project scales with the viewport. `body` gets
+390px and 240px breakpoints, so every `rem` in the project scales with the viewport. `body` gets
 antialiasing and `optimizeLegibility`.
 
 ### Resets & form fixes
 
 - Headings, paragraphs, labels and blockquotes inherit all typography (`font-family` through
-  `text-wrap`) and lose their margins — type is driven entirely by Webflow classes.
+  `text-wrap`) and lose their margins; type is driven entirely by Webflow classes.
 - Unclassed `<a>` tags get underlines; Webflow's link-ish elements (`.w-tab-link`,
   `.w-dropdown-link`, …) inherit text decoration.
 - A `<select>` whose empty placeholder option is selected renders at 60% opacity, mimicking
@@ -35,14 +35,14 @@ antialiasing and `optimizeLegibility`.
 ### Line-clamp utilities
 
 `.text-style-1line` … `.text-style-10lines` truncate to N lines with an ellipsis; `-mob`
-variants (≤767px) clamp tighter on small screens — combine them, e.g.
+variants (≤767px) clamp tighter on small screens. Combine them, e.g.
 `text-style-5lines text-style-2lines-mob`. Pair with `wf-xano-element="show-more"` to
 expand/collapse. `.max-ch` is the single-line cousin (50ch, ellipsis).
 
 ### Visibility utilities
 
 `.hide`, `.hide-tablet`, `.hide-mobile-landscape`, `.hide-mobile`, `.visible-mob-landscape`,
-and the blunt `.hidden` — all `!important`, breakpoint-scoped. The comment "never overwritten"
+and the blunt `.hidden` are all `!important` and breakpoint-scoped. The comment "never overwritten"
 is the contract: scripts may toggle these classes freely.
 
 ### State Manager
@@ -74,22 +74,22 @@ hovering/focusing one member of a group dims the *others*. Hover rules live insi
 
 - `[data-slot]` flattens Webflow Collection List wrappers (`.w-dyn-list` and up to two
   `.u-display-contents` layers) to `display: contents`, so CMS items participate directly in
-  the slot's grid/flex layout — this is what lets a Collection List live inside a designed
+  the slot's grid/flex layout. This is what lets a Collection List live inside a designed
   grid without breaking it.
 - `.u-layout-column-2` drops its aspect-ratio/rounding when it contains anything that isn't
   media, so text columns don't get cropped.
 
 ### Hide utilities
 
-- `.u-hide-if-empty` — removes itself when empty *or* when every child is
+- `.u-hide-if-empty` removes itself when empty *or* when every child is
   `w-condition-invisible` (Webflow conditional visibility leaves invisible children behind).
-- `.u-hide-if-empty-cms` — removes itself when it contains no `.w-dyn-item`.
+- `.u-hide-if-empty-cms` removes itself when it contains no `.w-dyn-item`.
 
 ### Odds and ends
 
 Styled check-mark lists (`.p-item_list`, `.list-dark-mark`), the gradient background hooks
 (`.bg-g1`, `[data-bg="gradient"]`, `section.is-gradient`), scrollbar hiding for rich-text
-figures and specific content sections, `[hide-scrollbar]` (attribute-scoped scrollbar hiding —
+figures and specific content sections, `[hide-scrollbar]` (attribute-scoped scrollbar hiding;
 the global version is [Hide Scroll](hide-scroll.md)), the `.form-with-validation` disabled
 submit-button treatment, the news-item divider lines, `section { position: relative }`, and
 the wf-algolia active page-number highlight.
@@ -99,9 +99,9 @@ the wf-algolia active page-number highlight.
 - **This file is a dependency of almost everything.** The state manager variables are consumed
   by component styles across the site; the slot styler is why CMS grids look right. Treat
   removals as breaking changes.
-- The `hover`-token rules only exist under `@media (hover: hover)` — testing hover states in
+- The `hover`-token rules only exist under `@media (hover: hover)`, so testing hover states in
   responsive-mode emulation can be misleading.
 - `.hide*` utilities all carry `!important`; a script that sets inline `display` will still
   lose to them.
-- The check-mark list icons are hard-coded Webflow CDN URLs — re-uploading those assets changes
+- The check-mark list icons are hard-coded Webflow CDN URLs, so re-uploading those assets changes
   the URLs and silently breaks the bullets.

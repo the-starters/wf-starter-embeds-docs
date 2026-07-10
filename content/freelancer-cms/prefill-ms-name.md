@@ -43,18 +43,18 @@ Any number of inputs can carry the attribute; all empty ones are filled with the
 
 | Attribute | On | Description |
 | --- | --- | --- |
-| `data-mscustom-fullname` | input | Marks the field to receive the member's full name. Value-less — the attribute's presence is all that matters. |
+| `data-mscustom-fullname` | input | Marks the field to receive the member's full name. Value-less; the attribute's presence is all that matters. |
 
 No options. Poll interval (100ms) and retry cap (50) are constants in the script.
 
 ## Notes & gotchas
 
 - If Memberstack never appears within the ~5s polling window, the script gives up with a
-  `console.warn` (`[pre-fill-input]` prefix) — nothing is filled.
+  `console.warn` (`[pre-fill-input]` prefix); nothing is filled.
 - If the member has no custom field matching any candidate key, a warning lists the keys that do
   exist on the member, which is the fastest way to spot a key mismatch.
 - Only one name part is fine: first-only or last-only members still get that part filled.
 - Fields the user (or another script) already filled are never overwritten.
 - Logged-out visitors: `getCurrentMember` returns no member data and the script exits quietly.
-- Targets are collected once at init — inputs added to the page later (CMS render, modal
+- Targets are collected once at init, so inputs added to the page later (CMS render, modal
   injection) are not picked up.

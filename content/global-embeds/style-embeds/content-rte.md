@@ -2,7 +2,7 @@
 title: "Content RTE"
 ---
 
-Source: Webflow — `Global Embeds / Content RTE` · repo mirror: `global-embeds/content-rte.css`
+Source: Webflow, `Global Embeds / Content RTE` · repo mirror: `global-embeds/content-rte.css`
 
 ## What it is
 
@@ -16,7 +16,7 @@ section background, and `pointer-events: none` keeps it from blocking selection.
 
 ## Markup contract
 
-None — add the `content_rte` class to the Rich Text element and every `blockquote` inside it
+None: add the `content_rte` class to the Rich Text element and every `blockquote` inside it
 gets the treatment automatically.
 
 ## API
@@ -34,7 +34,7 @@ All knobs are CSS variables on `.content_rte blockquote`, overridable per page o
 ## Notes & gotchas
 
 - The glyph is drawn as a **mask over a background-color**, so recoloring is just
-  `--quote-color` — no need to touch the SVG.
+  `--quote-color`; there is no need to touch the SVG.
 - Because the mark is a `::before` on the blockquote itself, it scrolls and wraps with the
-  quote — no absolute-positioned sibling to manage.
+  quote; there is no absolute-positioned sibling to manage.
 - Outside `.content_rte`, blockquotes are untouched.

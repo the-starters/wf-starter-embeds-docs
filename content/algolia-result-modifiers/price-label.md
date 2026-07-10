@@ -6,8 +6,8 @@ Source: `algolia-result-modifiers/price-label.js`
 
 ## What it is
 
-Shows the right price label on each expert card. Every card can contain two label elements —
-one for "consult" pricing and one for "hire" pricing — and the script toggles between them based
+Shows the right price label on each expert card. Every card can contain two label elements
+(one for "consult" pricing and one for "hire" pricing), and the script toggles between them based
 on the card's expert type text.
 
 For each `.expert-card_item` it reads the text of the `data-expert-type` element (trimmed,
@@ -18,7 +18,7 @@ label. Hiding is done with an inline `display: none !important`; showing removes
 
 The script waits for the global `WfAlgolia` API (polling every 100ms, giving up silently after
 10 seconds), then re-applies on every `response` event, on any mutation of the results container,
-and once on init — so labels stay correct through searches, pagination, and load-more.
+and once on init, so labels stay correct through searches, pagination, and load-more.
 
 ## File structure
 
@@ -26,7 +26,7 @@ and once on init — so labels stay correct through searches, pagination, and lo
 Price Label - JS
 ```
 
-Depends on the global `WfAlgolia` API — load after the WfAlgolia integration.
+Depends on the global `WfAlgolia` API, so load it after the WfAlgolia integration.
 
 ## Markup contract
 
@@ -58,7 +58,7 @@ For mutation-watching it observes, in order of preference: `wf-algolia-element="
 
 - If `window.WfAlgolia` never appears within 10 seconds, the script gives up silently and labels
   are never toggled.
-- The comparison is exact after trim/lowercase: only `consult` selects the consult label —
+- The comparison is exact after trim/lowercase: only `consult` selects the consult label;
   everything else (including typos or empty text) falls through to the hire label.
 - Both label elements can be visible in the Designer; expect a brief flash of both on load before
   the first apply pass. If that matters, hide one by default in Webflow.

@@ -2,7 +2,7 @@
 title: "Reset on Close"
 ---
 
-Source: Webflow — `Global Embeds / Modal`
+Source: Webflow, `Global Embeds / Modal`
 
 ## What it is
 
@@ -24,7 +24,7 @@ Modal
 └── Reset on Close - JS
 ```
 
-Only reacts to the `modal-close` event — it does nothing without `Modal - JS` on the page.
+Only reacts to the `modal-close` event; it does nothing without `Modal - JS` on the page.
 
 ## Markup contract
 
@@ -43,7 +43,7 @@ Only reacts to the `modal-close` event — it does nothing without `Modal - JS` 
 
 ## Notes & gotchas
 
-- Nothing happens on close if the form was not submitted successfully — the user can reopen the
+- Nothing happens on close if the form was not submitted successfully; the user can reopen the
   modal and continue where they left off.
 - The reload is a full `window.location.reload()`; any other unsaved page state is lost too.
 - Only the first `.w-form` inside the modal is checked.

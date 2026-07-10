@@ -2,7 +2,7 @@
 title: "Loader"
 ---
 
-Source: Webflow — `Global Embeds / Loader` · repo mirror: `global-embeds/loader/loader.js`
+Source: Webflow, `Global Embeds / Loader` · repo mirror: `global-embeds/loader/loader.js`
 
 ## What it is
 
@@ -21,7 +21,7 @@ flips those off and, after a 300ms opacity transition, sets `display: none` so t
 stops intercepting clicks.
 
 Not to be confused with the [Utils Loader](../utils/loader.md) (`loadEnvScript`, a script
-loader) — same name, unrelated job.
+loader), which has the same name but an unrelated job.
 
 ## File structure
 
@@ -45,11 +45,11 @@ scripts pass as the second argument.
 
 ## Notes & gotchas
 
-- This is a **bare function definition, not an IIFE** — it's a helper for other embeds, and it
+- This is a **bare function definition, not an IIFE**. It's a helper for other embeds, and it
   depends on the shared `qs()` selector helper being defined by the page's controller scripts.
   Load it alongside them; on a page with no `qs` global, calling `setLoader` throws.
 - Visibility is written as an **inline `style` attribute**, so it wins over classes; don't try
   to override the shown/hidden state with CSS alone.
-- The 300ms hide delay matches the opacity transition — a rapid show → hide → show sequence
+- The 300ms hide delay matches the opacity transition, so a rapid show → hide → show sequence
   can race the `setTimeout` and end up hidden; re-call `setLoader(true)` after async steps
   rather than assuming it stayed visible.

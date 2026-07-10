@@ -2,7 +2,7 @@
 title: "Text Methods"
 ---
 
-Source: Webflow — `Global Embeds / Text Methods` · repo mirror: `global-embeds/text-methods/text-methods.js`
+Source: Webflow, `Global Embeds / Text Methods` · repo mirror: `global-embeds/text-methods/text-methods.js`
 
 ## What it is
 
@@ -28,8 +28,8 @@ Text Methods
 
 ## Notes & gotchas
 
-- Like [Loader](loader.md), this is a **bare global function, not an IIFE** — it exists to be
+- Like [Loader](loader.md), this is a **bare global function, not an IIFE**. It exists to be
   called by other scripts and must load before them.
 - The limit counts **characters before the word-boundary backup**, so results are usually a few
-  characters shorter than `limit` — size card layouts accordingly.
+  characters shorter than `limit`; size card layouts accordingly.
 - The ellipsis is three ASCII dots (`...`), not the `…` glyph.

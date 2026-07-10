@@ -9,8 +9,8 @@ Source: `starters-list-filter/custom-algolia-scripts/clear-filter-visibility/`
 A JS + CSS pair that upgrades the WF-Algolia reset button in two ways:
 
 **1. Global reset behavior.** A delegated click listener catches every
-`wf-algolia-button="reset"` click — desktop reset and the separate mobile-dialog reset alike,
-wherever each lives — and calls `window.WfAlgolia.clearAllFilters()` directly. That call is
+`wf-algolia-button="reset"` click (desktop reset and the separate mobile-dialog reset alike,
+wherever each lives) and calls `window.WfAlgolia.clearAllFilters()` directly. That call is
 global, ignoring browse scope, which is what makes the button inside the moved mobile modal
 work. It also clears any `wf-algolia-element="browse-search"` input that has text and resets
 the query via `WfAlgolia.setQuery('')`.
@@ -25,7 +25,7 @@ Boot sequence: buttons are pre-hidden immediately, then the script polls every 1
 150 tries, about 15s) until both `window.WfAlgolia` and at least one reset button exist. Once
 wired, visibility syncs on the WF-Algolia `filter` and `response` events, on `input` in the
 browse-search fields, and via a 350ms polling backstop that diffs a snapshot of the filter
-state plus all search values — so it stays correct even when custom filter UIs bypass the
+state plus all search values, so it stays correct even when custom filter UIs bypass the
 events.
 
 ## File structure
@@ -37,7 +37,7 @@ Clear Filter Visibility
 ```
 
 Without the CSS the JS still toggles the class, but nothing hides. Load order relative to
-the WF-Algolia bundle does not matter — the boot poll waits for it.
+the WF-Algolia bundle does not matter; the boot poll waits for it.
 
 ## Markup contract
 
@@ -48,7 +48,7 @@ the WF-Algolia bundle does not matter — the boot poll waits for it.
 </div>
 ```
 
-Standard WF-Algolia attributes only — no extra opt-in attribute. Every reset button on the
+Standard WF-Algolia attributes only; there is no extra opt-in attribute. Every reset button on the
 page is managed.
 
 ## API
@@ -70,7 +70,7 @@ The CSS file contains that single rule:
 - The reset is global by design: any reset button clears **all** filters and the search,
   regardless of which browse wrapper it sits in.
 - Buttons stay hidden forever if `window.WfAlgolia` never appears (the poll gives up after
-  about 15 seconds) — the feature degrades to "no reset button" rather than a broken one.
+  about 15 seconds); the feature degrades to "no reset button" rather than a broken one.
 - Query-driven visibility is scoped: a search term only reveals the reset button inside the
   same `browse` wrapper, while active filters reveal every reset button.
 - Expect a brief flash-then-hide on load if the buttons are visible by default; the class is

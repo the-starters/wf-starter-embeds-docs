@@ -7,8 +7,8 @@ Source: `utils/loader.js`
 ## What it is
 
 A tiny environment-switching script loader. `loadEnvScript()` picks a staging or live bundle
-URL based on the current host — any `*.webflow.io` host counts as staging, everything else as
-live — creates a `<script>` element for it, and appends it to `<body>`. Load/error outcomes are
+URL based on the current host (any `*.webflow.io` host counts as staging, everything else
+as live), creates a `<script>` element for it, and appends it to `<body>`. Load/error outcomes are
 logged to the console with the script's name.
 
 This is the pattern used to point staging pages at in-progress bundles while production keeps
@@ -20,7 +20,7 @@ loading the released ones, without editing the page's custom code per environmen
 utils/loader.js
 ```
 
-The file defines **one global function** (`loadEnvScript`) and runs nothing on its own — it
+The file defines **one global function** (`loadEnvScript`) and runs nothing on its own; it
 must be loaded *before* any custom-code block that calls it.
 
 ## Usage
@@ -39,7 +39,7 @@ must be loaded *before* any custom-code block that calls it.
 
 ## API
 
-`loadEnvScript(options)` — options object:
+`loadEnvScript(options)` takes an options object:
 
 | Key | Default | Purpose |
 | --- | --- | --- |
@@ -50,14 +50,14 @@ must be loaded *before* any custom-code block that calls it.
 
 ## Notes & gotchas
 
-- The default `type` is `"module"` — module scripts are deferred and scoped. For classic
+- The default `type` is `"module"`. Module scripts are deferred and scoped. For classic
   scripts that define globals, pass `type: "text/javascript"` explicitly.
-- Do **not** load `loader.js` itself with `defer` if the caller block runs earlier — the
+- Do **not** load `loader.js` itself with `defer` if the caller block runs earlier; the
   function must exist by the time it's called. Inline callers in the footer are fine when the
   loader tag (without `defer`) sits above them.
-- Scripts injected this way load **async** relative to the rest of the page — anything they
+- Scripts injected this way load **async** relative to the rest of the page, so anything they
   define arrives late. Gate dependents on the injected script's behaviour (events, polling),
   not on load order. [WF Validate](wf-validate.md)'s document-capture gating was designed to
   win regardless of this ordering.
-- There is no error fallback beyond the console log — a typoed staging URL fails silently for
+- There is no error fallback beyond the console log: a typoed staging URL fails silently for
   users.

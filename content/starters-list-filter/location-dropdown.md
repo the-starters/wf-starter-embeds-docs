@@ -2,7 +2,7 @@
 title: "Location Dropdown"
 ---
 
-Source: Webflow — page-level embed on the All Starters browse page
+Source: Webflow (page-level embed on the All Starters browse page)
 
 ## What it is
 
@@ -10,9 +10,9 @@ The location filters on the All Starters browse page (Country / State / …) are
 By default they just snap open. This CSS-only embed gives them a smooth, **accordion-style height
 animation**: the toggle stays put, and the option list below it grows and shrinks.
 
-It uses the CSS grid `grid-template-rows: 0fr → 1fr` trick, scoped to the **list nav only** — the
+It uses the CSS grid `grid-template-rows: 0fr → 1fr` trick, scoped to the **list nav only**. The
 dropdown root and toggle button keep their Designer styles untouched, so nothing about the toggle
-moves or resizes while the list reveals. No JS, no GSAP.
+moves or resizes while the list reveals. It needs no JS and no GSAP.
 
 ## File structure
 
@@ -20,7 +20,7 @@ moves or resizes while the list reveals. No JS, no GSAP.
 Location Dropdown Filter - CSS
 ```
 
-CSS-only — no GSAP, no JS, no load-order constraints. It coexists with the component's existing
+CSS-only, with no GSAP, no JS, and no load-order constraints. It coexists with the component's existing
 inline embed (chevron rotation + outline/background).
 
 ## Markup contract
@@ -41,18 +41,18 @@ field and the option list:
 </div>
 ```
 
-The `nav` **must** have exactly one direct child (`.filters_location-dropdown-list-wrapper`) — that
+The `nav` **must** have exactly one direct child (`.filters_location-dropdown-list-wrapper`); that
 child is what clips and collapses. Webflow adds `.w--open` to the `nav` itself when the dropdown
 opens; that class drives the animation (no `:has()` needed).
 
 ## API
 
-No configurable attributes — it's a styling embed. The selectors are the contract:
+No configurable attributes; it's a styling embed. The selectors are the contract:
 
 | Selector | Role |
 | --- | --- |
 | `.filters_location-dropdown-list-nav.w-dropdown-list` | The grid container. `display:grid`, `grid-template-rows:0fr` → `1fr` on `.w--open`. |
-| `…-list-nav.w-dropdown-list.w--open` | Open state — expands the row and cancels the Designer's `top:110%` overlay offset. |
+| `…-list-nav.w-dropdown-list.w--open` | Open state: expands the row and cancels the Designer's `top:110%` overlay offset. |
 | `.filters_location-dropdown-list-nav .filters_location-dropdown-list-wrapper` | The single collapsing child: `overflow:hidden; min-height:0`. |
 
 Timing is `240ms cubic-bezier(0.4, 0, 0.2, 1)`; automatically disabled under
@@ -62,7 +62,7 @@ Timing is `240ms cubic-bezier(0.4, 0, 0.2, 1)`; automatically disabled under
 
 - **`display: grid !important` is required.** Webflow's own dropdown JS flips the list between
   `display:none` and `display:block` via `.w--open`. Forcing it to stay a grid is what lets **both**
-  directions animate — closing still animates even though Webflow removes `.w--open` instantly
+  directions animate: closing still animates even though Webflow removes `.w--open` instantly
   (`data-delay="0"`).
 - **`min-height: 0` on the inner wrapper is mandatory.** Without it the grid row can't shrink below
   the content's natural height, and nothing animates.
@@ -77,8 +77,8 @@ Timing is `240ms cubic-bezier(0.4, 0, 0.2, 1)`; automatically disabled under
 - **Covers all three dropdowns, including the disabled ones.** The `.is-disabled` instances never
   receive `.w--open`, so they simply stay collapsed at `0fr`.
 - **Internal scroll is preserved.** The Designer's `max-height: 12rem` on
-  `.filters_location-dropdown-list` still scrolls a long country list — it lives inside the clipped
+  `.filters_location-dropdown-list` still scrolls a long country list; it lives inside the clipped
   wrapper, so the accordion and the inner scroll don't fight.
 - **Focus while collapsed.** The list is `height:0` + clipped but still in the DOM; Webflow's
   `aria-expanded` on the toggle still conveys state. Gating keyboard focus into the hidden inputs
-  would require JS — out of scope for a CSS-only embed.
+  would require JS, which is out of scope for a CSS-only embed.

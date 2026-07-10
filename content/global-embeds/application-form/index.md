@@ -2,7 +2,7 @@
 title: "Application Form"
 ---
 
-Source: Webflow — `Global Embeds / Application Form`
+Source: Webflow, `Global Embeds / Application Form`
 
 ## What it is
 
@@ -26,10 +26,10 @@ Application Form
 └── Application Form - CSS
 ```
 
-Style-only — there is no script.
+Style-only; there is no script.
 
 ## Notes & gotchas
 
-- Purely a Designer ergonomics helper — removing it changes nothing for visitors.
+- Purely a Designer ergonomics helper; removing it changes nothing for visitors.
 - It assumes the element uses the `form_tag-list` class and relies on Webflow's built-in
   `wf-design-mode` flag.

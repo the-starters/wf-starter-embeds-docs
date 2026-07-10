@@ -2,17 +2,17 @@
 title: "Datepicker"
 ---
 
-Source: Webflow — `Global Embeds / Form Embeds / Datepicker`
+Source: Webflow, `Global Embeds / Form Embeds / Datepicker`
 
 ## What it is
 
 Attribute-driven jQuery UI datepicker for Webflow. Tag any input with `data-input-datepicker` and it
-becomes a calendar field — no ids, no class hooks, no per-field code. Supports standalone date fields
+becomes a calendar field, with no ids, class hooks, or per-field code needed. Supports standalone date fields
 and linked start/end ranges, and knows how to survive inside a modal (the shared picker div is
 reparented into the modal so it isn't clipped, then re-anchored under its input and tracked on
 scroll/resize).
 
-The script waits for `window.jQuery` (polling every 50ms — Webflow loads jQuery by default), then
+The script waits for `window.jQuery` (polling every 50ms; Webflow loads jQuery by default), then
 self-loads jQuery UI 1.14.1 from the jQuery CDN if `datepicker` isn't already available. Loading is
 guarded through a `window.__wfInputDatepicker` namespace, so multiple copies of the embed on one page
 fetch jQuery UI only once. Everything runs as a plain IIFE.
@@ -25,7 +25,7 @@ Datepicker
 └── Datepicker - JS
 ```
 
-The script self-loads jQuery UI — it only needs jQuery on the page (Webflow includes it by
+The script self-loads jQuery UI; it only needs jQuery on the page (Webflow includes it by
 default), so load order relative to other embeds doesn't matter.
 
 ## Markup contract
@@ -46,7 +46,7 @@ Standalone with options:
        data-input-datepicker-min="0">
 ```
 
-Linked start/end range — both inputs inside one group wrapper:
+A linked start/end range puts both inputs inside one group wrapper:
 
 ```html
 <div data-input-datepicker-group>
@@ -56,7 +56,7 @@ Linked start/end range — both inputs inside one group wrapper:
 ```
 
 When paired: picking **start** pushes the end picker's `minDate` to start + 1 day; picking **end**
-pulls the start picker's `maxDate` to end − 1 day — so start and end can never be the same day. The
+pulls the start picker's `maxDate` to end − 1 day, so start and end can never be the same day. The
 same locks are also applied once at init from any value already sitting in the fields, so dates
 prefilled by Webflow defaults or another embed constrain the sibling picker exactly like a manual pick.
 
@@ -79,13 +79,13 @@ prefilled by Webflow defaults or another embed constrain the sibling picker exac
 A group missing one of the two roles falls back to initializing every `data-input-datepicker` inside
 it as an independent picker.
 
-### Optional — per input
+### Optional (per input)
 
 | Attribute | Default | Maps to (jQuery UI) | Purpose |
 | --- | --- | --- | --- |
 | `data-input-datepicker-format` | `mm/dd/yy` | `dateFormat` | Display/parse format (jQuery UI tokens: `d`/`dd` day, `D`/`DD` weekday, `m`/`mm` month, `M`/`MM` month name, `y`/`yy` year). |
 | `data-input-datepicker-months` | `1` | `numberOfMonths` | How many months the calendar shows. |
-| `data-input-datepicker-min` | — | `minDate` | Earliest selectable date. Accepts jQuery UI values — absolute (in `format`) or relative like `0` (today), `+1d`, `-1w`. |
+| `data-input-datepicker-min` | — | `minDate` | Earliest selectable date. Accepts jQuery UI values: absolute (in `format`) or relative like `0` (today), `+1d`, `-1w`. |
 | `data-input-datepicker-max` | — | `maxDate` | Latest selectable date. Same formats as min. |
 
 An empty attribute value is treated the same as an absent attribute (the default applies).
@@ -105,7 +105,7 @@ window.dispatchEvent(new CustomEvent('modal-open', { detail: { modal: modalEl } 
 
 | Attribute | On | Purpose |
 | --- | --- | --- |
-| `data-input-datepicker-initialized="true"` | group wrapper | Idempotency guard — a group inits once. |
+| `data-input-datepicker-initialized="true"` | group wrapper | Idempotency guard; a group inits once. |
 
 ### CSS hooks (from `datepicker.css`)
 
@@ -123,7 +123,7 @@ to fixed layout, and shrinks day cells to 2.5rem so all seven columns fit on pho
 - **Idempotent.** Standalone inputs are skipped if jQuery UI already holds datepicker data for them;
   groups are skipped once `data-input-datepicker-initialized="true"` is set. Safe to run the embed
   more than once or re-fire `modal-open`.
-- **Same-day ranges are blocked by design** — the pair locks keep each side a full day clear of the
+- **Same-day ranges are blocked by design.** The pair locks keep each side a full day clear of the
   other. If you need same-day start/end, this embed's pairing doesn't allow it.
 - **Range locks fire at init too.** Prefilled values never trigger `onSelect`, so the script applies
   the min/max locks from whatever is already in the fields when the pair initializes.
@@ -132,8 +132,9 @@ to fixed layout, and shrinks day cells to 2.5rem so all seven columns fit on pho
   `position: absolute`, recomputes top/left against the picker's real offset parent, and keeps
   re-anchoring on scroll (capture phase, so inner scroll containers count) and resize via
   `requestAnimationFrame`. Tracking stops when the picker closes or its input leaves the DOM.
-- The picker markup is jQuery UI's shared singleton `#ui-datepicker-div` — one calendar element serves
+- The picker markup is jQuery UI's shared singleton `#ui-datepicker-div`: one calendar element serves
   every input on the page.
-- If jQuery never appears on the page, the script polls forever and nothing initializes — it does not
+- If jQuery never appears on the page, the script polls forever and nothing initializes; it does not
   load jQuery itself, only jQuery UI.
-- No ES modules, no wrapper `script` tags in the file — raw IIFE, per the repo's CDN-embed rules.
+- The file is a raw IIFE, with no ES modules and no wrapper `script` tags, per the repo's
+  CDN-embed rules.

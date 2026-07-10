@@ -26,7 +26,7 @@ For pages that open the filter modal.
 
 ## Markup contract
 
-None — the script binds to a window event, not to markup:
+None. The script binds to a window event, not to markup:
 
 ```js
 // Whatever opens the modal must announce it:
@@ -42,7 +42,7 @@ window.dispatchEvent(new Event('modal-open'));
 
 ## Notes & gotchas
 
-- It does nothing unless something actually dispatches `modal-open` — the modal-opening code
+- It does nothing unless something actually dispatches `modal-open`; the modal-opening code
   is responsible for firing that event.
 - The 450ms follow-up is tuned to the modal's open animation; a much longer tween would
   finish after the second recalc.

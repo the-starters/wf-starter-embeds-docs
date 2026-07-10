@@ -11,7 +11,7 @@ snippet, it exposes `window.StartersTrack.track(name, props)` for page scripts t
 of `posthog.capture` directly, which buys two guarantees:
 
 - every event carries a consistent **`platform` property** (`"v2"` or `"v3"`), and
-- a missing or blocked PostHog can **never break page logic** — every call is wrapped so
+- a missing or blocked PostHog can **never break page logic**: every call is wrapped so
   analytics failures are swallowed.
 
 It also wires **frontend error tracking** once per page: uncaught `error` events and
@@ -49,12 +49,12 @@ hosts containing `the-starters-3-0` are `v3`; everything else (`hirethestarters.
   contains the substring `thestarters.com`, so an `.includes()` check would mislabel all v2
   prod traffic as v3. Keep that in mind before "simplifying" the condition.
 - Event names and properties are defined in the funnel-events plan
-  (`platform-ops/architecture/posthog-funnel-events-plan.md` in the workspace) — additions are
+  (`platform-ops/architecture/posthog-funnel-events-plan.md` in the workspace). Additions are
   fine, renames need a migration note there.
 - `posthog.captureException` is stubbed by the head snippet, so errors thrown before
   `array.js` loads are queued, not lost.
 - Events fired before [PostHog Identity](posthog-identity.md) resolves the member are captured
-  under the anonymous id and stitched by PostHog after `identify` — normal PostHog behaviour,
-  nothing to work around.
-- Load this before any page script that calls `StartersTrack.track` — or have callers use
+  under the anonymous id and stitched by PostHog after `identify`. That is normal PostHog
+  behaviour, nothing to work around.
+- Load this before any page script that calls `StartersTrack.track`, or have callers use
   optional chaining (`window.StartersTrack?.track(…)`) to stay order-independent.

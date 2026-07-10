@@ -2,12 +2,12 @@
 title: "Accordions"
 ---
 
-Source: Webflow — `Global Embeds / Accordions`
+Source: Webflow, `Global Embeds / Accordions`
 
 ## What it is
 
 Attribute-driven accordion with GSAP height animation and full ARIA wiring. On `DOMContentLoaded`
-the script inits every `data-accordion="wrapper"` on the page (idempotent — each wrapper is marked
+the script inits every `data-accordion="wrapper"` on the page (idempotent: each wrapper is marked
 with `data-script-initialized` so re-running is safe), animates each panel's height open/closed over
 0.3s, and keeps `aria-expanded` / `aria-controls` / `aria-labelledby` in sync with generated ids.
 
@@ -26,7 +26,7 @@ Accordions
 └── Accordions - JS
 ```
 
-GSAP must load before the JS. ScrollTrigger is optional — when present it is refreshed
+GSAP must load before the JS. ScrollTrigger is optional; when present it is refreshed
 after every open/close so pinned/triggered sections stay measured.
 
 ## Markup contract
@@ -51,21 +51,21 @@ after every open/close so pinned/triggered sections stay measured.
 ```
 
 Each `component` needs both a `toggle-button` and a `content-wrap`; a card missing either is
-skipped with a `console.warn`. The open state is the `is-active` class on the `component` element —
+skipped with a `console.warn`. The open state is the `is-active` class on the `component` element;
 style icon rotation / colors off that.
 
 For CMS lists: the `list` slot may contain the Collection List directly (optionally wrapped in
 `.u-display-contents` helpers, which are flattened first). On init, each collection item's first
 visible child (skipping `w-condition-invisible`) is promoted into the slot and everything else that
-was in the slot — including the Collection List wrappers — is removed. Put
+was in the slot (including the Collection List wrappers) is removed. Put
 `data-accordion="component"` on that inner element.
 
 ## xAttribute JSON
 
 Applying the hooks with the **xAttribute** Webflow app (by xAtom)? Select the element in the
-Designer and paste the matching block — one per element of the markup contract above.
+Designer and paste the matching block, one per element of the markup contract above.
 
-`wrapper` — the root element, shown with the two options from the example (all options are
+`wrapper` is the root element, shown with the two options from the example (all options are
 optional; see [API](#api) for the full list):
 
 ```json
@@ -76,25 +76,25 @@ optional; see [API](#api) for the full list):
 }
 ```
 
-`list` — the direct parent of the cards:
+`list` is the direct parent of the cards:
 
 ```json
 { "data-accordion": "list" }
 ```
 
-`component` — each accordion card:
+`component` marks each accordion card:
 
 ```json
 { "data-accordion": "component" }
 ```
 
-`toggle-button` — the button inside the heading:
+`toggle-button` is the button inside the heading:
 
 ```json
 { "data-accordion": "toggle-button" }
 ```
 
-`content-wrap` — the collapsible panel:
+`content-wrap` is the collapsible panel:
 
 ```json
 { "data-accordion": "content-wrap" }
@@ -121,13 +121,13 @@ Options sit on the `data-accordion="wrapper"` element.
 
 ## Notes & gotchas
 
-- The `data-accordion` attributes are required — classes alone do nothing.
+- The `data-accordion` attributes are required; classes alone do nothing.
 - The script assumes a global `gsap`; there is no guard, so without GSAP it throws.
 - `data-open-on-hover` binds `mouseenter` unconditionally; on touch devices this fires on tap.
   Prefer leaving it off unless the accordion is desktop-only.
-- No `prefers-reduced-motion` handling — the 0.3s height tween always runs.
+- There is no `prefers-reduced-motion` handling; the 0.3s height tween always runs.
 - Keyboard works out of the box when the toggle is a real `button` element (click = Enter/Space).
 - One-open-at-a-time (`data-close-previous`) tracks the previous index per wrapper, so multiple
   accordions on a page are independent.
-- CMS unwrapping keeps only the first visible child of each collection item — wrap the whole card
+- CMS unwrapping keeps only the first visible child of each collection item, so wrap the whole card
   in a single element inside the Collection Item.

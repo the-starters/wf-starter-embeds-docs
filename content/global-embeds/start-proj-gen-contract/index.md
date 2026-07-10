@@ -1,21 +1,21 @@
 ---
-title: "Start Project — Generate Contract"
+title: "Start Project: Generate Contract"
 ---
 
-Source: Webflow — `Global Embeds / Start Project / Gen Contract`
+Source: Webflow, `Global Embeds / Start Project / Gen Contract`
 
 ## What it is
 
 Contract **preview renderer** for the "Start a project / generate contract" modal. Step 1 of the
 flow collects form fields; when step 2 (or the success block) becomes visible, this script copies
-every filled, visible, enabled field from the step-1 sections into matching preview sections —
+every filled, visible, enabled field from the step-1 sections into matching preview sections:
 label + value rows, single value slots, formatted field groups, and conditional show/hide toggles.
 It is display-only: nothing is submitted or sent anywhere by this script (the form's own
 submission/webhook is configured separately in Webflow and is not documented here).
 
 Scoping is per form instance: each `form[data-form-flow="generate-contract"]` resolves a scope
 (its `.w-form` wrapper, else the enclosing `[data-modal-target]`, else the form's parent), and all
-source/destination lookups happen inside that scope — multiple modals on a page stay independent.
+source/destination lookups happen inside that scope, so multiple modals on a page stay independent.
 
 ## File structure
 
@@ -25,8 +25,8 @@ Start Project / Gen Contract
 └── Contract Preview - JS
 ```
 
-The CSS is one rule (hides the even-row pad items on mobile). The JS has no dependencies —
-no GSAP, no jQuery — and is init-guarded via a window flag, so double-inclusion is safe.
+The CSS is one rule (hides the even-row pad items on mobile). The JS has no dependencies
+(no GSAP, no jQuery) and is init-guarded via a window flag, so double-inclusion is safe.
 
 ## Markup contract
 
@@ -102,7 +102,7 @@ written into the lone `value` slot).
 
 | Attribute | On | Purpose |
 | --- | --- | --- |
-| `data-preview-contract-field-slot` | text element | `value` or `title` — filled with that part of one step-1 field. Cleared when unresolved. |
+| `data-preview-contract-field-slot` | text element | `value` or `title`; filled with that part of one step-1 field. Cleared when unresolved. |
 | `data-preview-contract-field="key"` | slot or ancestor | Which source section to look in. |
 | `data-preview-contract-field-name="Label"` | slot or ancestor | Which field, matched by its label text (case-insensitive). |
 
@@ -124,19 +124,19 @@ option's text.
 - **Render triggers:** the preview repaints when `[data-form-flow-element="step-2"]` or
   `.generate-contract_success` flips from `display: none` to visible (a MutationObserver watches
   `style`, `class`, and `aria-hidden`), plus one initial paint at load. Editing a step-1 field
-  while step 2 is already open does **not** live-update — the user must leave and re-enter the
+  while step 2 is already open does **not** live-update; the user must leave and re-enter the
   step.
-- Fields inside a `[hidden]` ancestor are treated as inactive — this is how form-filter variant
+- Fields inside a `[hidden]` ancestor are treated as inactive. This is how form-filter variant
   sections are excluded, so keep unused variants marked with the `hidden` attribute, not just
   CSS classes.
-- Group format tokens match on the field's **label text** — renaming a label in Webflow silently
+- Group format tokens match on the field's **label text**, so renaming a label in Webflow silently
   breaks the token (it renders blank). Same for `data-preview-contract-field-name` and
   `data-preview-contract-reference-field`.
-- In LIST mode the row template is cached on first render, then removed from the DOM — leave
+- In LIST mode the row template is cached on first render, then removed from the DOM; leave
   exactly one `item` element in the destination as the template.
 - The even-row padding only applies to destinations with the `table-stats_component` class, and
   the pad is invisible under 768px thanks to the companion CSS.
-- Toggle comparisons are string-equality after whitespace-collapse and lowercasing — `1,000` and
+- Toggle comparisons are string-equality after whitespace-collapse and lowercasing: `1,000` and
   `1000` do not match.
 - Do not put full secret values in this markup: everything the script renders is plain visible
   text on the published page.

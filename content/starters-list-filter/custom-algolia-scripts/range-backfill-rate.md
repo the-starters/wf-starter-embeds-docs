@@ -10,8 +10,8 @@ A guard for range filters (built for the rate slider): if the user clears one of
 range inputs, or leaves it non-numeric, the script restores it to its authored bound so
 WF-Algolia always reads two valid numbers instead of a `NaN`.
 
-It listens for `input` and `change` in the capture phase — so the backfill happens **before**
-WF-Algolia's own handler sees the value — on any `wf-algolia-element="range-min"` /
+It listens for `input` and `change` in the capture phase (so the backfill happens **before**
+WF-Algolia's own handler sees the value) on any `wf-algolia-element="range-min"` /
 `"range-max"` input inside a `wf-algolia-element="filter-group"` with
 `wf-algolia-type="range"`. Authored bounds are read from the Finsweet wrapper attributes
 `fs-rangeslider-min` / `fs-rangeslider-max` on the group first, falling back to the inputs'
@@ -42,7 +42,7 @@ Both inputs must exist inside the group; if either is missing the group is skipp
 
 ## API
 
-No options — behavior is driven entirely by the standard attributes:
+No options; behavior is driven entirely by the standard attributes:
 
 | Hook | On | Purpose |
 | --- | --- | --- |
@@ -53,7 +53,7 @@ No options — behavior is driven entirely by the standard attributes:
 
 ## Notes & gotchas
 
-- If no bound can be found on either the group or the input, that side is left empty — set
+- If no bound can be found on either the group or the input, that side is left empty; set
   `fs-rangeslider-min`/`-max` (or input `min`/`max`) or the guard cannot help.
 - Because it runs in capture on the same event, the user never sees an empty field submitted:
   the value is rewritten in place before the bundle reads it.
