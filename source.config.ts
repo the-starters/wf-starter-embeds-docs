@@ -16,6 +16,8 @@ export const docs = defineDocs({
       'starters-list-filter/**/*.md',
       'swiper-scroll/**/*.md',
       'utils/**/*.md',
+      'page-scripts/**/*.md',
+      'archives/**/*.md',
     ],
     schema: pageSchema,
     postprocess: {
@@ -31,6 +33,8 @@ export const docs = defineDocs({
       'starters-list-filter/**/meta.json',
       'swiper-scroll/**/meta.json',
       'utils/**/meta.json',
+      'page-scripts/**/meta.json',
+      'archives/**/meta.json',
     ],
     schema: metaSchema,
   },

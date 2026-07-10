@@ -72,6 +72,10 @@ The remaining main groups cover scripts that live outside `embed-wrapper`:
   custom Algolia scripts.
 - **[Utils](utils/index.md)** — repo-hosted utility scripts loaded via jsDelivr (declarative form
   validation, the env-switch script loader, the PostHog identity/track helpers).
+- **[Page Scripts](page-scripts/index.md)** — whole-page controllers from the repo root
+  (Opportunities 3.0 core + create, Quiz Results).
+- **[Archives](archives/index.md)** — inventories of the v2 page footers and the Slater.app
+  mirrors: version-controlled in the repo, but not part of the 3.0 embeds.
 
 More groups will be added as the Webflow site grows — see
 **[Documenting your own embed](adding-a-page.md)** for how to add your own page.
