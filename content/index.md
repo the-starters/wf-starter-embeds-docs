@@ -70,6 +70,8 @@ The remaining main groups cover scripts that live outside `embed-wrapper`:
   pre-fill helpers).
 - **[Starters List Filter](starters-list-filter/index.md)** — the starters list filter UI and its
   custom Algolia scripts.
+- **[Utils](utils/index.md)** — repo-hosted utility scripts loaded via jsDelivr (declarative form
+  validation, the env-switch script loader, the PostHog identity/track helpers).
 
 More groups will be added as the Webflow site grows — see
 **[Documenting your own embed](adding-a-page.md)** for how to add your own page.

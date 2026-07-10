@@ -15,6 +15,7 @@ export const docs = defineDocs({
       'global-embeds/**/*.{md,mdx}',
       'starters-list-filter/**/*.md',
       'swiper-scroll/**/*.md',
+      'utils/**/*.md',
     ],
     schema: pageSchema,
     postprocess: {
@@ -29,6 +30,7 @@ export const docs = defineDocs({
       'global-embeds/**/meta.json',
       'starters-list-filter/**/meta.json',
       'swiper-scroll/**/meta.json',
+      'utils/**/meta.json',
     ],
     schema: metaSchema,
   },
