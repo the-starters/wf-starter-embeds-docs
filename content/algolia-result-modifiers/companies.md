@@ -41,7 +41,7 @@ Load after the Algolia integration script, on pages that render Algolia expert c
 
 ## API
 
-No options — the field name is hard-coded to `also-worked-with`.
+No options; the field name is hard-coded to `also-worked-with`.
 
 | Hook | On | Purpose |
 | --- | --- | --- |
@@ -60,4 +60,4 @@ No options — the field name is hard-coded to `also-worked-with`.
 - Hyphens are always converted to spaces, so a company name that legitimately contains a hyphen
   will be rewritten (e.g. "Coca-Cola" becomes "Coca Cola").
 - Commas are the item separator; a company name containing a comma will be split into two items.
-- Only text is changed — no elements are added or removed (contrast with the Roles modifier).
+- Only text is changed; no elements are added or removed (contrast with the Roles modifier).

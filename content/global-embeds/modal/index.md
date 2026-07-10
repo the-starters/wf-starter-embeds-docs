@@ -2,7 +2,7 @@
 title: "Modal"
 ---
 
-Source: Webflow — `Global Embeds / Modal`
+Source: Webflow, `Global Embeds / Modal`
 
 ## What it is
 
@@ -28,7 +28,7 @@ Modal
 └── Modal - JS
 ```
 
-GSAP is optional — load it first if you want animations; without it modals still open and
+GSAP is optional. Load it first if you want animations; without it modals still open and
 close, just instantly.
 
 ## Markup contract
@@ -91,9 +91,9 @@ only) `modal_slot`, scoped to that modal.
   otherwise `overflow: hidden` is toggled on `body`.
 - Focus is saved on open and restored to the previously focused element on close.
 - Trigger clicks are handled by a document-level listener per modal, so triggers added to the DOM
-  later still work — but modals added later need `window.lumos.modal.init()`.
+  later still work, but modals added later need `window.lumos.modal.init()`.
 - Every anchor with `href="#id"` matching a modal id becomes a trigger and its default jump is
   prevented; avoid reusing modal ids as ordinary section anchors.
 - The Designer-only CSS shows a `.modal_dialog` when it has no component instance child or when it
-  carries `data-preview="True"`, and hides it when `data-preview="False"` — a Designer preview
+  carries `data-preview="True"`, and hides it when `data-preview="False"`: a Designer preview
   toggle, with no effect on the published site.

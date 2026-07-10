@@ -24,13 +24,13 @@ content/
 │       └── panel-nav-flow.md    ← companion script page
 ```
 
-- **Embed with one walkthrough** — create `<component>/index.md` (or a single `<name>.md` file).
-- **Embed with companion scripts** — a folder with `index.md` (the main walkthrough), one `.md`
+- **Embed with one walkthrough.** Create `<component>/index.md` (or a single `<name>.md` file).
+- **Embed with companion scripts.** A folder with `index.md` (the main walkthrough), one `.md`
   per extra script, and a `meta.json` listing them.
 
 ## Add your page in 4 steps
 
-1. **Create the file** under the right group folder. Frontmatter needs at least a title — use the
+1. **Create the file** under the right group folder. Frontmatter needs at least a title; use the
    embed's name as it appears in Webflow:
 
    ```md
@@ -39,14 +39,14 @@ content/
    ---
    ```
 
-2. **Register it in the sidebar** — add the file/folder name to the `pages` array of the parent
+2. **Register it in the sidebar.** Add the file/folder name to the `pages` array of the parent
    folder's `meta.json`. The array order is the sidebar order; keep it matching the Webflow
    Navigator.
 
 3. **Write the page following the standard shape** (template below) so every component page scans
    the same way.
 
-4. **Push to `main`** — Vercel redeploys the docs site automatically; your page is live in about
+4. **Push to `main`.** Vercel redeploys the docs site automatically; your page is live in about
    a minute.
 
 ## Page template
@@ -102,11 +102,11 @@ Note any dependencies here (GSAP, jQuery, WF-Algolia, load order).
 
 Conventions to keep:
 
-- **`Source:` line** — the embed's path in the Webflow **Navigator**
+- **`Source:` line.** The embed's path in the Webflow **Navigator**
   (e.g. `Global Embeds / Form Embeds / Checkbox Toggle`). Use a GitHub repo path only when the
   script is actually loaded through a jsDelivr CDN URL.
-- **File names** — as they appear in Webflow: `My Component - CSS`, `My Component - JS`.
-- **`xAttribute JSON` section** — one fenced ` ```json ` block per element that takes attributes
+- **File names.** As they appear in Webflow: `My Component - CSS`, `My Component - JS`.
+- **`xAttribute JSON` section.** One fenced ` ```json ` block per element that takes attributes
   (keys and values as strings), so hooks can be pasted straight into the xAttribute Webflow app
   instead of typed one by one. See the [Accordions page](global-embeds/accordions) for the shape.
 

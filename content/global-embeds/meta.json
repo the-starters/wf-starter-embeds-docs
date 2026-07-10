@@ -15,6 +15,9 @@
     "accordions",
     "step-flow",
     "tabs",
-    "start-proj-gen-contract"
+    "start-proj-gen-contract",
+    "loader",
+    "text-methods",
+    "style-embeds"
   ]
 }

@@ -6,24 +6,24 @@ description: "Reference docs for the custom code powering The Starters Webflow s
 Reference documentation for the custom code powering [the-starters-3-0.webflow.io](https://the-starters-3-0.webflow.io).
 
 These docs describe the JavaScript and CSS embeds that live in **The Starters** Webflow site. The
-source of truth is one of two places — **mostly the Webflow embeds themselves**:
+source of truth is one of two places, **mostly the Webflow embeds themselves**:
 
-- **Webflow embeds** (most scripts) — the code lives directly inside the site's embed components in
+- **Webflow embeds** (most scripts): the code lives directly inside the site's embed components in
   the Webflow Designer. The `Source:` line at the top of each page is the embed's path in the
   Webflow **Navigator**, e.g. `Global Embeds / Form Embeds / Checkbox Toggle`.
-- **GitHub** — only when a script is loaded through a **jsDelivr CDN URL**. Those scripts live in
+- **GitHub**: only when a script is loaded through a **jsDelivr CDN URL**. Those scripts live in
   the [the-starters/starters-webflow](https://github.com/the-starters/starters-webflow) repo and
   load with `defer`, so tagged releases go live **without editing any Webflow embed URLs**.
 
 The docs site itself is deployed on **Vercel** under a temporary domain (no custom domain yet).
 Site code and content live together in the
 [the-starters/wf-starter-embeds-docs](https://github.com/the-starters/wf-starter-embeds-docs)
-repo (content under `content/`) — pushes to `main` redeploy automatically.
+repo (content under `content/`); pushes to `main` redeploy automatically.
 
 ## How these docs are organised
 
-The docs mirror the **Webflow Navigator**, not a repo folder tree. The main folder —
-**[Global Embeds](global-embeds/index.md)** — is the `embed-wrapper` component in Webflow. Inside it
+The docs mirror the **Webflow Navigator**, not a repo folder tree. The main folder,
+**[Global Embeds](global-embeds/index.md)**, is the `embed-wrapper` component in Webflow. Inside it
 are mostly **groups**, and each group holds the script(s) that get a walkthrough here. Single
 embeds without extra scripts are single doc pages; groups with companion scripts become doc groups
 with a page per script.
@@ -54,36 +54,46 @@ embed-wrapper (Webflow component)          →  Global Embeds
 ├── Step Flow                              →  Step Flow
 │   └── Panel Nav Flow                     →  Panel Nav Flow
 ├── Tabs                                   →  Tabs
-└── Start Project / Gen Contract           →  Start Project — Generate Contract
+├── Start Project / Gen Contract           →  Start Project — Generate Contract
+├── Loader                                 →  Loader
+├── Text Methods                           →  Text Methods
+└── (style-only CSS embeds)                →  Style Embeds
 ```
 
-Style-only embeds in `embed-wrapper` (Global Styles, the card CSS embeds, Loader, Text Methods,
-Extra Embeds) have no behaviour to walk through and aren't documented yet.
+Style-only embeds in `embed-wrapper` (Global Styles, the card CSS embeds, Extra Embeds) are
+documented per file under **[Style Embeds](global-embeds/style-embeds/index.md)**; their CSS
+mirrors live under `global-embeds/*.css` in the repo.
 
 The remaining main groups cover scripts that live outside `embed-wrapper`:
 
-- **[Swiper Scroll](swiper-scroll/index.md)** — attribute-driven horizontal scroll / carousel
+- **[Swiper Scroll](swiper-scroll/index.md)**: attribute-driven horizontal scroll / carousel
   regions built on Swiper 11.
-- **[Algolia Result Modifiers](algolia-result-modifiers/index.md)** — post-render tweaks to Algolia
+- **[Algolia Result Modifiers](algolia-result-modifiers/index.md)**: post-render tweaks to Algolia
   result cards (companies, price label, roles).
-- **[Freelancer CMS](freelancer-cms/index.md)** — freelancer CMS page scripts (datepicker,
+- **[Freelancer CMS](freelancer-cms/index.md)**: freelancer CMS page scripts (datepicker,
   pre-fill helpers).
-- **[Starters List Filter](starters-list-filter/index.md)** — the starters list filter UI and its
+- **[Starters List Filter](starters-list-filter/index.md)**: the starters list filter UI and its
   custom Algolia scripts.
+- **[Utils](utils/index.md)**: repo-hosted utility scripts loaded via jsDelivr (declarative form
+  validation, the env-switch script loader, the PostHog identity/track helpers).
+- **[Page Scripts](page-scripts/index.md)**: whole-page controllers from the repo root
+  (Opportunities 3.0 core + create, Quiz Results).
+- **[Archives](archives/index.md)**: inventories of the v2 page footers and the Slater.app
+  mirrors: version-controlled in the repo, but not part of the 3.0 embeds.
 
-More groups will be added as the Webflow site grows — see
+More groups will be added as the Webflow site grows; see
 **[Documenting your own embed](adding-a-page.md)** for how to add your own page.
 
 ## How to read a component page
 
 Every component page follows the same shape, so you can scan for what you need:
 
-1. **What it is** — a one-paragraph summary of the behaviour.
-2. **File structure** — the embed files in Webflow, named as they appear in the Navigator
+1. **What it is.** A one-paragraph summary of the behaviour.
+2. **File structure.** The embed files in Webflow, named as they appear in the Navigator
    (e.g. `Modal - CSS`, `Modal - JS`), plus any dependencies.
-3. **Markup contract** — the HTML structure / `data-*` attributes the script expects.
-4. **API** — the `data-*` options and classes, as a table.
-5. **Notes & gotchas** — accessibility, idempotency, mobile/touch behaviour, integration caveats.
+3. **Markup contract.** The HTML structure / `data-*` attributes the script expects.
+4. **API.** The `data-*` options and classes, as a table.
+5. **Notes & gotchas.** Accessibility, idempotency, mobile/touch behaviour, integration caveats.
 
 ## The contract
 

@@ -21,7 +21,7 @@ built-in fallback handles the `mm`/`dd`/`yy` tokens (`mm` = 2-digit month, `dd` 
 Each filled element is marked with `data-set-current-date-inited="true"`, so re-runs (modal
 reopen, script pasted twice) never clobber a date the user has since edited. The script also
 listens for a `modal-open` custom event on `window` and re-fills any tagged elements inside
-`event.detail.modal` — for modal content that renders or enables late.
+`event.detail.modal`, for modal content that renders or enables late.
 
 ## File structure
 
@@ -29,7 +29,7 @@ listens for a `modal-open` custom event on `window` and re-fills any tagged elem
 Datepicker Current - JS
 ```
 
-jQuery / jQuery UI datepicker are optional — with them you get the full jQuery UI
+jQuery / jQuery UI datepicker are optional. With them you get the full jQuery UI
 format-token set; without them only `mm`, `dd`, and `yy` are understood.
 
 ## Markup contract

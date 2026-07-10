@@ -6,6 +6,9 @@
     "swiper-scroll",
     "algolia-result-modifiers",
     "freelancer-cms",
-    "starters-list-filter"
+    "starters-list-filter",
+    "utils",
+    "page-scripts",
+    "archives"
   ]
 }

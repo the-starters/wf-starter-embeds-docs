@@ -2,7 +2,7 @@
 title: "Form Input Filter"
 ---
 
-Source: Webflow — `Global Embeds / Form Embeds / Form Input Filter`
+Source: Webflow, `Global Embeds / Form Embeds / Form Input Filter`
 
 ## What it is
 
@@ -11,7 +11,7 @@ rest. Each `data-input-filter="wrapper"` scopes one control + one list of swappa
 page can hold many independent groups. Hidden blocks get the `hidden` attribute, their fields are
 **disabled** (so duplicate field names don't submit twice), and any `required` /
 `aria-required="true"` is stripped so Webflow's native validation can't block submit on invisible
-fields — all of it restored when the block is shown again. Runs on `DOMContentLoaded` (or
+fields; all of it is restored when the block is shown again. Runs on `DOMContentLoaded` (or
 immediately if the DOM is ready) and re-applies on every `change` of the control. Idempotent via
 `data-input-filter-inited` on the list.
 
@@ -60,26 +60,26 @@ items stay hidden.
 
 | Attribute | On | Purpose |
 | --- | --- | --- |
-| `data-input-filter="wrapper"` | group wrapper | Scopes one control + list pair. If absent, the script walks up from the list and uses the first control it finds — the wrapper is the reliable way. |
+| `data-input-filter="wrapper"` | group wrapper | Scopes one control + list pair. If absent, the script walks up from the list and uses the first control it finds; the wrapper is the reliable way. |
 | `data-input-filter="select"` | the select element | The driving control (read via its `value`). |
 | `data-input-filter="radio-group"` | wrapper around the radios | Alternative driving control (read via the checked radio's `value`). |
 | `data-input-filter="list"` | list wrapper | Holds the swappable blocks; init and options live here. |
 | `data-input-filter-item="<value>"` | each block | Shown when the control's value matches, hidden otherwise. |
 | `data-input-filter-disable="off"` | list wrapper (optional) | Keeps fields in hidden blocks **enabled**. Default: hidden fields are disabled. |
-| `data-input-filter-inited` | list (set by script) | Init guard — do not add manually. |
+| `data-input-filter-inited` | list (set by script) | Init guard; do not add manually. |
 | `data-input-filter-required-removed` / `data-input-filter-aria-required-removed` | fields (set by script) | Bookkeeping so `required` / `aria-required` are restored when the block is shown again. |
 
 The companion CSS is one rule:
 
 | Rule | Purpose |
 | --- | --- |
-| `[data-input-filter-item][hidden]` forced to `display: none !important` | Items often use `display: contents`, which would beat the `hidden` attribute's UA style — this makes `hidden` win. |
+| `[data-input-filter-item][hidden]` forced to `display: none !important` | Items often use `display: contents`, which would beat the `hidden` attribute's UA style; this makes `hidden` win. |
 
 ## Notes & gotchas
 
 - **Values must match exactly** (after trimming): the option/radio `value`, not its visible label,
   is compared against `data-input-filter-item`.
-- Disabling hidden fields is the default on purpose — blocks that repeat the same field names
+- Disabling hidden fields is the default on purpose: blocks that repeat the same field names
   would otherwise all submit. Only set `data-input-filter-disable="off"` if you rely on hidden
   values reaching the server, and be aware fields you disabled yourself will then be toggled by
   the script too.
@@ -87,6 +87,6 @@ The companion CSS is one rule:
   `-removed` marker attributes); it won't invent `required` on fields that never had it.
 - There is no pre-init CSS hide: all items are visible until the JS runs and applies the first
   filter. With an empty initial control value, everything then hides.
-- Blocks and controls added to the DOM after init are not picked up — no MutationObserver.
+- Blocks and controls added to the DOM after init are not picked up; there is no MutationObserver.
 - Prefer the explicit `data-input-filter="wrapper"`: the ancestor-walk fallback grabs the first
   control it finds and can pair the wrong control with a list when groups are nested.

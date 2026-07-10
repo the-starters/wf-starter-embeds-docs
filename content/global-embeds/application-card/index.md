@@ -2,7 +2,7 @@
 title: "Application Card"
 ---
 
-Source: Webflow — `Global Embeds / Application Card`
+Source: Webflow, `Global Embeds / Application Card`
 
 ## What it is
 
@@ -11,8 +11,8 @@ collapsed message to 4 lines (`-webkit-line-clamp`); the JS measures the collaps
 heights of each `.application-card_message-wrapper` on `DOMContentLoaded` and animates `max-height`
 between them with GSAP (0.32s, `power2.out`). If the message already fits in 4 lines, the wrapper
 gets `is-collapsed-only` and the toggle row is hidden entirely. Expanded content is capped at
-`min(20rem, 50vh)` and scrolls inside the wrapper. Without GSAP — or when the visitor prefers
-reduced motion — the toggle still works, just instantly (a `console.warn` notes the missing GSAP).
+`min(20rem, 50vh)` and scrolls inside the wrapper. Without GSAP, or when the visitor prefers
+reduced motion, the toggle still works, just instantly (a `console.warn` notes the missing GSAP).
 
 ## File structure
 
@@ -47,7 +47,7 @@ rotation is pure CSS off the `is-expanded` class.
 
 ## API
 
-No configuration attributes — everything is class-driven.
+There are no configuration attributes; everything is class-driven.
 
 | Class | On | Purpose |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ No configuration attributes — everything is class-driven.
 | State class | Set by | Meaning |
 | --- | --- | --- |
 | `is-expanded` | JS | Message is open; clamp removed, scrollable up to the height cap. |
-| `is-collapsed-only` | JS | Content fits in 4 lines — toggle disabled and hidden. |
+| `is-collapsed-only` | JS | Content fits in 4 lines; toggle disabled and hidden. |
 
 | CSS variable | Default | Purpose |
 | --- | --- | --- |
@@ -70,14 +70,14 @@ No configuration attributes — everything is class-driven.
 
 ## Notes & gotchas
 
-- Layout re-runs on window resize (debounced 100ms), re-deciding `is-collapsed-only` per card —
+- Layout re-runs on window resize (debounced 100ms), re-deciding `is-collapsed-only` per card,
   so a message can gain or lose its toggle as the viewport changes.
 - Cards that start as `is-collapsed-only` never get a click listener, and their toggle state is
-  not re-bound if a later resize makes them clamp again — the relayout keeps classes and ARIA
+  not re-bound if a later resize makes them clamp again; the relayout keeps classes and ARIA
   correct, but binding happens once at boot.
 - Reduced motion is respected twice: the JS skips the tween and the CSS zeroes the icon
   transition under `prefers-reduced-motion: reduce`.
 - The measurement routine briefly toggles classes and forces reflows; it runs at boot and on
   resize only, so this is invisible in practice.
-- Content injected after load (e.g. CMS re-render) is not picked up — the script only binds
+- Content injected after load (e.g. CMS re-render) is not picked up; the script only binds
   wrappers present at `DOMContentLoaded`.

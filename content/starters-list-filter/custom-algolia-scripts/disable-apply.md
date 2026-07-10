@@ -9,7 +9,7 @@ Source: `starters-list-filter/custom-algolia-scripts/disable-apply.js`
 Disables a WF-Algolia Apply button until the filter groups it would commit actually have a
 selection. Opt in per button by adding `starters-algolia-disable-empty` next to
 `wf-algolia-button="apply"`. The script is idempotent (an init guard on the root element makes
-re-running a no-op) and never caches button references — every evaluation re-queries the DOM,
+re-running a no-op) and never caches button references: every evaluation re-queries the DOM,
 so buttons that WF-Algolia re-renders or that get moved into the mobile dialog keep working.
 
 **Which groups a button watches** mirrors the WF-Algolia scope cascade:
@@ -55,7 +55,7 @@ Disable Apply - JS
 ```
 
 For pages with a deferred-apply filter UI. Load order relative to the WF-Algolia bundle does
-not matter — the script polls for `window.WfAlgolia` and works from the DOM until it appears.
+not matter; the script polls for `window.WfAlgolia` and works from the DOM until it appears.
 
 ## Markup contract
 
@@ -98,7 +98,7 @@ State the script writes:
 
 - Disabled styling is theme-driven: nothing changes visually unless your CSS styles the
   disabled `data-button-theme` value. The click blocking works regardless.
-- The click blocker relies on `aria-disabled` — do not set that attribute on these buttons
+- The click blocker relies on `aria-disabled`, so do not set that attribute on these buttons
   yourself.
 - Range detection compares against authored bounds; if neither `fs-rangeslider-min/max` nor
   input `min`/`max` are set, a range group can never register as active (only staging will

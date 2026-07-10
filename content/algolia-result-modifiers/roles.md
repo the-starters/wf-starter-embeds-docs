@@ -10,9 +10,9 @@ Turns a comma-separated `roles` value into separate elements. On `DOMContentLoad
 element with `wf-algolia-text="roles"` inside a `.wf-algolia-injected` card, splits its text on
 commas, and cleans each role (trim, hyphens to spaces, collapse whitespace):
 
-- **One role** — the text is cleaned in place and the `wf-algolia-text` attribute is removed so
+- **One role.** The text is cleaned in place and the `wf-algolia-text` attribute is removed so
   the node is never re-processed.
-- **Multiple roles** — the original element is replaced by one shallow clone per role. Each clone
+- **Multiple roles.** The original element is replaced by one shallow clone per role. Each clone
   keeps the original's tag and classes (so styling carries over), gets one role as its text, and
   has `wf-algolia-text` removed.
 
@@ -41,7 +41,7 @@ Load after the Algolia integration script, on pages that render Algolia expert c
 
 ## API
 
-No options — the field name is hard-coded to `roles`.
+No options; the field name is hard-coded to `roles`.
 
 | Hook | On | Purpose |
 | --- | --- | --- |
@@ -56,10 +56,10 @@ No options — the field name is hard-coded to `roles`.
 ## Notes & gotchas
 
 - Clones are shallow: tag and classes are copied, but any child elements inside the original
-  element are not — keep the roles element text-only.
+  element are not; keep the roles element text-only.
 - The `wf-algolia-text` attribute is stripped from the output, so anything else that targets
   `wf-algolia-text="roles"` won't find the element after this script runs.
-- Hyphens always become spaces and commas always split — a role name containing either will be
+- Hyphens always become spaces and commas always split, so a role name containing either will be
   rewritten accordingly.
 - Style the individual role tags off the element's class (it survives the cloning), and make the
   parent a flex/grid container since one element can become several siblings.

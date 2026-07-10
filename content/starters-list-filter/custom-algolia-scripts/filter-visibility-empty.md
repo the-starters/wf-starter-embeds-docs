@@ -42,10 +42,10 @@ Filter Visibility Empty - JS
 
 ## Notes & gotchas
 
-- The attribute value must be the literal string `false` — the selector matches exactly that.
+- The attribute value must be the literal string `false`; the selector matches exactly that.
 - Restoring to `''` relies on your CSS class providing the visible display value; if the
   element for some reason needs an explicit `block`/`flex`, that is a source-level constant
   (`SHOWN_DISPLAY`), not a per-element attribute.
-- Elements added to the DOM after the script initializes are not picked up — the query runs
+- Elements added to the DOM after the script initializes are not picked up; the query runs
   once (on `DOMContentLoaded`, or immediately if the DOM is already parsed).
 - Only the inline `style` hide is countered; the script does not fight class-based hiding.

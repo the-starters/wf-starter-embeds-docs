@@ -45,7 +45,7 @@ Scroll Filter - JS
 
 ## Notes & gotchas
 
-- Only native `input` elements trigger it (`change` events from checkboxes/radios) — custom
+- Only native `input` elements trigger it (`change` events from checkboxes/radios); custom
   non-input toggles will not.
 - The marked list must be the element that actually scrolls (it needs its own overflow); if
   the scrolling happens on a different ancestor, nothing visible occurs.

@@ -2,7 +2,7 @@
 title: "List Sort Dropdown"
 ---
 
-Source: Webflow — `Global Embeds / List's Sort Dropdown`
+Source: Webflow, `Global Embeds / List's Sort Dropdown`
 
 ## What it is
 
@@ -56,6 +56,6 @@ embed actually touches.
 
 - The 1-second delay is a fixed `setTimeout` to give Finsweet Attributes time to initialize; on
   very slow loads the clear click could still fire before Finsweet is ready.
-- The auto-click briefly changes the dropdown state on load — expected, it just selects the
+- The auto-click briefly changes the dropdown state on load. This is expected; it just selects the
   default option.
 - Selected-state styling relies on Finsweet setting `aria-selected="true"` on the active option.

@@ -2,13 +2,13 @@
 title: "Swiper Scroll"
 ---
 
-Source: Webflow — `Swiper Scroll`
+Source: Webflow (`Swiper Scroll`)
 
 ## What it is
 
 Attribute-driven horizontal scroll / carousel regions for Webflow, built on
-[Swiper 11](https://swiperjs.com/) with a custom draggable scrollbar thumb. No classes to wire up —
-everything is controlled by `data-*` attributes. The script auto-inits every
+[Swiper 11](https://swiperjs.com/) with a custom draggable scrollbar thumb. There are no classes
+to wire up; everything is controlled by `data-*` attributes. The script auto-inits every
 `[data-swiper-scroll="swiper"]` on the page, scopes each scrollbar to its own swiper, and is safe on
 pages with no matching blocks. An optional Algolia bridge re-measures after WF-Algolia renders hits.
 
@@ -55,7 +55,7 @@ script pairs by order; to be explicit, give a swiper and its scrollbar a matchin
 
 ### CMS slides (Collection List inside the wrapper)
 
-Instead of static slides, the wrapper may hold a Webflow **Collection List** — optionally inside
+Instead of static slides, the wrapper may hold a Webflow **Collection List**, optionally inside
 `.u-display-contents` helper divs. On init the script strips the extra Webflow wrappers so each
 item's content becomes a real slide:
 
@@ -75,15 +75,15 @@ item's content becomes a real slide:
 
 Each collection item's first **visible** child is promoted (children with `w-condition-invisible`
 from conditional visibility are skipped), old wrappers and static placeholders are removed, and the
-promoted elements are tagged `data-swiper-scroll="swiper-slide"` automatically — no attribute needed
-on the items themselves. Static markup is untouched: nothing runs unless a `.u-display-contents` or
+promoted elements are tagged `data-swiper-scroll="swiper-slide"` automatically, so no attribute is
+needed on the items themselves. Static markup is untouched: nothing runs unless a `.u-display-contents` or
 `.w-dyn-list` wrapper actually exists, and an empty Collection List is left alone so Webflow's empty
 state stays visible.
 
 #### Opting out: `data-swiper-scroll-cms="true"`
 
 Set `data-swiper-scroll-cms="true"` on the swiper root (default `false`) to keep the Collection List
-markup exactly as Webflow renders it — no unwrapping. Two things change in this mode:
+markup exactly as Webflow renders it, with no unwrapping. Two things change in this mode:
 
 - **You own the slide contract**: each slide element needs `data-swiper-scroll="swiper-slide"`
   itself, and slides must still end up as direct children of the wrapper as far as layout is
@@ -161,11 +161,11 @@ Re-measures on WfAlgolia `ready` / `response`. Public API: `window.SwiperScrollA
 
 ## Notes & gotchas
 
-- The scrollbar must be a **direct child** of the swiper — `resolveScrollbarPair` queries
+- The scrollbar must be a **direct child** of the swiper; `resolveScrollbarPair` queries
   `:scope > swiper-scrollbar` only. Exception: with `data-swiper-scroll-cms="true"` it must instead
   be a direct child of the swiper's **parent** (a sibling of the swiper).
 - CMS unwrapping happens **once, before Swiper init** (guarded by `data-swiper-scroll-inited`). If
-  the list is re-rendered later (e.g. by Algolia), use the Algolia bridge — the unwrap does not
+  the list is re-rendered later (e.g. by Algolia), use the Algolia bridge; the unwrap does not
   re-run on DOM mutations.
 - Each collection item should have **one** content element; only the first visible child is
   promoted, anything after it inside the item is dropped with the wrappers.

@@ -2,16 +2,16 @@
 title: "Tabs"
 ---
 
-Source: Webflow — `Global Embeds / Tabs`
+Source: Webflow, `Global Embeds / Tabs`
 
 ## What it is
 
-Attribute-driven tabs for Webflow — panels, tab links, optional prev/next controls, autoplay,
+Attribute-driven tabs for Webflow: panels, tab links, optional prev/next controls, autoplay,
 and per-step form validation for multi-step forms. The script inits every
-`[data-tab-component="wrapper"]` on the page on `DOMContentLoaded` (idempotent — a wrapper is
+`[data-tab-component="wrapper"]` on the page on `DOMContentLoaded` (idempotent: a wrapper is
 tagged `data-tab-component-inited` and skipped on re-run), wires full ARIA tabs semantics
 (`tablist` / `tab` / `tabpanel`, `aria-selected`, `aria-controls`, roving tabindex, arrow-key
-navigation), and switches panels with a GSAP fade — or a horizontal slide — when GSAP is on the
+navigation), and switches panels with a GSAP fade (or a horizontal slide) when GSAP is on the
 page, falling back to instant show/hide when it is not.
 
 Both slots are CMS-aware: `.u-display-contents` / `.display-contents` helpers are flattened and a
@@ -27,7 +27,7 @@ Tabs
 └── Tabs - JS
 ```
 
-The CSS is what prevents the flash of all panels before the JS runs. GSAP is optional — load
+The CSS is what prevents the flash of all panels before the JS runs. GSAP is optional. Load
 it before the JS for the fade/slide transitions or autoplay; without it panels switch
 instantly. ScrollTrigger, if present, is refreshed after each transition.
 
@@ -64,7 +64,7 @@ instantly. ScrollTrigger, if present, is refreshed after each transition.
 Requirements and behavior of the slots:
 
 - `button-list` and `panel-list` are both required, and each needs at least one child after CMS
-  unwrapping — otherwise the wrapper is skipped with a `console.warn`. A button/panel count
+  unwrapping; otherwise the wrapper is skipped with a `console.warn`. A button/panel count
   mismatch also warns (but the component still inits).
 - Buttons and panels are matched **by index** among direct children. A child carrying
   `data-tab-component-skip="True"` is excluded from indexing (use for decorative slot items).
@@ -72,15 +72,15 @@ Requirements and behavior of the slots:
   display-contents helpers). On init each collection item's first visible child (skipping
   `w-condition-invisible`) is promoted into the slot and the Webflow wrappers are removed.
 - Prev/next controls are **wrappers** (`data-tab="previous"` / `data-tab="prev"` /
-  `data-tab="next"`) containing a real `button` — the Webflow button component shape. With
+  `data-tab="next"`) containing a real `button` (the Webflow button component shape). With
   `data-tab-nav="panel"` the script looks for a `data-tab-component="nav"` inside each panel, or
   falls back to prev/next wrappers placed directly in the panel.
 - The active state is `data-tab-active="true"` plus the `is-active` class on both the button and
-  the panel — style off either.
+  the panel; style off either.
 
 ## API
 
-Options — all sit on the `[data-tab-component="wrapper"]` element. Boolean attributes are
+Options all sit on the `[data-tab-component="wrapper"]` element. Boolean attributes are
 Webflow-style: the value `True` (any casing) turns them on.
 
 | Attribute | Values | Default | Description |
@@ -115,7 +115,7 @@ State the script writes (style off these; do not set them yourself):
 | `data-tab-active` + `is-active` | button and panel | `true` on the active pair. |
 | `data-button-theme="disabled"` + `data-tab-nav-disabled="true"` | prev/next wrapper | Control is disabled; the original theme is stashed and restored on re-enable (fallback theme `black`). The inner button also gets `disabled` and `aria-disabled`. |
 | `data-tab-link-disabled="true"` | tab button | Locked link (`data-tab-lock-links`); CSS sets `pointer-events: none`. |
-| `data-tab-field-invalid="true"` | input | Failed validation — appears after the field was touched (input/change/blur) or when a disabled Next is clicked. Hook your error styling to it. |
+| `data-tab-field-invalid="true"` | input | Failed validation; appears after the field was touched (input/change/blur) or when a disabled Next is clicked. Hook your error styling to it. |
 | `--progress` | wrapper | Autoplay cycle progress, 0 to 1. |
 
 Deep linking: visiting the page with `?tab-id=<component-id>-<item-id>` activates that tab
@@ -136,18 +136,18 @@ For custom code, each initialized wrapper exposes a controller at `wrapper._tabC
   of the viewport (IntersectionObserver), while focus is inside the wrapper, on hover (only with
   `data-pause-on-hover`), and via the toggle button. Manually switching tabs while autoplay runs
   restarts the cycle. The panel fade/slide itself, however, always runs regardless of reduced
-  motion — only autoplay is gated.
+  motion; only autoplay is gated.
 - **Validation scope** (`data-validate-tabs`): fields count as required via native `required` or
   `aria-required="true"`. Hidden fields (`display:none`, `visibility:hidden`, `[hidden]`, Webflow
-  conditional visibility — checked up to the panel root) and disabled fields are skipped. Radio
+  conditional visibility, checked up to the panel root) and disabled fields are skipped. Radio
   groups pass when any radio in the group is checked; checkboxes and radios also honor Webflow's
   visual `w--redirected-checked` state, watched via a MutationObserver. Optional inputs the user
   has started filling must also pass native format rules (`type`, `pattern`, `min`/`max`, etc. via
   `checkValidity`). Invalid styling (`data-tab-field-invalid`) currently applies to `input`
-  elements only — selects and textareas gate the Next button but never get the attribute.
+  elements only; selects and textareas gate the Next button but never get the attribute.
 - **Error UI is polite**: invalid styling only appears after a field has been interacted with, or
   for the whole panel at once when the user clicks a Next that is disabled by validation.
-- **First tab is always the starting point** — there is no "default tab" option; use the
+- **First tab is always the starting point.** There is no "default tab" option; use the
   `?tab-id=` deep link to land on another tab.
 - **Pre-init flash**: put `data-preview="False"` on the `panel-list` so the CSS shows only the
   first panel before the JS runs (and hides the rest). Without the CSS in the head you may see all

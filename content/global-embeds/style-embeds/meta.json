@@ -1,0 +1,17 @@
+{
+  "title": "Style Embeds",
+  "pages": [
+    "index",
+    "global",
+    "button",
+    "spinner",
+    "hide-scroll",
+    "content-rte",
+    "quill-editor",
+    "expertise-item",
+    "learn-card",
+    "marquee-card",
+    "featured-case-study-card",
+    "table-stats"
+  ]
+}
