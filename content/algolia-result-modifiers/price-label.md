@@ -1,5 +1,6 @@
 ---
 title: "Price Label"
+source: algolia-result-modifiers/price-label.js
 ---
 
 Source: `algolia-result-modifiers/price-label.js`

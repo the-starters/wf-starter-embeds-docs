@@ -1,5 +1,6 @@
 ---
 title: "Range Backfill Rate"
+source: starters-list-filter/custom-algolia-scripts/range-backfill-rate.js
 ---
 
 Source: `starters-list-filter/custom-algolia-scripts/range-backfill-rate.js`

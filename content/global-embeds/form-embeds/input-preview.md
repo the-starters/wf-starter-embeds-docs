@@ -1,5 +1,6 @@
 ---
 title: "Input Preview"
+source: global-embeds/form-embeds/input-preview.js
 ---
 
 Source: Webflow, `Global Embeds / Form Embeds / Input Preview - JS`

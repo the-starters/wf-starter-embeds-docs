@@ -1,6 +1,7 @@
 ---
 title: "Intro"
 description: "Site-wide Webflow embeds: interactive components, cards, and form utilities."
+source: global-embeds
 ---
 
 Source: Webflow, `embed-wrapper (component)`

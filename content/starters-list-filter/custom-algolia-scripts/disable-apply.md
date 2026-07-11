@@ -1,5 +1,6 @@
 ---
 title: "Disable Apply"
+source: starters-list-filter/custom-algolia-scripts/disable-apply.js
 ---
 
 Source: `starters-list-filter/custom-algolia-scripts/disable-apply.js`

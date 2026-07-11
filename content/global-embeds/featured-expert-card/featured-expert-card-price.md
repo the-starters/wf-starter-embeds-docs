@@ -1,5 +1,6 @@
 ---
 title: "Featured Expert Card Price"
+source: global-embeds/featured-expert-card/featured-expert-card-price.js
 ---
 
 Source: Webflow, `Global Embeds / Featured Expert Card`

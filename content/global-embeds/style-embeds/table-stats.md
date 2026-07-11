@@ -1,5 +1,6 @@
 ---
 title: "Table Stats"
+source: global-embeds/table-stats.css
 ---
 
 Source: Webflow, `Global Embeds / Table Stats` · repo mirror: `global-embeds/table-stats.css`

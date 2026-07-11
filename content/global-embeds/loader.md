@@ -1,5 +1,6 @@
 ---
 title: "Loader"
+source: global-embeds/loader/loader.js
 ---
 
 Source: Webflow, `Global Embeds / Loader` · repo mirror: `global-embeds/loader/loader.js`

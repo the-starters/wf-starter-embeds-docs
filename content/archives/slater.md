@@ -1,5 +1,6 @@
 ---
 title: "Slater Mirrors"
+source: slater
 ---
 
 Source: `slater/` (see the folder's own `README.md` for the refresh commands)

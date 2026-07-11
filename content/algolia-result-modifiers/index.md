@@ -1,5 +1,6 @@
 ---
 title: "Intro"
+source: algolia-result-modifiers
 ---
 
 Source: `algolia-result-modifiers/`

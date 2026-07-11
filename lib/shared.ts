@@ -10,3 +10,8 @@ export const gitConfig = {
   branch: 'main',
   contentDir: 'content',
 };
+
+// Source links (the `source` frontmatter field) point at the scripts repo the
+// pages document. GitHub redirects tree/ to blob/ for file paths, so one base
+// URL covers both folders and single files.
+export const sourceRepoUrl = 'https://github.com/the-starters/starters-webflow/tree/main';

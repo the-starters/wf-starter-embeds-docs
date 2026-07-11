@@ -1,5 +1,6 @@
 ---
 title: "Featured Case Study Card"
+source: global-embeds/featured-case-study-card.css
 ---
 
 Source: Webflow, `Global Embeds / Featured Case Study Card` · repo mirror: `global-embeds/featured-case-study-card.css`

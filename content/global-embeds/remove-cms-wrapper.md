@@ -1,5 +1,6 @@
 ---
 title: "Remove CMS Wrapper"
+source: global-embeds/remove-cms-wrapper.js
 ---
 
 Source: Webflow, `Global Embeds / Remove CMS Wrapper - JS`

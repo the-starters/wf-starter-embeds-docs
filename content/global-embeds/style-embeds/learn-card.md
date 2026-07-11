@@ -1,5 +1,6 @@
 ---
 title: "Learn Card"
+source: global-embeds/learn-card.css
 ---
 
 Source: Webflow, `Global Embeds / Learn Card` · repo mirror: `global-embeds/learn-card.css`

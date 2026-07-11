@@ -11,7 +11,7 @@ import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/components/mdx';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
-import { gitConfig } from '@/lib/shared';
+import { gitConfig, sourceRepoUrl } from '@/lib/shared';
 
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const params = await props.params;
@@ -31,6 +31,17 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
           markdownUrl={markdownUrl}
           githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/${gitConfig.contentDir}/${page.path}`}
         />
+        {page.data.source && (
+          <a
+            href={`${sourceRepoUrl}/${page.data.source}`}
+            target="_blank"
+            rel="noreferrer"
+            className="ms-auto text-sm text-fd-muted-foreground hover:text-fd-foreground truncate"
+            title={`View source on GitHub: ${page.data.source}`}
+          >
+            Source: <span className="font-mono">{page.data.source}</span> ↗
+          </a>
+        )}
       </div>
       <DocsBody>
         <MDX

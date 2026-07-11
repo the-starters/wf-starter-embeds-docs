@@ -1,5 +1,6 @@
 ---
 title: "Datepicker Current"
+source: freelancer-cms/datepicker-current.js
 ---
 
 Source: `freelancer-cms/datepicker-current.js`

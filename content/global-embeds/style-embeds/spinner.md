@@ -1,5 +1,6 @@
 ---
 title: "Spinner"
+source: global-embeds/spinner.css
 ---
 
 Source: Webflow, `Global Embeds / Spinner` · repo mirror: `global-embeds/spinner.css`

@@ -1,5 +1,6 @@
 ---
 title: "Quiz Results"
+source: quiz-results.js
 ---
 
 Source: `quiz-results.js` (repo root; `quiz-results.min.js` is its minified build)

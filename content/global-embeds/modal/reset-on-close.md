@@ -1,5 +1,6 @@
 ---
 title: "Reset on Close"
+source: global-embeds/modal/reset-on-close.js
 ---
 
 Source: Webflow, `Global Embeds / Modal`

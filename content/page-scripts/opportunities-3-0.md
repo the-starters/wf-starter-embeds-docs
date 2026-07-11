@@ -1,5 +1,6 @@
 ---
 title: "Opportunities 3.0: Core"
+source: opportunities-3.0.js
 ---
 
 Source: `opportunities-3.0.js` (repo root)

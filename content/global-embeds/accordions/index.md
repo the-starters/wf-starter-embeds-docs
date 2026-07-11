@@ -1,5 +1,6 @@
 ---
 title: "Accordions"
+source: global-embeds/accordions
 ---
 
 Source: Webflow, `Global Embeds / Accordions`

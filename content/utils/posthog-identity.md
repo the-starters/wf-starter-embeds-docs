@@ -1,5 +1,6 @@
 ---
 title: "PostHog Identity"
+source: utils/posthog-identity.js
 ---
 
 Source: `utils/posthog-identity.js`

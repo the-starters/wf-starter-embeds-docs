@@ -1,5 +1,6 @@
 ---
 title: "Clear Filter Visibility"
+source: starters-list-filter/custom-algolia-scripts/clear-filter-visibility
 ---
 
 Source: `starters-list-filter/custom-algolia-scripts/clear-filter-visibility/`

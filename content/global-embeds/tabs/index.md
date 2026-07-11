@@ -1,5 +1,6 @@
 ---
 title: "Tabs"
+source: global-embeds/tabs
 ---
 
 Source: Webflow, `Global Embeds / Tabs`

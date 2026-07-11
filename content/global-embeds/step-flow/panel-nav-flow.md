@@ -1,5 +1,6 @@
 ---
 title: "Panel Nav Flow"
+source: global-embeds/step-flow/panel-nav-flow.js
 ---
 
 Source: Webflow, `Global Embeds / Step Flow / Panel Nav Flow`

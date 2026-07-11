@@ -1,5 +1,6 @@
 ---
 title: "Start Project: Generate Contract"
+source: global-embeds/start-proj-gen-contract
 ---
 
 Source: Webflow, `Global Embeds / Start Project / Gen Contract`

@@ -1,5 +1,6 @@
 ---
 title: "Pre-fill Attribute Value"
+source: freelancer-cms/pre-fill-attr-val.js
 ---
 
 Source: `freelancer-cms/pre-fill-attr-val.js`

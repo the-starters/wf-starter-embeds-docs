@@ -1,5 +1,6 @@
 ---
 title: "PostHog Track"
+source: utils/posthog-track.js
 ---
 
 Source: `utils/posthog-track.js`
