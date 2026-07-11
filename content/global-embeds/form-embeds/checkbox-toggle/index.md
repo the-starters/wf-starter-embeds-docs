@@ -1,5 +1,6 @@
 ---
 title: "Checkbox Toggle"
+source: global-embeds/form-embeds/checkbox-toggle
 ---
 
 Source: Webflow, `Global Embeds / Form Embeds / Checkbox Toggle`

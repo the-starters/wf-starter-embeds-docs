@@ -1,5 +1,6 @@
 ---
 title: "Scroll Filter"
+source: starters-list-filter/custom-algolia-scripts/scroll-filter.js
 ---
 
 Source: `starters-list-filter/custom-algolia-scripts/scroll-filter.js`

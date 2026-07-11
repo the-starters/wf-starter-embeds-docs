@@ -1,5 +1,6 @@
 ---
 title: "Modal"
+source: global-embeds/modal
 ---
 
 Source: Webflow, `Global Embeds / Modal`

@@ -1,5 +1,6 @@
 ---
 title: "Password Toggle"
+source: global-embeds/form-embeds/password-toggle
 ---
 
 Source: Webflow, `Global Embeds / Form Embeds / Password Toggle`

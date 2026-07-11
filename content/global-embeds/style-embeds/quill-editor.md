@@ -1,5 +1,6 @@
 ---
 title: "Quill Editor"
+source: global-embeds/quill-editor.css
 ---
 
 Source: Webflow, `Global Embeds / Quill Editor` · repo mirror: `global-embeds/quill-editor.css`

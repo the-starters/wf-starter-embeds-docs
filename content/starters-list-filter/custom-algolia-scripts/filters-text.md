@@ -1,5 +1,6 @@
 ---
 title: "Filters Text"
+source: starters-list-filter/custom-algolia-scripts/filters-text.js
 ---
 
 Source: `starters-list-filter/custom-algolia-scripts/filters-text.js`

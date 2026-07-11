@@ -1,5 +1,6 @@
 ---
 title: "Opportunities: Create"
+source: opportunities---create.js
 ---
 
 Source: `opportunities---create.js` (repo root)

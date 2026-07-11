@@ -1,5 +1,6 @@
 ---
 title: "Application Card"
+source: global-embeds/application-card
 ---
 
 Source: Webflow, `Global Embeds / Application Card`

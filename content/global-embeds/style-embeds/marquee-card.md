@@ -1,5 +1,6 @@
 ---
 title: "Marquee Card"
+source: global-embeds/marquee-card.css
 ---
 
 Source: Webflow, `Global Embeds / Marquee Card` · repo mirror: `global-embeds/marquee-card.css`

@@ -1,5 +1,6 @@
 ---
 title: "Companies"
+source: algolia-result-modifiers/companies.js
 ---
 
 Source: `algolia-result-modifiers/companies.js`

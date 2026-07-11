@@ -1,5 +1,6 @@
 ---
 title: "Expertise Item"
+source: global-embeds/expertise-item.css
 ---
 
 Source: Webflow, `Global Embeds / Expertise Item` · repo mirror: `global-embeds/expertise-item.css`

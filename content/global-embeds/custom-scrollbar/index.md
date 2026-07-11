@@ -1,5 +1,6 @@
 ---
 title: "Custom Scrollbar"
+source: global-embeds/custom-scrollbar
 ---
 
 Source: Webflow, `Global Embeds / Custom Scrollbar`

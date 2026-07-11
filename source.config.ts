@@ -1,5 +1,6 @@
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
+import { z } from 'zod';
 
 // Docs content lives in ./content. The globs exclude its README.md and the legacy
 // GitBook SUMMARY.md. The sidebar mirrors the Webflow Navigator: one glob entry per
@@ -19,7 +20,11 @@ export const docs = defineDocs({
       'page-scripts/**/*.md',
       'archives/**/*.md',
     ],
-    schema: pageSchema,
+    // `source` is a repo-relative path in the-starters/starters-webflow (file or
+    // folder) that the page documents; it renders as a Source link on the page.
+    schema: pageSchema.extend({
+      source: z.string().optional(),
+    }),
     postprocess: {
       includeProcessedMarkdown: true,
     },

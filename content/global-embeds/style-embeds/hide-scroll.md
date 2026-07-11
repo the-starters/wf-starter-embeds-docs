@@ -1,5 +1,6 @@
 ---
 title: "Hide Scroll"
+source: global-embeds/hide-scroll.css
 ---
 
 Source: Webflow, `Global Embeds / Hide Scroll` · repo mirror: `global-embeds/hide-scroll.css`

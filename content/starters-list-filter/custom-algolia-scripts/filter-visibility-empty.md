@@ -1,5 +1,6 @@
 ---
 title: "Filter Visibility Empty"
+source: starters-list-filter/custom-algolia-scripts/filter-visibility-empty.js
 ---
 
 Source: `starters-list-filter/custom-algolia-scripts/filter-visibility-empty.js`

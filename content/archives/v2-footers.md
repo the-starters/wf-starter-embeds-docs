@@ -1,5 +1,6 @@
 ---
 title: "V2 Page Footers"
+source: v2/footers
 ---
 
 Source: `v2/footers/` (see the folder's own `README.md` for the full deployment rules)

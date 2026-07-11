@@ -1,5 +1,6 @@
 ---
 title: "Text Methods"
+source: global-embeds/text-methods/text-methods.js
 ---
 
 Source: Webflow, `Global Embeds / Text Methods` · repo mirror: `global-embeds/text-methods/text-methods.js`

@@ -1,5 +1,6 @@
 ---
 title: "Roles"
+source: algolia-result-modifiers/roles.js
 ---
 
 Source: `algolia-result-modifiers/roles.js`

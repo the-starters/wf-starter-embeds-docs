@@ -1,5 +1,6 @@
 ---
 title: "Global Styles"
+source: global-embeds/global.css
 ---
 
 Source: Webflow, `Global Embeds / Global Styles` · repo mirror: `global-embeds/global.css`

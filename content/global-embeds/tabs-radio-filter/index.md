@@ -1,5 +1,6 @@
 ---
 title: "Tabs Radio Filter"
+source: global-embeds/tabs-radio-filter
 ---
 
 Source: Webflow, `Global Embeds / Tabs Radio Filter`

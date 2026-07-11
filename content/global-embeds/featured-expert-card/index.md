@@ -1,5 +1,6 @@
 ---
 title: "Featured Expert Card"
+source: global-embeds/featured-expert-card
 ---
 
 Source: Webflow, `Global Embeds / Featured Expert Card`

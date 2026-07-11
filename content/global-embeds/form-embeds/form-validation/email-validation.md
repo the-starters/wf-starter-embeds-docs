@@ -1,5 +1,6 @@
 ---
 title: "Email Validation"
+source: global-embeds/form-embeds/form-validation/email-validation.js
 ---
 
 Source: Webflow, `Global Embeds / Form Embeds / Form Validation / Email Validate - JS`

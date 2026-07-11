@@ -1,5 +1,6 @@
 ---
 title: "Button"
+source: global-embeds/button.css
 ---
 
 Source: Webflow, `Global Embeds / Button` · repo mirror: `global-embeds/button.css`

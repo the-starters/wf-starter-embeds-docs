@@ -1,5 +1,6 @@
 ---
 title: "Custom Algolia Scripts"
+source: starters-list-filter/custom-algolia-scripts
 ---
 
 Source: `starters-list-filter/custom-algolia-scripts/`

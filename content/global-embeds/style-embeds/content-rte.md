@@ -1,5 +1,6 @@
 ---
 title: "Content RTE"
+source: global-embeds/content-rte.css
 ---
 
 Source: Webflow, `Global Embeds / Content RTE` · repo mirror: `global-embeds/content-rte.css`

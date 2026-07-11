@@ -1,5 +1,6 @@
 ---
 title: "Loader"
+source: utils/loader.js
 ---
 
 Source: `utils/loader.js`

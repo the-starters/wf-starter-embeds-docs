@@ -1,5 +1,6 @@
 ---
 title: "Datepicker"
+source: global-embeds/form-embeds/datepicker
 ---
 
 Source: Webflow, `Global Embeds / Form Embeds / Datepicker`

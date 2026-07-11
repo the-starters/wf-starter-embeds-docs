@@ -1,5 +1,6 @@
 ---
 title: "Swiper Scroll"
+source: swiper-scroll
 ---
 
 Source: Webflow (`Swiper Scroll`)
