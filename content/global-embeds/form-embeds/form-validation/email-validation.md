@@ -10,7 +10,7 @@ Source: Webflow, `Global Embeds / Form Embeds / Form Validation / Email Validate
 Standalone email-format validation for Webflow. On `DOMContentLoaded` the script inits every
 `input[type="email"]` on the page (plus any `input[data-validate-email]`, for fields the Designer
 forced to `type="text"`), with no wrapper or configuration required. Invalid fields get
-`data-validate-field-invalid="true"`, which [Form Validation](./)'s CSS renders as a red outline.
+`data-validate-field-invalid="true"`, which [Form Validation](./index.md)'s CSS renders as a red outline.
 
 The outline is deliberately quiet: it appears only after the field is **touched** (blur or `change`),
 or when the user presses a blocked Continue button; never on page load and never on the first

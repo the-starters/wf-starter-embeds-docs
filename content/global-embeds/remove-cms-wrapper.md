@@ -63,5 +63,5 @@ No CSS.
   siblings placed next to the Collection List, so keep static content outside the wrapper.
 - The unwrapping removes Webflow's `.w-dyn-item` styling hooks, so style the promoted card
   element itself.
-- The same unwrapping is built into the [Accordions](/global-embeds/accordions) script; you do
+- The same unwrapping is built into the [Accordions](./accordions/index.md) script; you do
   not need this embed there.

@@ -22,7 +22,7 @@ rest.
 ## Notes & gotchas
 
 - Same `-webkit-line-clamp` technique as the `.text-style-Nlines` utilities in
-  [Global Styles](global.md); this is just a component-scoped preset. If the clamp counts
+  [Global Styles](./global.md); this is just a component-scoped preset. If the clamp counts
   ever need to change per breakpoint, prefer swapping to those utilities instead of forking
   more component CSS.
 - The clamp hides overflow, so make sure the full title is available elsewhere (the card links

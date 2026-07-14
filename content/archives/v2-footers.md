@@ -42,7 +42,7 @@ must keep loading from the site head / on-canvas embeds.
 
 `/freelancer-start-project` needs **two** tags: the CDN tag plus a separate inline Slater
 loader (`freelancer-start-project-slater.html`), which pulls the contract-form field logic
-from Slater project `4960`; see [Slater Mirrors](slater.md).
+from Slater project `4960`; see [Slater Mirrors](./slater.md).
 `freelancer-start-project-contract.js` in this folder is a readable, GitHub-managed mirror of
 that Slater logic, captured for review; it is **not loaded live**. A stale earlier migration
 also sits at `v2/contract.js`; both are deliberately left as-is.

@@ -16,14 +16,14 @@ custom code:
 
 ## What's in this group
 
-- **[WF Validate](wf-validate.md)** (`wf-validate.js`): declarative, attribute-driven form
+- **[WF Validate](./wf-validate.md)** (`wf-validate.js`): declarative, attribute-driven form
   validation over the native Constraint Validation API, with styled error slots instead of
   browser bubbles.
-- **[Loader](loader.md)** (`loader.js`): `loadEnvScript()`, a tiny staging/live script-loader
+- **[Loader](./loader.md)** (`loader.js`): `loadEnvScript()`, a tiny staging/live script-loader
   helper keyed off the `webflow.io` host.
-- **[PostHog Identity](posthog-identity.md)** (`posthog-identity.js`): Memberstack → PostHog
+- **[PostHog Identity](./posthog-identity.md)** (`posthog-identity.js`): Memberstack → PostHog
   identity bridge (`identify` on login, `reset` on logout).
-- **[PostHog Track](posthog-track.md)** (`posthog-track.js`): `StartersTrack.track()`, the
+- **[PostHog Track](./posthog-track.md)** (`posthog-track.js`): `StartersTrack.track()`, the
   shared funnel-event helper that stamps every event with a `platform` property and forwards
   uncaught errors to PostHog.
 

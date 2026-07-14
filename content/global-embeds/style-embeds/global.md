@@ -91,7 +91,7 @@ hovering/focusing one member of a group dims the *others*. Hover rules live insi
 Styled check-mark lists (`.p-item_list`, `.list-dark-mark`), the gradient background hooks
 (`.bg-g1`, `[data-bg="gradient"]`, `section.is-gradient`), scrollbar hiding for rich-text
 figures and specific content sections, `[hide-scrollbar]` (attribute-scoped scrollbar hiding;
-the global version is [Hide Scroll](hide-scroll.md)), the `.form-with-validation` disabled
+the global version is [Hide Scroll](./hide-scroll.md)), the `.form-with-validation` disabled
 submit-button treatment, the news-item divider lines, `section { position: relative }`, and
 the wf-algolia active page-number highlight.
 

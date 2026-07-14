@@ -13,7 +13,7 @@ notes, not component walkthroughs.
 
 ## What's in this group
 
-- **[V2 Page Footers](v2-footers.md)** (`v2/footers/`): the live, secure footer logic for the
+- **[V2 Page Footers](./v2-footers.md)** (`v2/footers/`): the live, secure footer logic for the
   v2 Webflow pages (`hirethestarters.com`), CDN-loaded per page via jsDelivr.
-- **[Slater Mirrors](slater.md)** (`slater/`): GitHub-managed copies of the Slater.app-hosted
+- **[Slater Mirrors](./slater.md)** (`slater/`): GitHub-managed copies of the Slater.app-hosted
   contract-form bundles, kept for backup/review; they are not loaded from the repo.

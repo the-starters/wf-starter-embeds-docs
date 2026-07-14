@@ -10,7 +10,7 @@ Source: `opportunities-3.0.js` (repo root)
 The shared **Webflow ↔ Xano binder** for the Opportunities 3.0 pages. It wires the existing
 3.0 UI (the opportunities pages plus the modals on `/all-modals`) to the authenticated
 "Opportunities 3.0" Xano API group, and exposes the core as **`window.Opp30`** for page
-controllers like [Opportunities: Create](opportunities-create.md) to build on.
+controllers like [Opportunities: Create](./opportunities-create.md) to build on.
 
 **Auth model** (the part that most often breaks):
 

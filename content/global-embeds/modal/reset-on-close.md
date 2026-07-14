@@ -7,7 +7,7 @@ Source: Webflow, `Global Embeds / Modal`
 
 ## What it is
 
-Small opt-in add-on for the [Modal](/global-embeds/modal) system: when a modal that contains a
+Small opt-in add-on for the [Modal](./index.md) system: when a modal that contains a
 Webflow form is closed after a successful submit, the page is reloaded. That reload naturally
 resets the form and the success/error states for the next open.
 

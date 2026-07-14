@@ -42,5 +42,5 @@ Memberstack on the page; both are detected, never assumed.
   ready for reads yet, the reset happens on the next page load instead.
 - Persona detection must stay in sync with the custom fields the opportunities scripts use.
   If those fields are renamed in Memberstack, update both places.
-- Pair with [PostHog Track](posthog-track.md) for event capture; this script only manages who
+- Pair with [PostHog Track](./posthog-track.md) for event capture; this script only manages who
   the events belong to.

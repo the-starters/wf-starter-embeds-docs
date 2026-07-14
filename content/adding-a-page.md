@@ -108,7 +108,7 @@ Conventions to keep:
 - **File names.** As they appear in Webflow: `My Component - CSS`, `My Component - JS`.
 - **`xAttribute JSON` section.** One fenced ` ```json ` block per element that takes attributes
   (keys and values as strings), so hooks can be pasted straight into the xAttribute Webflow app
-  instead of typed one by one. See the [Accordions page](global-embeds/accordions) for the shape.
+  instead of typed one by one. See the [Accordions page](./global-embeds/accordions/index.md) for the shape.
 
 ## Adding a whole new main group
 

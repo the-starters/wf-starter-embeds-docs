@@ -23,7 +23,7 @@ repo (content under `content/`); pushes to `main` redeploy automatically.
 ## How these docs are organised
 
 The docs mirror the **Webflow Navigator**, not a repo folder tree. The main folder,
-**[Global Embeds](global-embeds/index.md)**, is the `embed-wrapper` component in Webflow. Inside it
+**[Global Embeds](./global-embeds/index.md)**, is the `embed-wrapper` component in Webflow. Inside it
 are mostly **groups**, and each group holds the script(s) that get a walkthrough here. Single
 embeds without extra scripts are single doc pages; groups with companion scripts become doc groups
 with a page per script.
@@ -61,28 +61,28 @@ embed-wrapper (Webflow component)          →  Global Embeds
 ```
 
 Style-only embeds in `embed-wrapper` (Global Styles, the card CSS embeds, Extra Embeds) are
-documented per file under **[Style Embeds](global-embeds/style-embeds/index.md)**; their CSS
+documented per file under **[Style Embeds](./global-embeds/style-embeds/index.md)**; their CSS
 mirrors live under `global-embeds/*.css` in the repo.
 
 The remaining main groups cover scripts that live outside `embed-wrapper`:
 
-- **[Swiper Scroll](swiper-scroll/index.md)**: attribute-driven horizontal scroll / carousel
+- **[Swiper Scroll](./swiper-scroll/index.md)**: attribute-driven horizontal scroll / carousel
   regions built on Swiper 11.
-- **[Algolia Result Modifiers](algolia-result-modifiers/index.md)**: post-render tweaks to Algolia
+- **[Algolia Result Modifiers](./algolia-result-modifiers/index.md)**: post-render tweaks to Algolia
   result cards (companies, price label, roles).
-- **[Freelancer CMS](freelancer-cms/index.md)**: freelancer CMS page scripts (datepicker,
+- **[Freelancer CMS](./freelancer-cms/index.md)**: freelancer CMS page scripts (datepicker,
   pre-fill helpers).
-- **[Starters List Filter](starters-list-filter/index.md)**: the starters list filter UI and its
+- **[Starters List Filter](./starters-list-filter/index.md)**: the starters list filter UI and its
   custom Algolia scripts.
-- **[Utils](utils/index.md)**: repo-hosted utility scripts loaded via jsDelivr (declarative form
+- **[Utils](./utils/index.md)**: repo-hosted utility scripts loaded via jsDelivr (declarative form
   validation, the env-switch script loader, the PostHog identity/track helpers).
-- **[Page Scripts](page-scripts/index.md)**: whole-page controllers from the repo root
+- **[Page Scripts](./page-scripts/index.md)**: whole-page controllers from the repo root
   (Opportunities 3.0 core + create, Quiz Results).
-- **[Archives](archives/index.md)**: inventories of the v2 page footers and the Slater.app
+- **[Archives](./archives/index.md)**: inventories of the v2 page footers and the Slater.app
   mirrors: version-controlled in the repo, but not part of the 3.0 embeds.
 
 More groups will be added as the Webflow site grows; see
-**[Documenting your own embed](adding-a-page.md)** for how to add your own page.
+**[Documenting your own embed](./adding-a-page.md)** for how to add your own page.
 
 ## How to read a component page
 

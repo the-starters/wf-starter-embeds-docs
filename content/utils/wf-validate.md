@@ -23,7 +23,7 @@ Two details keep the gating reliable:
 
 - **Submit interception happens at document capture**, which runs before Webflow's own form
   handler or any page controller bound on the form, regardless of script load order (including
-  scripts injected async via [`loadEnvScript`](loader.md)).
+  scripts injected async via [`loadEnvScript`](./loader.md)).
 - **Clicks are gated too.** Page controllers often bind `click` on the submit button and call an
   API directly (that path never fires a `submit` event). Clicks on native submit buttons inside
   a bound form are gated automatically; clickables **outside** the form (modal footers) or

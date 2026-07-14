@@ -20,7 +20,7 @@ opt-in only**: a control navigates the flow when it carries a form-flow attribut
 inside a `data-form-flow-button-group`. `data-button-style` is styling, not consent to navigate.
 
 A registry is exposed at `window.lumos.formFlow` for programmatic reset and navigation. The
-companion [Panel Nav Flow](/global-embeds/step-flow/panel-nav-flow) script swaps whole panels
+companion [Panel Nav Flow](./panel-nav-flow.md) script swaps whole panels
 (hub ↔ flow); this script resets a flow to step-1 whenever a `data-panel-nav-target` trigger
 opens it.
 
@@ -38,7 +38,7 @@ Step Flow
 ```
 
 The CSS must be on the page for the pre-hydration hiding and the validation outline to work.
-If you also use [Panel Nav Flow](/global-embeds/step-flow/panel-nav-flow), load that script
+If you also use [Panel Nav Flow](./panel-nav-flow.md), load that script
 alongside it.
 
 ## Flow map
@@ -47,7 +47,7 @@ Everything in this map is one page of plain Webflow markup (a hub, a linear wiza
 branching flow), and every arrow is driven by an attribute, with no custom JS. Edge colors match
 the engine's actions: `next`, `branch`, dashed `back` (history-aware), dashed `reset`
 (returns to the hub), and `panel-nav` (opening a flow from the hub, via
-[Panel Nav Flow](/global-embeds/step-flow/panel-nav-flow)). Walk it with the buttons under
+[Panel Nav Flow](./panel-nav-flow.md)). Walk it with the buttons under
 the chart; they are the same buttons the real markup would have:
 
 <StepFlowChart />

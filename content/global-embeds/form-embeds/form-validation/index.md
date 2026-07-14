@@ -12,7 +12,7 @@ supplies the visual states the validation scripts toggle: the red outline on inv
 the locked look for disabled submit/Continue buttons, plus a few form-polish rules (checked-radio
 outline, custom select chevron, password eye-icon swap).
 
-The folder also ships [Email Validation](email-validation.md) (`email-validation.js`), which does the
+The folder also ships [Email Validation](./email-validation.md) (`email-validation.js`), which does the
 actual email checking and sets the attributes this CSS styles.
 
 > **Known issue in the current source:** `form-validation.js` in this folder is a byte-identical copy
