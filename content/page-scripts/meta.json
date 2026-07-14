@@ -4,6 +4,8 @@
     "index",
     "opportunities-3-0",
     "opportunities-create",
-    "quiz-results"
+    "quiz-results",
+    "messages-3-0",
+    "profile-image-auth-shim"
   ]
 }

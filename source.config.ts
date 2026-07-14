@@ -12,6 +12,7 @@ export const docs = defineDocs({
       'index.md',
       'adding-a-page.md',
       'algolia-result-modifiers/**/*.md',
+      'explore-search/**/*.md',
       'freelancer-cms/**/*.md',
       'global-embeds/**/*.{md,mdx}',
       'starters-list-filter/**/*.md',
@@ -33,6 +34,7 @@ export const docs = defineDocs({
     files: [
       'meta.json',
       'algolia-result-modifiers/**/meta.json',
+      'explore-search/**/meta.json',
       'freelancer-cms/**/meta.json',
       'global-embeds/**/meta.json',
       'starters-list-filter/**/meta.json',

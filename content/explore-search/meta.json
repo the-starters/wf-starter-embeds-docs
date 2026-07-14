@@ -1,0 +1,14 @@
+{
+  "title": "Explore Search",
+  "pages": [
+    "index",
+    "chip-fill",
+    "tab-counts",
+    "most-searched",
+    "recent-searches",
+    "default-results",
+    "hide-empty",
+    "list-loader",
+    "transitions"
+  ]
+}

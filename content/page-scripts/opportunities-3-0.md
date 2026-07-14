@@ -33,6 +33,13 @@ Beyond the API bridge, the core owns:
   (`visibility: hidden` on the results, injected synchronously) until the member's category
   filter is applied, so cards from a previously-signed-in account never flash. Feed health is
   mirrored into `data-opp30-talent-*` attributes on `<html>` for debugging.
+- **Detail-page CTA flash prevention.** On `/opportunities/<id>`, a `<style>` tag
+  (`#opp30-detail-hide-until-state`) is injected synchronously to hide every `[data-opp-state]`
+  CTA (Apply / Applied / Withdraw / Edit) until the member's real applied state resolves from
+  the async `starter/opportunities/detail` fetch, so the wrong CTA never flashes. The first
+  `paintState()` removes the guard; if that fetch fails the script paints `not-applied` so the
+  member is never stranded with no visible action. (Brand-view state elements sit inside the
+  async-hidden talent wrapper, so the guard is a no-op for brands.)
 - **Apply / edit-application modals.** Cover-letter submission and the success states.
 - **Funnel analytics.** Capture points route through the shared
   [PostHog Track](../utils/posthog-track.md) helper.
@@ -71,5 +78,16 @@ early once `window.Opp30` exists.
   CMS-list markup is detected and warned about, not rendered.
 - The core and the create controller share run-once flags, so loading both on one page never
   double-binds the create form.
+- **Category prefill is case/whitespace-tolerant.** Incoming values on the `opp30:set-category-values`
+  event (e.g. an opportunity's saved `category_names` on the edit-opportunity modal) are
+  canonicalized against the option labels, deduped, and capped at `MAX_CATEGORY_SELECTIONS` (3)
+  — so a saved value that differs only in case or trailing whitespace still selects, mirroring a
+  manual option click. This fixes the edit-opportunity category prefill.
+- **Edit-opportunity submits with no reload.** The edit-opportunity modal's `[data-opp-submit="update"]`
+  control lives inside a Webflow `.w-form`, whose native submit is suppressed in the capture
+  phase (same technique as the create page) so Webflow's own inline toast / reload never fires.
+  On success the form is swapped for the modal's native `.w-form-done` "pending for review"
+  screen. The modal-reopen rewind (which resets that success screen back to the form) covers the
+  apply, edit-application, **and** edit-opportunity modals via the `SUCCESS_SCREEN_MODALS` set.
 - Full behaviour notes live in the file's header and JSDoc, and the conventions doc referenced
   there (`product-workflows/opportunities/docs/wf-js-guide.md` in the workspace).
