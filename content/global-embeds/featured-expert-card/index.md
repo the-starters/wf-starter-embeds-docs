@@ -17,7 +17,7 @@ Hover/tap reveal for the details panel on featured expert cards. The reveal itse
   clears the attribute from all items.
 
 The CSS also carries a few card-formatting rules: a `$` prefix before `[data-price-text]` elements
-(pairs with the [price abbreviation script](./featured-expert-card-price)), comma-separated inline
+(pairs with the [price abbreviation script](./featured-expert-card-price.md)), comma-separated inline
 rendering for the company list, and hiding `.details-wrapper_description` when its paragraph is
 empty.
 

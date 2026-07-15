@@ -31,7 +31,7 @@ Loader
 └── Loader - JS
 ```
 
-The overlay's spinner styling comes from the [Spinner](style-embeds/spinner.md) style embed.
+The overlay's spinner styling comes from the [Spinner](./style-embeds/spinner.md) style embed.
 
 ## Markup contract
 

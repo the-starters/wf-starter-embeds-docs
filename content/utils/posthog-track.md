@@ -54,7 +54,7 @@ hosts containing `the-starters-3-0` are `v3`; everything else (`hirethestarters.
   fine, renames need a migration note there.
 - `posthog.captureException` is stubbed by the head snippet, so errors thrown before
   `array.js` loads are queued, not lost.
-- Events fired before [PostHog Identity](posthog-identity.md) resolves the member are captured
+- Events fired before [PostHog Identity](./posthog-identity.md) resolves the member are captured
   under the anonymous id and stitched by PostHog after `identify`. That is normal PostHog
   behaviour, nothing to work around.
 - Load this before any page script that calls `StartersTrack.track`, or have callers use

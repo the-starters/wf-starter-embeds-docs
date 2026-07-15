@@ -58,7 +58,7 @@ must be loaded *before* any custom-code block that calls it.
   loader tag (without `defer`) sits above them.
 - Scripts injected this way load **async** relative to the rest of the page, so anything they
   define arrives late. Gate dependents on the injected script's behaviour (events, polling),
-  not on load order. [WF Validate](wf-validate.md)'s document-capture gating was designed to
+  not on load order. [WF Validate](./wf-validate.md)'s document-capture gating was designed to
   win regardless of this ordering.
 - There is no error fallback beyond the console log: a typoed staging URL fails silently for
   users.

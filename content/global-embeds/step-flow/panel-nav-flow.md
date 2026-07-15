@@ -13,7 +13,7 @@ inside a `[data-panel-parent]` scope, typically a hub panel (`reset-panel`) and 
 `data-panel-nav-back-button` returns to whichever panel was shown before. Panels are toggled with
 instant `display` changes; there is no slide animation.
 
-It complements [Step Flow](/global-embeds/step-flow) with a clean division of labor: Panel Nav
+It complements [Step Flow](./index.mdx) with a clean division of labor: Panel Nav
 Flow moves between **whole panels** (hub ↔ flow), Step Flow moves between **steps inside one
 flow**. Step Flow also listens for `data-panel-nav-target` clicks and resets the targeted flow to
 step-1, so opening a flow from the hub always lands on its first step. You only need this script
@@ -27,7 +27,7 @@ Step Flow
 ```
 
 Use on pages with the hub pattern, together with `Step Flow - JS` and `Step Flow - CSS`
-(see [Step Flow](/global-embeds/step-flow)); the Step Flow CSS also keeps child flows of
+(see [Step Flow](./index.mdx)); the Step Flow CSS also keeps child flows of
 `main-container` hidden before hydration, preventing a flash of all panels on load.
 
 ## Markup contract

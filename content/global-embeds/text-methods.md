@@ -29,7 +29,7 @@ Text Methods
 
 ## Notes & gotchas
 
-- Like [Loader](loader.md), this is a **bare global function, not an IIFE**. It exists to be
+- Like [Loader](./loader.md), this is a **bare global function, not an IIFE**. It exists to be
   called by other scripts and must load before them.
 - The limit counts **characters before the word-boundary backup**, so results are usually a few
   characters shorter than `limit`; size card layouts accordingly.

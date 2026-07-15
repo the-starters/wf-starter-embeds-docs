@@ -15,7 +15,7 @@ bigger bucket than it is). Values under 1000 are rounded to a whole number. Non-
 left untouched.
 
 The `$` sign is not added here; it comes from the CSS `::before` rule in
-[`featured-expert-card.css`](./).
+[`featured-expert-card.css`](./index.md).
 
 ## File structure
 

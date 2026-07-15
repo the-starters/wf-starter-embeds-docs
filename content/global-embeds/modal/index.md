@@ -16,7 +16,7 @@ Per modal it supports three animation variants (centered default, side panel, fu
 via trigger attributes or plain anchor links, closes on Escape, close buttons, or a global
 close-all trigger, and can auto-open from a `modal-id` URL parameter. Custom `modal-open` and
 `modal-close` events are dispatched on `window` for other scripts to hook into (see
-[Reset on Close](/global-embeds/modal/reset-on-close)).
+[Reset on Close](./reset-on-close.md)).
 
 The companion CSS keeps the native `::backdrop` invisible (the design's own `.modal_backdrop`
 element is animated instead) and adds Designer-only rules so modals can be previewed while editing.

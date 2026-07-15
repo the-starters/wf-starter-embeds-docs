@@ -9,7 +9,7 @@ Source: `opportunities---create.js` (repo root)
 
 The **`/opportunities---create` page controller**. Binds the brand "create opportunity" form to
 the Xano `brand/opportunities/create` endpoint through the shared core
-([Opportunities 3.0: Core](opportunities-3-0.md), `window.Opp30`).
+([Opportunities 3.0: Core](./opportunities-3-0.md), `window.Opp30`).
 
 It reads the form with role-aware helpers (selected `[data-opp-role-value]` chips, checked
 radios/checkboxes, project-type mapping to the human strings Xano stores) and submits through
