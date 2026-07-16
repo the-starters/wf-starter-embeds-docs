@@ -53,4 +53,7 @@ are not the same file.
   "simplify" the retry constants without testing on a slow connection.
 - Persistence needs a **logged-in** Memberstack member; anonymous visitors get the rendered
   results but nothing is saved.
+- **v1.26.2:** when binding a freelancer image, the script strips the template `<img>`'s
+  `srcset` and `sizes` attributes; Webflow templates carry a placeholder pair that outranks
+  the newly set `src`, which kept rendering the placeholder.
 - This page is an overview; the file's header comment and JSDoc are the detailed reference.

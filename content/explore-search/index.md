@@ -67,4 +67,6 @@ and wiring in one place).
 | [Default Results](./default-results.md) | Keeps results visible on an empty query and fills each federated section with its index's default ranking. |
 | [Hide Empty](./hide-empty.md) | Hides `[starters-algolia-hide]` wrappers while all their Algolia sections are empty. |
 | [List Loader](./list-loader.md) | Shows a designer-authored loader and masks list jank during result transitions. |
+| [Tab No-Results](./tab-no-results.md) | Shows the shared "No matches found." message whenever the active tab's sections are empty, even while another tab still has hits. |
 | [Transitions](./transitions.md) | Search overlay open/close transitions (GSAP timelines, inert-locked closed state, reduced-motion aware) plus companion CSS. |
+| [Styles](./styles.md) | The `/search-brilliance` page stylesheet: filter checkboxes/radios, result grids, selected-filter reveal, and the loader ring. |
