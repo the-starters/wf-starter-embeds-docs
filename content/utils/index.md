@@ -21,6 +21,9 @@ custom code:
   browser bubbles.
 - **[Loader](./loader.md)** (`loader.js`): `loadEnvScript()`, a tiny staging/live script-loader
   helper keyed off the `webflow.io` host.
+- **[Multi-Step Failover](./multi-step-failover.md)** (`multi-step-failover.js`): probes the
+  agency-hosted multi-step form engine on the build-profile wizards and injects our mirrored
+  copy (`vendor/videsigns-multi-step.js`) if it's gone.
 - **[PostHog Identity](./posthog-identity.md)** (`posthog-identity.js`): Memberstack → PostHog
   identity bridge (`identify` on login, `reset` on logout).
 - **[PostHog Track](./posthog-track.md)** (`posthog-track.js`): `StartersTrack.track()`, the

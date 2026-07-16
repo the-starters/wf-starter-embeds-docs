@@ -66,7 +66,67 @@ early once `window.Opp30` exists.
 | `data-opp-filter` | Optional `<select>` filtering the brand list by status (Active, Pending Review, Closed). |
 | `data-opp-detail-link` | Card link wired to the detail view. |
 | `data-opp-talent-tab` | Talent feed tab controls (all vs applied). |
+| `data-opp-page-id` | Binds the numeric Xano opportunity ID on the CMS detail page (see URL identity below). |
+| `data-opp-status="active closed"` | Shown only while the opportunity is in one of the named statuses (space-separated, like `data-opp-state`). |
+| `data-opp-element="loading-button\|loading-label\|loading-spinner"` + `data-opp-loading` | Loading UI for the Close/Reopen lifecycle controls (see below). |
 | `window.Opp30` | `{ API, ensureXanoToken, diagnoseFreelancerFeed, waitForMemberstackDom }`. |
+
+## URL identity: slug labels, ID identity (v1.25.6)
+
+Opportunity detail URLs use the Webflow CMS **slug** as their label, while the immutable
+numeric Xano opportunity **ID** stays the API identity. The two are decoupled on purpose: a
+brand can retitle an opportunity (new slug) without breaking applications keyed to the ID.
+
+- **Detail page.** Bind the ID to `data-opp-page-id` on the `/opportunities/<slug>` CMS detail
+  page. A nonnumeric or missing bound value is **not** inferred from a text slug; the script
+  requires an unambiguous ID.
+- **Links out of lists.** List and Algolia projections should provide either a same-origin
+  `url_path` matching `/opportunities/<slug>` or a `webflow_slug`. Custom-rendered cards can
+  expose these as `data-opp-url-path` and `data-opp-webflow-slug`. A card link that already
+  points at a valid detail path is preserved; generated links prefer `url_path`, then
+  `webflow_slug`, and finally the Xano ID.
+- **Backwards compatible.** Existing `/opportunities/<id>` URLs keep working, including detail
+  pages that haven't added `data-opp-page-id` yet. V2 opportunity scripts and query-parameter
+  URLs are unchanged.
+
+## Lifecycle: status painting and loading states (v1.27.x)
+
+Since **v1.27.0** the brand detail page paints Close/Reopen by the opportunity's status with
+**no reload**: `[data-opp-status="active|closed"]` elements toggle with the status, the status
+badge (`data-opp-status-badge` / the `status_label` bind) repaints, and a synchronously
+injected guard (`#opp30-detail-hide-until-status`) hides the status controls until the real
+status resolves, so the wrong button never flashes. `<html>` gets `data-opp-status-ready`
+once painted. The script auto-tags the existing modal triggers
+(`data-modal-trigger="close-opportunity"` gets `data-opp-status="active"`, the reopen trigger
+gets `"closed"` plus `data-opp-submit="reopen"`), so already-published markup keeps working.
+A successful Close or Reopen repaints from the mutation response (**v1.27.2**).
+
+While a lifecycle request is pending, the pressed control shows a loading state
+(**v1.27.3**):
+
+```html
+<div data-opp-element="loading-button" data-opp-loading="false">
+  <span data-opp-element="loading-label">Reopen opportunity</span>
+  <span data-opp-element="loading-spinner">…</span>
+</div>
+```
+
+Style the label and spinner off the wrapper's `data-opp-loading="false|true"` **value**;
+Webflow does not reliably preserve empty custom attributes, so the hooks are valued on
+purpose. While the request is in flight the script sets the value to `true`, adds
+`is-wf-xano-mutating`, marks the control `aria-busy` and disabled for assistive technology,
+disables any nested native control, and suppresses duplicate clicks. The original state is
+restored after an error or a successful repaint.
+
+Two behaviors to keep in mind when authoring:
+
+- **Hiding the label is opt-in.** Only text explicitly tagged
+  `data-opp-element="loading-label"` should be hidden by loading CSS; untagged button text
+  stays visible while the spinner runs, and the script never adds the label attribute itself.
+- **The Close confirmation waits for the request.** The form-flow confirmation
+  (`data-close-opp="confirm-button"`) is upgraded to a loading button (cloning the spinner
+  from the page-level close trigger when it has none), and the flow advances only after the
+  Close request succeeds; an error leaves the confirmation step open and usable.
 
 ## Notes & gotchas
 
@@ -89,5 +149,10 @@ early once `window.Opp30` exists.
   On success the form is swapped for the modal's native `.w-form-done` "pending for review"
   screen. The modal-reopen rewind (which resets that success screen back to the form) covers the
   apply, edit-application, **and** edit-opportunity modals via the `SUCCESS_SCREEN_MODALS` set.
+- **v1.26.3 to v1.26.5** hardened the brand actions: opportunity actions keep working after an
+  applicant click re-renders the card, the detail view repaints after an edit, and a
+  double-submitted Close only sends one request.
+- The opt-in loading-label rule (untagged button text stays visible) merged after **v1.27.4**
+  and is not in a tag yet; `@latest` serves it once the next tag lands.
 - Full behaviour notes live in the file's header and JSDoc, and the conventions doc referenced
   there (`product-workflows/opportunities/docs/wf-js-guide.md` in the workspace).

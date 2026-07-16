@@ -9,6 +9,8 @@
     "default-results",
     "hide-empty",
     "list-loader",
-    "transitions"
+    "tab-no-results",
+    "transitions",
+    "styles"
   ]
 }

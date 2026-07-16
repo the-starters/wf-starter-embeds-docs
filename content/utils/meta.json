@@ -4,6 +4,7 @@
     "index",
     "wf-validate",
     "loader",
+    "multi-step-failover",
     "posthog-identity",
     "posthog-track"
   ]

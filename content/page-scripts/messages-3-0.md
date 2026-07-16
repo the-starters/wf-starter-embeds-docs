@@ -28,7 +28,7 @@ inbox` — the page does not throw.
 ## File structure
 
 ```
-v3/messages.js   (~159 lines)
+v3/messages.js   (~180 lines)
 ```
 
 Load **once** on `/messages` via a page custom-code embed with `defer`, **after** Memberstack.
@@ -43,6 +43,24 @@ Run-once guard: a second load returns early once `window.__startersMessages3Boot
 ```
 
 `#talkjs-container` is the only required markup hook. There are no `data-*` attributes.
+
+## Inbox feed filters (v1.26.6 to v1.26.9)
+
+The inbox supports All / Unread / Read filtering through TalkJS **custom conversation
+actions**. The script registers three action names and maps each to a `setFeedFilter` call:
+
+| Action name | Feed filter |
+| --- | --- |
+| `messages-filter-all` | `{}` (everything) |
+| `messages-filter-unread` | `{ isUnread: true }` |
+| `messages-filter-read` | `{ isUnread: false }` |
+
+The buttons themselves are authored on the TalkJS side (theme/role configuration for the
+`the-starters-3-0` theme) as custom conversation actions with those names; there is no page
+markup for them. The wiring is feature-detected (`onCustomConversationAction` +
+`setFeedFilter`), so an older TalkJS SDK just skips it. It took three patches to land on the
+documented API: v1.26.7 switched to TalkJS's own unread predicate, v1.26.8 to the documented
+action choice param, and v1.26.9 to direct per-action handlers.
 
 ## Member → TalkJS user mapping
 

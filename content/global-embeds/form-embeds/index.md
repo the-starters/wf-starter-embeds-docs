@@ -13,6 +13,8 @@ custom code and wire up with `data-*` attributes.
 
 - **Checkbox Toggle.** Show or hide an element based on a checkbox's checked state.
 - **Datepicker.** Date selection for form inputs.
+- **Disabler** (`disabler.js`, loose in the group folder): disables (and optionally clears)
+  fields while a paired checkbox, radio, or input is in its active state.
 - **Form Input Filter.** Show one block of inputs based on a select or radio choice.
 - **Form Validation.** Form validation behavior.
 - **Password Toggle.** A show/hide button for password fields.
