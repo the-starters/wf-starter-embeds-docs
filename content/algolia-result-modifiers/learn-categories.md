@@ -17,6 +17,28 @@ Slugs missing from the table fall back to a generic prettifier (hyphens to space
 Case), so a new CMS category still renders sensibly before the table is updated. A card with
 no categories gets its seed removed rather than leaving a stray empty pill.
 
+## How it knows when to run
+
+Two triggers, both always active:
+
+1. A `MutationObserver` on **every** `wf-algolia-element="browse"` and
+   `wf-algolia-element="results"` container on the page.
+2. The engine's own `results` event, which wf-algolia emits after it has rendered hits.
+
+Both are needed. The engine emits `results` from browse mode only, and this script's targets
+live in the **search overlay** (`.search-brilliance_results-wrapper`, which carries the
+`results` role), which renders through a path that fires no event at all. So the observer is
+what covers the overlay, and the event covers browse re-renders without waiting on mutation
+batching.
+
+Before this, the script resolved a single container with `querySelector` and preferred
+`browse`, which meant it bound to the browse grid and never saw the overlay renders it exists
+to process. On `/all-starters` that left raw slugs on the page for every overlay query.
+
+The script also stops immediately at boot if the page contains no `data-learn-category`
+element at all, and it binds only once even though the component that loads it is instantiated
+twice per page.
+
 ## Markup contract
 
 ```html
@@ -30,10 +52,14 @@ from re-processing them.
 
 ## Notes & gotchas
 
-- Like the other modifiers in this group, it watches the results container
-  (`[wf-algolia-element="browse"]`, falling back to `[wf-algolia-element="results"]`) with a
-  MutationObserver and re-runs as results refresh or paginate. Only elements inside
-  `.wf-algolia-injected` cards are touched.
+- Only elements inside `.wf-algolia-injected` cards are touched, so the card template itself is
+  left alone.
+- The `results` event payload must not be read. The engine sends two different shapes: the
+  single-index path passes the raw Algolia response, which has `hits`, while the federated path
+  used on first load passes `{ results, nbHits, nbPages }`, which does not. Re-query the DOM.
+- If no browse or results container exists, the script logs a warning, but only on staging hosts
+  (`*.webflow.io`, `localhost`, `*.trycloudflare.com`) or when `window.STARTERS_DEBUG` is set.
+  Production stays silent.
 - **Update `CATEGORY_LABELS` when categories are added or renamed in the CMS.** The fallback
   prettifier can't know about ampersands or special casing (`retention-crm` would render as
   `Retention Crm`, not `Retention & CRM`).
