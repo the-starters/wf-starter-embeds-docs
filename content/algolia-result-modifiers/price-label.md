@@ -17,9 +17,25 @@ any other value (`hire`, `full`, or anything else) shows the hire label and hide
 label. Hiding is done with an inline `display: none !important`; showing removes the inline
 `display` so the element's normal styling takes over.
 
-The script waits for the global `WfAlgolia` API (polling every 100ms, giving up silently after
-10 seconds), then re-applies on every `response` event, on any mutation of the results container,
-and once on init, so labels stay correct through searches, pagination, and load-more.
+## How it knows when to run
+
+Two triggers, both always active:
+
+1. A `MutationObserver` on **every** `wf-algolia-element="browse"` and
+   `wf-algolia-element="results"` container on the page.
+2. The engine's own `results` event, which wf-algolia emits after it has rendered hits.
+
+Both are needed. The engine emits `results` from browse mode only, so the search overlay
+(`.search-brilliance_results-wrapper`, which carries the `results` role) renders through a path
+that fires no event at all; the observer is what covers it.
+
+It waits for the global `WfAlgolia` API in short intervals with a ceiling of about two seconds,
+then gives up and relies on the observer alone. Earlier versions polled every 100ms for a full
+10 seconds on every page this file loaded on, which is why the ceiling exists.
+
+Every pass is deferred through `requestAnimationFrame`. Note that a browser suspends
+`requestAnimationFrame` in a background tab, so labels are applied when the tab is next
+foregrounded rather than while it is hidden.
 
 ## File structure
 
@@ -52,13 +68,22 @@ No options.
 | `data-type-label="consult"` | label | Shown when the type is `consult`, hidden otherwise. |
 | `data-type-label="hire"` | label | Shown for every type other than `consult`. |
 
-For mutation-watching it observes, in order of preference: `wf-algolia-element="results"`, then
-`wf-algolia-element="browse"`, then the parent of the first `.expert-card_item`, then `body`.
+For mutation-watching it observes **every** `wf-algolia-element="browse"` and
+`wf-algolia-element="results"` container, with no precedence between them. There is no fallback
+to a card's parent or to `body` any more: on `/all-starters` the served HTML carries five of each
+role (the navbar and search overlay add their own), so picking a single first match was never
+viable.
 
 ## Notes & gotchas
 
-- If `window.WfAlgolia` never appears within 10 seconds, the script gives up silently and labels
-  are never toggled.
+- If `window.WfAlgolia` never appears within about two seconds, the script stops waiting and
+  relies on the container observer alone, so labels still toggle as results render.
+- It stops immediately at boot if the page has no `.expert-card_item` and no `data-expert-type`
+  element, and it binds only once even though the component that loads it is instantiated twice
+  per page.
+- If no browse or results container exists, it logs a warning, but only on staging hosts
+  (`*.webflow.io`, `localhost`, `*.trycloudflare.com`) or when `window.STARTERS_DEBUG` is set.
+  Production stays silent.
 - The comparison is exact after trim/lowercase: only `consult` selects the consult label;
   everything else (including typos or empty text) falls through to the hire label.
 - Both label elements can be visible in the Designer; expect a brief flash of both on load before
