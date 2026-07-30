@@ -10,8 +10,9 @@ Source: Webflow, `Global Embeds / Step Flow`
 Attribute-driven multi-step form flow engine for Webflow (`step-flow.js` + `step-flow.css`). It
 handles step navigation inside every `[data-form-flow]` root on the page: **linear** wizards
 (step-1 → step-2 → …), **multi-sub** branching flows (a radio gate on step-1 opens one of several
-subflows), per-step footer button groups, a hub/reset-panel pattern, and opt-in per-step
-validation that disables Continue until the current step's required fields pass.
+subflows), per-step footer button groups, a hub/reset-panel pattern, opt-in per-step
+validation that disables Continue until the current step's required fields pass, and opt-in
+scroll-to-top that pulls the flow back to the top of view on every step change.
 
 The engine runs on `DOMContentLoaded`, is idempotent (init guards on every root), and only ever
 toggles visibility: steps and footers are plain Webflow DOM. Clicks are resolved by **explicit
@@ -214,6 +215,42 @@ Validation rules found in the code:
   `disabled`, so clicking it still fires and force-reveals the field errors. This guard runs
   before the terminal-submit fall-through, so an invalid final step can't submit.
 
+### Scroll to top (opt-in)
+
+Active only when the flow root has `data-form-flow-scroll-top="true"` (case-insensitive, so
+Webflow's `"True"` works). Every step change then pulls the flow root back to the top of view,
+whether that step change came from `next`, `back`, a branch, a `reset` to step-1, or a programmatic
+`goTo`. All three attributes live on the `[data-form-flow]` root, so each flow on the page carries
+its own scroll settings.
+
+| Attribute | Where | Purpose |
+| --- | --- | --- |
+| `data-form-flow-scroll-top="true"` | Flow root | Turns scroll-to-top on for the flow. Omit it (or set anything else) and nothing scrolls. |
+| `data-form-flow-scroll-offset="<px>"` | Flow root | Extra pixels of breathing room above the root, e.g. `40`. Defaults to `0`. |
+| `data-form-flow-scroll-container="window"` | Flow root | Forces the page scroller instead of auto-detecting one. |
+| `data-form-flow-scroll-container="nearest"` | Flow root | Same as leaving the attribute off: use the nearest scrollable ancestor, else the window. |
+
+Scroll rules found in the code:
+
+- The scroll only ever goes **up**. If the top of the flow root is already visible the computed
+  target sits at or below the current position, and the routine does nothing, so it never fights a
+  visitor who scrolled somewhere on purpose.
+- It never fires on initial page load. Scrolling arms itself only after hydration has painted
+  step-1, so the first real transition is the earliest thing that can scroll.
+- With no `data-form-flow-scroll-container`, the scroller is auto-detected: the nearest ancestor
+  that both scrolls its own overflow (`overflow-y: auto` or `scroll`) *and* currently overflows,
+  otherwise the window. A pane styled `overflow-y: auto` whose content fits does not count.
+- Window scrolls clear sticky and fixed navbar chrome. Bars tagged `data-toc-navbar` win (the same
+  site-wide tag the section custom TOC embed uses, and several tagged bars sum their heights), with
+  Webflow's `.w-nav` as the fallback when nothing is tagged. Position and height are measured live
+  at scroll time, so a bar that is `fixed` on desktop and static on mobile, or hidden at one
+  breakpoint, needs no per-breakpoint config.
+- A scroll inside a scrollable ancestor skips the navbar offset, since page chrome cannot cover a
+  panel, but `data-form-flow-scroll-offset` still applies there.
+- Scrolling is smooth, and instant for visitors who ask for `prefers-reduced-motion: reduce`.
+- `data-form-flow-scroll-offset` is Webflow-tolerant: a trailing unit (`"40px"`) still reads as 40,
+  and a value that is unparseable or negative reads as `0`.
+
 ### JS API
 
 ```js
@@ -252,6 +289,10 @@ window.lumos.formFlow.showResetPanel()
   `aria-hidden="false"`. Validation-disabled Continue controls get `aria-disabled="true"` on both
   the wrapper and the inner button/link. There is no focus management on step change, so focus stays
   where it was.
+- **Scroll-to-top fails quietly.** The scroll measurement is wrapped in a try/catch, so a bad
+  measurement can never break navigation and nothing is logged. If a step change does not scroll,
+  check the `data-form-flow-scroll-top` value first, then whether the top of the flow root was
+  already in view (the scroll is up-only, and a visible top is left alone).
 - **Idempotency.** Flow roots guard with `data-script-initialized`, the main container with
   `data-form-flow-container-initialized`, so re-running the embed won't double-bind.
 - **Display caching.** The first computed `display` of each shown element is cached in
