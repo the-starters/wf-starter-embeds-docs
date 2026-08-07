@@ -81,6 +81,11 @@ field, or a tagged wrapper containing no fields, is skipped with a warning.
 
 ## Notes & gotchas
 
+> **Not for `/hire/<slug>`.** On the Contract Generation form,
+> [`v3/project-form.js`](../v3/hire-contract-and-reviews.md) owns CMS smart-fill
+> (`data-sp-fill`). Keep this embed on the other freelancer CMS pages that still load it; do
+> not paste it back onto Hire.
+
 - Debug logging (`[sp-prefill]` prefix) only prints on `.webflow.io` staging domains. On a
   production custom domain the log calls no-op, but skip/mismatch behavior is identical, so
   debug on staging.

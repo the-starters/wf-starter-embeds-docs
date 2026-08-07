@@ -59,6 +59,7 @@ No configuration attributes.
 | --- | --- | --- |
 | `--expert-card-jobs-open-height` | CSS variable on the card | Pixel height of the fully open jobs list. |
 | `expert-cards:relayout` | `window` event | Dispatch this after mutating card content to force a re-measure. |
+| `expert-cards:relayout:done` | `window` event | Dispatched by this script when a measurement pass finishes; other embeds settle on it. |
 
 ## Notes & gotchas
 
@@ -73,3 +74,14 @@ No configuration attributes.
   after injecting content).
 - `aria-expanded` is set on the card itself, which is a plain `div`: fine as a styling/state
   hook, but not announced as a control by screen readers.
+- **Every layout pass ends with `expert-cards:relayout:done`** on `window`, so other embeds can
+  wait for the height writes instead of guessing at a delay. It fires from the window-load,
+  `fonts.ready`, and resize passes as well as from a requested `expert-cards:relayout`, so a
+  listener that only cares about one particular pass has to arm itself first — see
+  [Browse Loader](./browse-loader.md), which ignores `relayout:done` until the engine's first
+  `results` event.
+- **Companion embeds.** [Browse Loader](./browse-loader.md) masks the `/all-starters` browse list
+  while the engine re-renders and settles on `relayout:done`.
+  [Replica List](../replica-list/index.md) covers the opposite gap: cards rendered inside a
+  `display: none` modal measure as `0` and are never re-measured, so its relayout companion
+  dispatches `expert-cards:relayout` the first time such a list becomes visible.

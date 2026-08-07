@@ -7,7 +7,9 @@
     "dev": "next dev",
     "start": "next start",
     "postinstall": "fumadocs-mdx",
-    "types:check": "fumadocs-mdx && next typegen && tsc --noEmit"
+    "types:check": "fumadocs-mdx && next typegen && tsc --noEmit",
+    "ownership:generate": "node scripts/generate-ownership.mjs",
+    "ownership:check": "node scripts/generate-ownership.mjs --check"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

@@ -10,7 +10,9 @@
     "starters-list-filter",
     "explore-search",
     "utils",
+    "account-settings",
     "page-scripts",
+    "v3",
     "archives"
   ]
 }

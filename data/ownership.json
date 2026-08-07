@@ -1,0 +1,1514 @@
+{
+  "generatedAt": "2026-08-07T20:26:19.742Z",
+  "scriptsRepo": "the-starters/starters-webflow",
+  "scriptsSha": "cbd5af8bec4dfd4511f239f0ee34a1305b768b79",
+  "scripts": {
+    "account-settings": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "account-settings/ms-form-cancel-state.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "account-settings/plan-dates.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "algolia-result-modifiers": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "algolia-result-modifiers/companies.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "algolia-result-modifiers/learn-categories.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "algolia-result-modifiers/price-label.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "algolia-result-modifiers/roles.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "explore-search": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "explore-search-transitions": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "explore-search/explore-search-chip-fill.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "explore-search/explore-search-default-results.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "explore-search/explore-search-hide-empty.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "explore-search/explore-search-list-loader.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "explore-search/explore-search-most-searched.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "explore-search/explore-search-recent-searches.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "explore-search/explore-search-tab-counts.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "explore-search/explore-search-tab-no-results.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "explore-search/explore-search.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "freelancer-cms": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "freelancer-cms/datepicker-current.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "freelancer-cms/pre-fill-attr-val.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "freelancer-cms/prefill-ms-name.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/accordions": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/application-card": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/application-form": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/button.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/content-rte.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/custom-scrollbar": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/expert-card": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/expert-card/expert-card-browse-loader.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/expertise-item.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/featured-case-study-card.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/featured-expert-card": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/featured-expert-card/featured-expert-card-price.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/form-embeds": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/form-embeds/checkbox-toggle": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/form-embeds/datepicker": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/form-embeds/disabler.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/form-embeds/form-input-filter": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/form-embeds/form-validation": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/form-embeds/form-validation/email-validation.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/form-embeds/input-preview.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/form-embeds/password-toggle": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/form-embeds/timepicker": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/form-embeds/turnstile-contents-fix.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/global.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/hide-scroll.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/learn-card.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/list-sort-dropdown": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/loader/loader.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/marquee-card.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/millify.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/modal": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/modal/reset-on-close.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/quill-editor.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/remove-cms-wrapper.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/replica-list/replica-list-relayout.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/spinner.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/start-proj-gen-contract": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/step-flow": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/step-flow/panel-nav-flow.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/table-stats.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/tabs": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/text-methods/text-methods.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "navbar-embeds": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "navbar-embeds/memberstack/free-paid-anon.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "navbar-embeds/memberstack/ms-code-field-link.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "navbar-embeds/nav-menu.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "navbar-embeds/navbar-dropdown.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "navbar-embeds/navbar-explore": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "navbar-embeds/transparent-nav-bg.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "opportunities---create.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "opportunities-3.0.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "profile-image-auth-shim.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "quiz-loader/quiz-loader.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "quiz-main": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "quiz-main/quiz-attribution.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "quiz-main/quiz-home.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "quiz-main/quiz-main.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "quiz-main/quiz-redirect.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "quiz-results.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "slater": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "starters-list-filter": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "starters-list-filter/custom-algolia-scripts": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "starters-list-filter/custom-algolia-scripts/clear-filter-visibility": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "starters-list-filter/custom-algolia-scripts/disable-apply.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "starters-list-filter/custom-algolia-scripts/filter-visibility-empty.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "starters-list-filter/custom-algolia-scripts/filters-text.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "starters-list-filter/custom-algolia-scripts/range-backfill-rate.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "starters-list-filter/custom-algolia-scripts/scroll-filter.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "starters-list-filter/filters-mobile.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "starters-list-filter/modal-mobile.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "starters-list-filter/total-filters.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "swiper-scroll": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "utils": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "utils/loader.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "utils/multi-step-failover.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "utils/posthog-identity.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "utils/posthog-track.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "utils/section-custom-toc/hide-empty-sections.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "utils/section-custom-toc/section-custom-toc-main.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "utils/wf-validate.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v2/footers": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/all-starters-favorites.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/auth-route.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/brand-account-controller.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/brand-profile-redirect.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/build-profile-redirect.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/complete-profile-back.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/complete-profile-loader.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/complete-profile-redirect.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/dashboard-action-items.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/dashboard-calls.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/messages-profile.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/messages.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/onboarding-done-redirect.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/onboarding-profile-preview.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/onboarding-tour.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/password-recovery.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/patch-onboarding-status.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/project-form.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/reviews.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/route-guard.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/saved-starters-roles.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/scheduling-auth.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/scheduling-availability-init.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/scheduling-availability-writer.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/scheduling-v3-stage.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/starter-dashboard-messages.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/starter-dashboard-points.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/starter-dashboard-stripe-connect.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/starters-ms-redirect.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/talent-application.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/xano-grabber/xano-grabber.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    }
+  }
+}

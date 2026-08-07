@@ -3,7 +3,7 @@ title: "Tab Counts"
 source: explore-search/explore-search-tab-counts.js
 ---
 
-Source: `explore-search/explore-search-tab-counts.js`
+Source: `explore-search/explore-search-tab-counts.js` — **v1.59.124**
 
 ## What it is
 
@@ -36,7 +36,9 @@ How it works:
 - **Active-tab mirror.** Every `[data-active-tab-count]` element is kept equal to the active tab's
   count. Re-synced after each update, and on `[data-tab-component="button-list"]` clicks (deferred
   with `setTimeout(…, 0)` so the tab controller flips the active class first — no new query fires
-  on a tab switch).
+  on a tab switch). Only **count-bearing** button-lists — those that contain a
+  `[data-tab-count-for]` span — participate in active-tab resolution; the first such list wins.
+  A decorative or unrelated `button-list` elsewhere on the page cannot steal the mirror.
 
 Idempotent via `window.__exploreSearchTabCountsInit`; bails out quietly if neither
 `[data-tab-count-for]` nor `[data-active-tab-count]` is present.
@@ -68,9 +70,9 @@ is in place for the first request.
 <span data-active-tab-count>0</span>
 ```
 
-The active tab button is matched as `.is-active` **or** `[data-tab-active="true"]` inside
-`[data-tab-component="button-list"]`; its child `[data-tab-count-for]` span says which index it
-represents.
+The active tab button is matched as `.is-active` **or** `[data-tab-active="true"]` inside the
+first `[data-tab-component="button-list"]` that also contains a `[data-tab-count-for]` span; that
+child span says which index it represents.
 
 ## xAttribute JSON
 
@@ -98,7 +100,7 @@ Active-tab mirror element:
 | --- | --- | --- | --- |
 | `data-tab-count-for` | span inside a tab button | Algolia index name | Its text is set to that index's `nbHits` (or `0`). |
 | `data-active-tab-count` | any text element | — | Its text mirrors the active tab's count. |
-| `data-tab-component="button-list"` | tab bar wrapper | — | Scopes active-tab detection and the tab-switch click re-sync. |
+| `data-tab-component="button-list"` | tab bar wrapper | — | Scopes active-tab detection and the tab-switch click re-sync. Only lists that contain a `[data-tab-count-for]` span count as search tab bars for the active-tab mirror. |
 | `data-tab-active="true"` | active tab button | `true` | Marks the active tab (alternative to the `is-active` class). |
 
 ## Notes & gotchas

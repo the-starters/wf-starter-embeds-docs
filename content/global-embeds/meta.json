@@ -6,6 +6,7 @@
     "list-sort-dropdown",
     "expert-card",
     "featured-expert-card",
+    "replica-list",
     "tabs-radio-filter",
     "custom-scrollbar",
     "form-embeds",
@@ -18,6 +19,7 @@
     "start-proj-gen-contract",
     "loader",
     "text-methods",
+    "millify",
     "style-embeds"
   ]
 }

@@ -105,6 +105,13 @@ Conventions to keep:
 - **`Source:` line.** The embed's path in the Webflow **Navigator**
   (e.g. `Global Embeds / Form Embeds / Checkbox Toggle`). Use a GitHub repo path only when the
   script is actually loaded through a jsDelivr CDN URL.
+- **`source` / `sources` frontmatter (CDN scripts).** Set `source:` to the primary
+  `starters-webflow` path (renders the Source link). For multi-script pages, also set
+  `sources:` for the additional Script Paths — Ownership unions `source` and `sources`,
+  so you do not need to repeat the primary path. After adding paths, run
+  `npm run ownership:generate` and commit `data/ownership.json`. Path-level Accountable
+  overrides live in `data/ownership-overrides.json`. See [`data/README.md`](../data/README.md)
+  for the author map, overrides, and CI check.
 - **File names.** As they appear in Webflow: `My Component - CSS`, `My Component - JS`.
 - **`xAttribute JSON` section.** One fenced ` ```json ` block per element that takes attributes
   (keys and values as strings), so hooks can be pasted straight into the xAttribute Webflow app

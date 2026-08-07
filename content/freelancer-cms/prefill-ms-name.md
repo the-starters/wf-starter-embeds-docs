@@ -50,6 +50,11 @@ No options. Poll interval (100ms) and retry cap (50) are constants in the script
 
 ## Notes & gotchas
 
+> **Not for `/hire/<slug>`.** On the Contract Generation form,
+> [`v3/project-form.js`](../v3/hire-contract-and-reviews.md) owns the hiring-manager
+> `[data-mscustom-fullname]` prefill. Keep this embed on the other freelancer CMS pages that still
+> load it; do not paste it back onto Hire.
+
 - If Memberstack never appears within the ~5s polling window, the script gives up with a
   `console.warn` (`[pre-fill-input]` prefix); nothing is filled.
 - If the member has no custom field matching any candidate key, a warning lists the keys that do
