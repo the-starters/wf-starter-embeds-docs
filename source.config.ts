@@ -19,13 +19,18 @@ export const docs = defineDocs({
       'starters-list-filter/**/*.md',
       'swiper-scroll/**/*.md',
       'utils/**/*.md',
+      'account-settings/**/*.md',
       'page-scripts/**/*.md',
+      'v3/**/*.md',
       'archives/**/*.md',
     ],
     // `source` is a repo-relative path in the-starters/starters-webflow (file or
     // folder) that the page documents; it renders as a Source link on the page.
+    // `sources` lists every Script Path for the Ownership block (multi-script
+    // pages); when omitted, Ownership falls back to `source` alone.
     schema: pageSchema.extend({
       source: z.string().optional(),
+      sources: z.array(z.string()).optional(),
     }),
     postprocess: {
       includeProcessedMarkdown: true,
@@ -42,7 +47,9 @@ export const docs = defineDocs({
       'starters-list-filter/**/meta.json',
       'swiper-scroll/**/meta.json',
       'utils/**/meta.json',
+      'account-settings/**/meta.json',
       'page-scripts/**/meta.json',
+      'v3/**/meta.json',
       'archives/**/meta.json',
     ],
     schema: metaSchema,

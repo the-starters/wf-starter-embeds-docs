@@ -1,0 +1,17 @@
+{
+  "title": "V3 Platform",
+  "pages": [
+    "index",
+    "route-guard",
+    "auth-route-and-redirects",
+    "accounts-and-forms",
+    "hire-contract-and-reviews",
+    "messaging",
+    "scheduling",
+    "dashboards",
+    "onboarding-tour",
+    "starter-onboarding",
+    "favorites",
+    "xano-grabber"
+  ]
+}

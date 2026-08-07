@@ -4,8 +4,12 @@
     "index",
     "opportunities-3-0",
     "opportunities-create",
+    "quiz-funnel",
+    "quiz-attribution",
     "quiz-results",
+    "quiz-loader",
     "messages-3-0",
+    "messages-profile",
     "profile-image-auth-shim"
   ]
 }

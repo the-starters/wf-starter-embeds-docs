@@ -114,6 +114,72 @@ that subflow (Continue with nothing selected reproduces the `console.warn`):
 
 <StepFlowDemo variant="multi-sub" />
 
+### Shared tail steps (multi-sub)
+
+When every branch of a multi-sub flow ends on the same screen — a review + submit step — put that
+step **at flow-root level, outside every `data-form-flow-subflow` wrapper**, and point each
+branch's last button at it with `data-form-flow-target`. One tail serves all branches instead of
+the same step being duplicated inside each of them.
+
+This is a **topology, not a new attribute set**: it uses `data-form-flow-step` /
+`data-form-flow-element` and `data-form-flow-target` exactly as documented above.
+
+```html
+<div data-form-flow="cancel-membership" data-form-flow-type="multi-sub">
+  <div data-form-flow-entry data-form-flow-element="step-1">…radio gate…</div>
+
+  <div data-form-flow-subflow data-form-flow-element="step-2a">
+    <div data-form-flow-step data-form-flow-element="step-2a-1">…</div>
+    <div data-form-flow-step data-form-flow-element="step-2a-2">…</div>
+    <div data-form-flow-button-group="step-2a-1">
+      <button type="button" data-form-flow-action="next">Continue</button>
+      <button type="button" data-form-flow-action="back">Go Back</button>
+    </div>
+    <div data-form-flow-button-group="step-2a-2">
+      <!-- leaves the branch for the root-level tail -->
+      <button type="button" data-form-flow-action="next" data-form-flow-target="step-3">Continue</button>
+      <button type="button" data-form-flow-action="back">Go Back</button>
+    </div>
+  </div>
+
+  <div data-form-flow-subflow data-form-flow-element="step-2b">
+    <div data-form-flow-step data-form-flow-element="step-2b-1">…</div>
+    <div data-form-flow-button-group="step-2b-1">
+      <button type="button" data-form-flow-action="next" data-form-flow-target="step-3">Continue</button>
+    </div>
+  </div>
+
+  <!-- The shared tail: a root-level step, outside every subflow wrapper. -->
+  <div data-form-flow-step data-form-flow-element="step-3">…review…</div>
+  <div data-form-flow-button-group="step-3">
+    <button type="button" data-form-flow-action="back">Go Back</button>
+    <button type="submit">Confirm</button>
+  </div>
+</div>
+```
+
+How the engine resolves it:
+
+- **Forward.** A `next` whose `data-form-flow-target` is **not** inside the active branch but
+  **does** exist at flow-root level widens the scope to the root and drops the branch: the branch
+  wrapper is hidden and the tail step shows with its own button group. A target that is inside the
+  branch, or that exists nowhere, keeps the old behaviour (branch scope, then a `console.warn`
+  naming the step). Without this widening the lookup would miss and every content step would stay
+  hidden — a blank panel.
+- **A plain `next` inside a branch is unaffected.** With an active branch the scope is that
+  branch's own steps, so the root-level tail is not in scope and Continue still walks the branch in
+  DOM order.
+- **Back.** History stores the **wrapper element**, not just a step id, so `back` from the tail
+  restores the exact branch the member came from, and backing out further walks that branch's steps
+  and finally returns to the entry gate.
+
+**Multiple tails are supported, and each one is terminal.** Two branches can funnel into `step-3`
+while a third funnels into `step-3a`; both are alternative endpoints, never a sequence. With no
+active branch a multi-sub flow reports **no** next step, so every tail's `type="submit"` button
+falls through to Webflow's native submit even when another tail sits later in the DOM. (This gate
+applies only to multi-sub flows — root-level steps chaining in DOM order is a linear flow's core
+mechanism and still works there, with only its last step's submit terminal.)
+
 An optional hub holds several flows inside `data-form-flow="main-container"` with a
 `reset-panel` shown on load (panel switching itself needs Panel Nav Flow):
 
@@ -281,7 +347,8 @@ window.lumos.formFlow.showResetPanel()
 - **Terminal submit passes through.** A real `type="submit"` button with no explicit form-flow
   attribute and no next step (the final Confirm) is *not* `preventDefault()`-ed; it falls through
   to Webflow's native form submit. Make the last submitting button a genuine submit, not
-  `data-form-flow-action="next"`.
+  `data-form-flow-action="next"`. In a multi-sub flow every [shared tail](#shared-tail-steps-multi-sub)
+  submit is terminal, because a flow with no active branch reports no next step.
 - **Explicit opt-in.** A styled link or button with only `data-button-style` never navigates the
   flow; give it an action/target/trigger attribute or put the button inside a
   `data-form-flow-button-group`.

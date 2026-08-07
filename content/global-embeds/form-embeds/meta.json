@@ -8,6 +8,7 @@
     "checkbox-toggle",
     "timepicker",
     "input-preview",
-    "disabler"
+    "disabler",
+    "turnstile-contents-fix"
   ]
 }

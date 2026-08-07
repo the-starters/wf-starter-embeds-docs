@@ -9,9 +9,11 @@ import {
 } from 'fumadocs-ui/layouts/docs/page';
 import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/components/mdx';
+import { OwnershipBlock } from '@/components/ownership-block';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { gitConfig, sourceRepoUrl } from '@/lib/shared';
+import { ownershipRowsForPage } from '@/lib/ownership';
 
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const params = await props.params;
@@ -20,6 +22,7 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
 
   const MDX = page.data.body;
   const markdownUrl = getPageMarkdownUrl(page).url;
+  const ownershipRows = ownershipRowsForPage(page);
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
@@ -43,6 +46,7 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
           </a>
         )}
       </div>
+      <OwnershipBlock rows={ownershipRows} />
       <DocsBody>
         <MDX
           components={getMDXComponents({

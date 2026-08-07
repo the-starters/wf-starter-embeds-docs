@@ -62,6 +62,11 @@ then the `mm/dd/yy` default.
 
 ## Notes & gotchas
 
+> **Not for `/hire/<slug>`.** On the Contract Generation form,
+> [`v3/project-form.js`](../v3/hire-contract-and-reviews.md) owns `[data-set-current-date]`
+> initialization. Keep this embed on the other freelancer CMS pages that still load it; do not
+> paste it back onto Hire.
+
 - Without jQuery UI, any format token other than `mm`, `dd`, `yy` is left in the output as-is.
   In the fallback, `yy` produces the 4-digit year.
 - Filling is once-per-element: a value the user changed afterwards is never overwritten, even

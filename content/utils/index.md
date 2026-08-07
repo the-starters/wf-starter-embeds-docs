@@ -24,6 +24,10 @@ custom code:
 - **[Multi-Step Failover](./multi-step-failover.md)** (`multi-step-failover.js`): probes the
   agency-hosted multi-step form engine on the build-profile wizards and injects our mirrored
   copy (`vendor/videsigns-multi-step.js`) if it's gone.
+- **[Section Custom TOC](./section-custom-toc/index.md)** (`section-custom-toc/`): an
+  attribute-driven section nav bar that tracks which section is in view, plus the
+  [Hide Empty Sections](./section-custom-toc/hide-empty-sections.md) companion that hides a
+  section and its nav links when it has no content.
 - **[PostHog Identity](./posthog-identity.md)** (`posthog-identity.js`): Memberstack → PostHog
   identity bridge (`identify` on login, `reset` on logout).
 - **[PostHog Track](./posthog-track.md)** (`posthog-track.js`): `StartersTrack.track()`, the

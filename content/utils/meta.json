@@ -5,6 +5,7 @@
     "wf-validate",
     "loader",
     "multi-step-failover",
+    "section-custom-toc",
     "posthog-identity",
     "posthog-track"
   ]
