@@ -25,8 +25,11 @@ It does three things:
 
 ```
 Expert Card
-└── Expert Card - JS
+├── Expert Card - JS
+└── expert-card-browse-loader.js   (see [Browse Loader](./browse-loader.md))
 ```
+
+Path in the CDN repo: `global-embeds/expert-card/expert-card-browse-loader.js`.
 
 There is no companion CSS; the reveal/equalize styles consuming the class and variable above are
 built in Webflow.

@@ -3,7 +3,7 @@ title: "Quiz Results"
 source: quiz-results.js
 ---
 
-Source: `quiz-results.js` (repo root) — **v1.59.118**
+Source: `quiz-results.js` (repo root) — **v1.59.131**
 
 ## What it is
 
@@ -27,12 +27,16 @@ up the quiz state saved by `quiz-main.js` before signup and turns it into the re
 ## File structure
 
 ```
-quiz-results.js       (repo root — readable source, @release v1.59.118)
+quiz-results.js       (repo root — readable source, @release v1.59.131)
 quiz-results.min.js   (repo root — minified build)
 ```
 
 Loaded on the quiz results page via jsDelivr with `defer`. Init is guarded by a controller
 flag, so double-inclusion is safe.
+
+```html
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/quiz-results.js"></script>
+```
 
 > **`quiz-results.min.js` is not rebuilt with every change.** Its last commit predates most of
 > the behaviour on this page, so treat the minified file as **potentially stale** and load
@@ -85,9 +89,10 @@ changes the payload or when the recommendations are refreshed.
 
 The quiz save is the **first authenticated moment** a paid click can be attached to a member, so
 the attribution cookies written sitewide by
-[Quiz Attribution](./quiz-attribution.md) ride into the **same `updateMember` call** as
-`starter-quiz` — one write, not two. This is the `/quiz` half of the split: `quiz-attribution.js`
-writes the fields itself only on `/sign-up`.
+[Signup Attribution](./quiz-attribution.md) (`v3/signup-attribution.js`) ride into the **same
+`updateMember` call** as `starter-quiz` — one write, not two. This is the `/quiz` half of the
+split: `v3/signup-attribution.js` writes the fields itself on every armed signup surface except
+`/quiz`.
 
 The cookie-to-field map is the same eight pairs:
 
@@ -102,7 +107,7 @@ The cookie-to-field map is the same eight pairs:
 | `fbp` | `fbp` |
 | `event_id` | `event-id` |
 
-**This map is duplicated in `quiz-main/quiz-attribution.js` on purpose** and the two must stay in
+**This map is duplicated in `v3/signup-attribution.js` on purpose** and the two must stay in
 step; a field ID that exists in only one of them is a value Memberstack silently drops on one of
 the two signup routes.
 
@@ -197,6 +202,13 @@ missing or is not a string are dropped rather than coerced.
 
 The fix shipped as **v1.59.112**; the source header briefly read `v1.59.111` before that tag was
 taken by a concurrent release, so both numbers appear in the history for the same change.
+
+## Role display names on recommendation cards (v1.59.131)
+
+Recommendation cards resolve role slugs through a `ROLE_NAMES` map before they render — for
+example `ui-ux-designer` → `UI/UX Designer`. The map is the same family as
+`v3/saved-starters-roles.js` and `algolia-result-modifiers/roles.js`. A slug with no map entry
+falls back to a title-cased version of the slug.
 
 ## Notes & gotchas
 

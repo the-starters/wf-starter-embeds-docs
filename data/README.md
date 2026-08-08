@@ -1,6 +1,10 @@
 # Ownership data
 
-Precomputed **Ownership** (Accountable + Last Editor) for Script Paths documented by this site. See workspace ADR `docs/adr/0001-embed-ownership-on-docs.md`.
+Precomputed **Ownership** (Accountable + Last Editor) for Script Paths documented by this site.
+Accountable is the first git adder of the Script Path (`--follow`); Last Editor is the last
+non-merge commit. CI fails when the committed JSON is stale. Path overrides live in
+`ownership-overrides.json`. For how to wire `source` / `sources` on a page, see
+[`content/adding-a-page.md`](../content/adding-a-page.md).
 
 | File | Role |
 | --- | --- |

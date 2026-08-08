@@ -28,9 +28,10 @@ one exception is [Quiz Loader](./quiz-loader.md), which must load in the `<head>
 
 - **[Quiz Funnel](./quiz-funnel.md)** (`quiz-main/`): the homepage hero form, the `/quiz` entry
   redirect, and the `/quiz` category flow that produce the saved quiz payload.
-- **[Quiz Attribution](./quiz-attribution.md)** (`quiz-main/quiz-attribution.js`): sitewide
-  UTM/Meta ad capture, `CompleteRegistration` on signup, and `/sign-up` Memberstack field
-  persistence (the `/quiz` path rides those cookies into [Quiz Results](./quiz-results.md)).
+- **[Signup Attribution](./quiz-attribution.md)** (`v3/signup-attribution.js`): sitewide
+  UTM/Meta ad capture, form-detection for signup surfaces, `CompleteRegistration` on signup,
+  and Memberstack field persistence (the `/quiz` path rides those cookies into
+  [Quiz Results](./quiz-results.md)).
 - **[Quiz Results](./quiz-results.md)** (`quiz-results.js`): the quiz results page controller
   that renders results, fetches Algolia recommendations, and persists quiz state to
   Memberstack.
@@ -38,6 +39,8 @@ one exception is [Quiz Loader](./quiz-loader.md), which must load in the `<head>
   paint gate and "results ready" signal for the `/quiz-results` loading component.
 
 **Messaging**
+
+These scripts live in `v3/` but are documented here because they are page-scoped.
 
 - **[Messages 3.0](./messages-3-0.md)** (`v3/messages.js`): the `/messages` TalkJS inbox
   bootstrap, including `?with=` deep links.

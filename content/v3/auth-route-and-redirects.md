@@ -6,22 +6,26 @@ sources:
   - v3/complete-profile-redirect.js
   - v3/brand-profile-redirect.js
   - v3/build-profile-redirect.js
+  - build-profile-draft-identity-guard.js
 ---
 
 Source: `v3/auth-route.js`, `v3/complete-profile-redirect.js`,
-`v3/brand-profile-redirect.js`, `v3/build-profile-redirect.js`
+`v3/brand-profile-redirect.js`, `v3/build-profile-redirect.js`,
+`build-profile-draft-identity-guard.js`
 
 ## What it is
 
-Four modules that answer one question in different places: **where does this member
-belong right now?** `auth-route.js` answers it once, at login, on the page every V3 login
-passes through. The other three answer it on page entry, for a member who arrived from a
-bookmark, the back button, a stale email link, or a marketing CTA — cases a login-time
-check can never cover.
+Four redirect modules that answer one question in different places: **where does this
+member belong right now?** `auth-route.js` answers it once, at login, on the page every V3
+login passes through. The other three answer it on page entry, for a member who arrived
+from a bookmark, the back button, a stale email link, or a marketing CTA — cases a
+login-time check can never cover. A fifth companion,
+[`build-profile-draft-identity-guard.js`](#build-profile-draft-identity-guardjs--member-scoped-draft-storage),
+scopes the Build-profile wizard's legacy localStorage draft to the current member.
 
-All four read their **role** from the [route guard's](./route-guard.md) exported contract
-rather than a second copy of the plan-ID table, so all four must load **after**
-`v3/route-guard.js`. All four **fail open**: only a positive, unambiguous answer
+All four redirect modules read their **role** from the [route guard's](./route-guard.md)
+exported contract rather than a second copy of the plan-ID table, so all four must load
+**after** `v3/route-guard.js`. All four **fail open**: only a positive, unambiguous answer
 redirects. This is funnel UX, never a security boundary.
 
 ## The two funnels
@@ -249,6 +253,26 @@ on 2026-08-04 because the row is created *before* the member finishes the form: 
 955 rows carry an empty `profile_type_30`**, and every one of those members was being
 pushed out of a step they had never completed. `onboarding_done` is true on zero rows
 today, which leaves the `/starter-dashboard` leg unexercised by production data.
+
+## `build-profile-draft-identity-guard.js` — member-scoped draft storage
+
+Full Profile and Consult still use the legacy `build_profile` localStorage key in their
+authored Webflow code. A browser can host sequential Memberstack sessions, so that unscoped
+key must never be readable or writable until the current stable member ID is known. This
+guard (repo root, **VERSION `1.0.0`**) preserves the legacy page contract while routing it
+to the physical key `ts:build_profile:member:<id>`.
+
+**Load synchronously in the page head, before the authored form scripts — no `defer`.**
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/build-profile-draft-identity-guard.js"></script>
+```
+
+Until identity resolves, legacy reads return `null`. Any load-time draft restore must
+therefore run through `window.waitForMember(cb)` (also exposed on the frozen guard), so the
+first legacy read inside the callback already sees the member-scoped draft. The guard
+dispatches `ts:build-profile-draft-identity` when resolution finishes, and boots behind
+`window.__TS_BUILD_PROFILE_DRAFT_GUARD__`.
 
 ## Notes & gotchas
 

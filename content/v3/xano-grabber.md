@@ -36,7 +36,7 @@ attribute, so a sitewide install is also safe.
 
 ```html
 <script defer src="https://cdn.jsdelivr.net/gh/the-starters/wf-xano@v0.28.0/wf-xano.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@vX.Y.Z/v3/xano-grabber/xano-grabber.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/v3/xano-grabber/xano-grabber.js"></script>
 ```
 
 Prefer the immutable tag over `@latest`: bumping it is then a deliberate Webflow edit, and a

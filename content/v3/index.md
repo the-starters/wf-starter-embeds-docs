@@ -80,6 +80,8 @@ These hold across the whole group, so the individual pages below do not repeat t
   role chips.
 - **[Xano Grabber](./xano-grabber.md)** (`xano-grabber/xano-grabber.js`): mirrors an
   already-rendered value into another element on the page.
+- **[Signup Attribution](../page-scripts/quiz-attribution.md)** (`v3/signup-attribution.js`):
+  sitewide UTM/Meta ad capture; documented under Page Scripts next to the quiz funnel.
 
 Most pages here are **cluster overviews**: enough to know what each script owns, where it
 installs, and which hooks it reads. The scripts carry long header comments and each has a

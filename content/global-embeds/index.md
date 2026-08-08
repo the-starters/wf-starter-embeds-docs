@@ -15,13 +15,15 @@ group in this sidebar; a component's page documents its JS and CSS together.
 - **Application Card.** Application/CMS card behaviour.
 - **Application Form.** Form-specific styles.
 - **Custom Scrollbar.** Styled custom scrollbars.
-- **Expert Card.** Expert card behaviour, plus the browse loader that masks list churn on
-  `/all-starters`.
+- **[Expert Card](./expert-card/index.md).** Expert card behaviour, plus the browse loader that
+  masks list churn on `/all-starters`.
 - **Featured Expert Card.** Featured card behaviour, plus its price script.
-- **Replica List.** Curated "top X" lists rendered by wf-algolia's static-list mode from a
-  hand-ranked Algolia replica, plus the relayout companion for lists that start out hidden.
+- **[Replica List](./replica-list/index.md).** Curated "top X" lists rendered by wf-algolia's
+  static-list mode from a hand-ranked Algolia replica, plus the relayout companion for lists that
+  start out hidden.
 - **Form Embeds.** The form utilities: input preview, checkbox toggle, datepicker, input filter,
-  validation, password toggle, timepicker, disabler, Turnstile contents fix.
+  validation, password toggle, timepicker, disabler,
+  [Turnstile Contents Fix](./form-embeds/turnstile-contents-fix.md).
 - **List Sort Dropdown.** Dropdown-driven list sorting.
 - **Modal.** Modal open/close, plus the reset-on-close helper.
 - **Start Project: Generate Contract.** Contract preview flow.
@@ -31,7 +33,7 @@ group in this sidebar; a component's page documents its JS and CSS together.
 - **Remove CMS Wrapper.** Unwraps Webflow Collection List wrappers.
 - **Loader.** The shared `setLoader()` loading-overlay helper.
 - **Text Methods.** Shared text helpers (`truncateText`).
-- **Millify.** Attribute-driven number formatting (`12345` → `12.3K`).
+- **[Millify](./millify.md).** Attribute-driven number formatting (`12345` → `12.3K`).
 - **Style Embeds.** Inventory of the style-only CSS embeds (global styles, buttons, cards,
   spinner, scrollbar hiding, Quill overrides).
 

@@ -11,6 +11,12 @@ Prints a member's plan and billing dates into the page, formatted `Jan 10, 2000`
 pause UI can tell a member the date their subscription actually resumes — which by default is
 their paid-through date plus the pause, **not** their signup date plus the pause.
 
+Load it with `defer` in the page footer, after the Memberstack script:
+
+```html
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/account-settings/plan-dates.js"></script>
+```
+
 Tag any text element with the field you want. That is the only attribute required:
 
 ```html

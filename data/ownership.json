@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-07T20:26:19.742Z",
+  "generatedAt": "2026-08-08T10:23:41.897Z",
   "scriptsRepo": "the-starters/starters-webflow",
-  "scriptsSha": "cbd5af8bec4dfd4511f239f0ee34a1305b768b79",
+  "scriptsSha": "89e15924a8d08fbf6479d23b988acb25d361a859",
   "scripts": {
     "account-settings": {
       "accountable": {
@@ -88,6 +88,28 @@
       "lastEditor": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "build-profile-draft-identity-guard.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "complete-profile-photo.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -861,17 +883,6 @@
       },
       "accountableOverridden": false
     },
-    "quiz-main/quiz-attribution.js": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
     "quiz-main/quiz-home.js": {
       "accountable": {
         "login": "jpthedio",
@@ -1164,8 +1175,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jpthedio",
-        "displayName": "JP Dionisio"
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
@@ -1441,6 +1452,17 @@
       "lastEditor": {
         "login": "jpthedio",
         "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/signup-attribution.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },

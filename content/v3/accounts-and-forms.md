@@ -8,19 +8,21 @@ sources:
   - v3/starters-ms-redirect.js
   - v3/complete-profile-back.js
   - v3/complete-profile-loader.js
+  - complete-profile-photo.js
 ---
 
 Source: `v3/brand-account-controller.js`, `v3/talent-application.js`,
 `v3/password-recovery.js`, `v3/starters-ms-redirect.js`,
-`v3/complete-profile-back.js`, `v3/complete-profile-loader.js`
+`v3/complete-profile-back.js`, `v3/complete-profile-loader.js`,
+`complete-profile-photo.js`
 
 ## What it is
 
 The modules that own **account creation and account editing** on the V3 site: the Brand
 signup and Build Account forms, the Talent apply intake, the shared password-recovery
-chain, the per-page signup redirect marker, and the two small UX companions that dress the
-`/complete-profile` form — an in-page back button and a submit spinner. Every one of them
-keeps the Designer-authored forms intact; none generates form or link markup.
+chain, the per-page signup redirect marker, and the `/complete-profile` companions — an
+in-page back button, a submit spinner, and the Brand profile-image binder. Every one of
+them keeps the Designer-authored forms intact; none generates form or link markup.
 
 ## Authority contract
 
@@ -31,9 +33,12 @@ The four account modules work inside the same split:
   `user_v3` and the matching Brand or Talent role row, keyed by the stable Memberstack
   member ID.
 
-The two `/complete-profile` companions sit outside that split entirely. Neither reads
-Memberstack, neither calls the network, and neither needs the route guard's role contract:
-one reads `document.referrer`, the other watches one attribute on the form.
+The back-button and submit-spinner companions sit outside that split entirely: neither
+reads Memberstack, neither calls the network, and neither needs the route guard's role
+contract — one reads `document.referrer`, the other watches one attribute on the form.
+The Brand profile-image binder sits on the Memberstack side of the split: it stamps
+`data-ms-action="profile-image"` so Memberstack owns the upload, and Xano endpoint #1513
+mirrors the result into `brands_v3.image_link`.
 
 ## `brand-account-controller.js` — signup plan, Build Account, identity email
 
@@ -295,6 +300,36 @@ for looking at the visual state without submitting. Checking `state.minMs` on th
 page is the fastest way to catch a `data-loader` value that did not parse. The repo's
 `v3/COMPLETE-PROFILE-LOADER-WIRING.md` carries the Designer checklist, the `display: contents`
 trap, and the release gate.
+
+## `complete-profile-photo.js` — Brand profile image via Memberstack
+
+Install one deferred page-level tag on `/complete-profile` only. The file lives at the
+**repo root**, not under `v3/`.
+
+```html
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/complete-profile-photo.js"></script>
+```
+
+`/complete-profile` is a Brand onboarding surface. The previous controller posted the image
+to Xano's Starter-only endpoint (#1390), which requires a `freelancers_v3` row and therefore
+failed every Brand. This module instead binds Memberstack's supported
+`data-ms-action="profile-image"` uploader onto the authored control, so Memberstack owns the
+image and no Starter endpoint is involved. Xano endpoint **#1513** consumes the resulting
+`member.updated` webhook and mirrors `member.profileImage` into `brands_v3.image_link`.
+
+Allowed hosts match the other V3 scripts (`the-starters-3-0.webflow.io`, `thestarters.com`,
+`www.thestarters.com`) plus `localhost`, `127.0.0.1`, and `*.trycloudflare.com` for the
+dev-tunnel loop. Off-path or off-host loads return early with no side effects.
+
+### Markup contract
+
+| Hook | On | Purpose |
+| --- | --- | --- |
+| `.app-form_upload.is-complete-profile .upload-btn` | the upload button | Receives `data-ms-action="profile-image"` |
+| `[data-complete-profile-image]` | the preview `<img>` | Also receives `data-ms-member="profile-image"` so Memberstack can refresh the preview |
+
+Boot guard: `window.__startersBrandProfileImageBound`. Re-run or probe with
+`window.StartersBrandProfileImage.init()`.
 
 ## `talent-application.js` — the apply intake
 
