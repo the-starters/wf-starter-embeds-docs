@@ -11,6 +11,12 @@ Attribute-driven number formatting: long numbers render as `1.2K` / `3.4M` / `5B
 `data-millify` and the embed rewrites its text on load, and again whenever a matching element is
 added to the DOM.
 
+One deferred tag in **Project Settings → Custom Code → Footer Code** (or a page footer):
+
+```html
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/global-embeds/millify.js"></script>
+```
+
 The formatting algorithm is adapted from [millify v6.1.0](https://www.npmjs.com/package/millify)
 (MIT), inlined rather than bundled so the embed stays a single dependency-free file.
 

@@ -27,6 +27,11 @@ utils/section-custom-toc/hide-empty-sections.js        optional companion, docum
 
 Load both with `defer` from jsDelivr. Run-once guard: `window.__startersSectionTocInit`.
 
+```html
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/utils/section-custom-toc/section-custom-toc-main.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/utils/section-custom-toc/section-custom-toc-main.css">
+```
+
 ## Markup contract
 
 ```html

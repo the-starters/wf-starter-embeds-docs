@@ -42,6 +42,8 @@ Beyond the API bridge, the core owns:
   member is never stranded with no visible action. (Brand-view state elements sit inside the
   async-hidden talent wrapper, so the guard is a no-op for brands.)
 - **Apply / edit-application modals.** Cover-letter submission and the success states.
+- **Project dashboard actions.** Contract / End / Review controls on brand and
+  starter project cards (see [Project dashboard actions](#project-dashboard-actions)).
 - **Generate Invoice.** The Starter dashboard's invoice modal against Xano
   `invoices/create/v3` (see [Generate Invoice](#generate-invoice)).
 - **Funnel analytics.** Capture points route through the shared
@@ -218,6 +220,51 @@ for the success title.
 ```sh
 node --test opportunities-close-modal-title.test.js
 ```
+
+## Project dashboard actions
+
+The same file also wires the **Contract**, **End**, and **Review** controls on brand and
+starter project cards. The workflow binds only on the dashboard project lists
+(`wf-xano-instance="dash-brand-projects"` / `dash-projects`) and only when the path is
+`/brand-dashboard` or `/starter-dashboard`. Elsewhere the selectors stay inert.
+
+Cards are `.project_item[data-wf-xano-id]`. The script strips legacy `wf-xano-link` values
+and stamps stable `data-project-action` hooks so the Designer can keep either markup style.
+
+| Action | Author as | Runtime stamp |
+| --- | --- | --- |
+| Contract | `a[href="#contract"]` or `[data-project-action="contract"]` | `data-project-action="contract"` |
+| End | `[wf-xano-link="project-end"]` or `[data-project-action="end"]` | strips `wf-xano-link`, stamps `data-project-action="end"` |
+| Review | `[wf-xano-link="review_starter"]` or `[data-project-action="review"]` | strips `wf-xano-link`, stamps `data-project-action="review"` and `href="#review-starter"` |
+
+### Lifecycle and visibility
+
+Lifecycle resolution prefers `project.status === 'pending'` over a finer
+`lifecycle_state` — pending wins, because cancel is authorized from that phase even when
+the lifecycle column has already moved ahead.
+
+| Control | Shown when |
+| --- | --- |
+| Contract | `pandadoc_document_id` is present **and** `contract_status` is one of `sent`, `viewed`, or `partial` |
+| End | Lifecycle is **not** a terminal state (`completed`, `terminated`, `canceled`, `cancelled`) |
+| Review | Brand role only, and the project is `review_eligible` with no existing review |
+
+Completed contracts use a separate protected-PDF delivery path; the recipient view/sign
+session used here does not cover that case.
+
+The End label follows lifecycle state:
+
+| State | Label |
+| --- | --- |
+| `pending` | Cancel Project |
+| `completion_requested` | Confirm Completion |
+| `termination_requested` | Confirm End |
+| anything else (non-terminal) | End Project |
+
+Action feedback lands on the control's `.button_main-wrap` (or the control itself) as
+`data-project-action-result="success|error"`, then clears after a short timeout.
+
+Invoice remains a separate flow — see [Generate Invoice](#generate-invoice).
 
 ## Generate Invoice
 

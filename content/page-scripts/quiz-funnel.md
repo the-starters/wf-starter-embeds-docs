@@ -30,9 +30,8 @@ member's answers and hand them to [Quiz Results](./quiz-results.md) through
 The quiz results page (`quiz-results.js`) and the head-time loading gate
 ([Quiz Loader](./quiz-loader.md)) are separate controllers with their own pages.
 
-`quiz-main/` also holds **`quiz-attribution.js`**, which is *not* part of this funnel: it loads
-site-wide and captures UTM/Meta ad attribution on every page. See
-[Quiz Attribution](./quiz-attribution.md).
+Sitewide UTM/Meta ad attribution lives in `v3/signup-attribution.js`, not in this funnel. See
+[Signup Attribution](./quiz-attribution.md).
 
 ## File structure
 
@@ -41,14 +40,12 @@ quiz-main/
 ├── quiz-home.js         (~170 lines — home page)
 ├── quiz-redirect.js     (~280 lines — /quiz entry gate)
 ├── quiz-main.js         (~1,540 lines — /quiz flow)
-├── quiz-attribution.js  (~820 lines — sitewide, not part of this funnel)
 └── quiz-tabs.js, quiz-tabs-toggler.js, quiz-page-theme.js, *.css
 ```
 
 The tab/theme files power the tab-driven quiz layout (panels, Previous/Next gating, page
 background theming) and are not part of the funnel contract described here.
-`quiz-attribution.js` shares the folder but not the lifecycle — it is loaded site-wide, and its
-contract is documented on [Quiz Attribution](./quiz-attribution.md).
+Attribution lives in `v3/` — see [Signup Attribution](./quiz-attribution.md).
 
 **Load order.** On the home page, one deferred tag:
 
@@ -252,5 +249,5 @@ node --test quiz-main/*.test.js quiz-results-config.test.js quiz-taxonomy-compat
   [The draft boundary](#the-draft-boundary); this is the rule that keeps a logged-out visitor
   from inheriting the previous member's answers in the same tab.
 - `quiz-main.js` is tagged **v1.59.88** and `quiz-redirect.js` **v1.59.84**; `quiz-home.js`
-  carries no release header. `quiz-attribution.js` sits in the same folder at **v1.59.119** but
-  is a sitewide script — see [Quiz Attribution](./quiz-attribution.md).
+  carries no release header. Sitewide attribution is `v3/signup-attribution.js` — see
+  [Signup Attribution](./quiz-attribution.md).

@@ -15,6 +15,12 @@ exactly one success div.
 Nothing is submitted, fetched, or validated here: the script only decides which item inside
 `.w-form-done` is visible.
 
+Load it with `defer` in the page footer, after the Memberstack script:
+
+```html
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/account-settings/ms-form-cancel-state.js"></script>
+```
+
 ## Markup contract
 
 Tag the Form Block, the buttons, and the messages:

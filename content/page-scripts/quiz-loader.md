@@ -32,6 +32,10 @@ gate has to run at parse time, before `<body>` exists — that is the whole poin
 deferred tag runs after the document is parsed, by which time the pre-rendered loader has
 already painted and the gate is pointless.
 
+```html
+<script src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/quiz-loader/quiz-loader.js"></script>
+```
+
 Run-once guard: a second load returns early once `window.startersQuizLoaderController` is set.
 
 ## Skip-on-refresh paint gate

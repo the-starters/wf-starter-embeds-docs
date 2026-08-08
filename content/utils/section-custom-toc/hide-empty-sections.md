@@ -13,6 +13,10 @@ key, and while the section is empty (or hidden by something else) both disappear
 landing later — a CMS render, a fetch, Webflow conditional visibility flipping — brings both
 back on its own.
 
+```html
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/utils/section-custom-toc/hide-empty-sections.js"></script>
+```
+
 It ships beside the [Section Custom TOC](./index.md) because that is where it earns its keep: a
 TOC link for an empty REVIEWS panel is worse than no link at all. Nothing couples the two
 scripts, though, and either works without the other.

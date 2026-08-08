@@ -1,37 +1,39 @@
 ---
-title: "Quiz Attribution"
-source: quiz-main/quiz-attribution.js
+title: "Signup Attribution"
+description: "Sitewide UTM and Meta ad attribution capture, CompleteRegistration, and Memberstack field persistence."
+source: v3/signup-attribution.js
 ---
 
-Source: `quiz-main/quiz-attribution.js` (loaded via jsDelivr CDN) — **v1.59.119**
+Source: `v3/signup-attribution.js` (loaded via jsDelivr CDN) — **v1.59.135**
 
 ## What it is
 
-The **sitewide UTM and Meta ad attribution capture**. Despite living in `quiz-main/`, it is not
-a quiz-only script: a paid click can land on any page, so this file loads site-wide and re-runs
-its capture on every page load. A visitor who arrives on the blog and signs up three pages later
-still carries their click through.
+The **sitewide UTM and Meta ad attribution capture**. It lives in `v3/` (not `quiz-main/`)
+because a paid click can land on any page: this file loads site-wide and re-runs its capture
+on every page load. A visitor who arrives on the blog and signs up three pages later still
+carries their click through.
 
 It does three things:
 
 - **Capture.** Copies ad parameters off the URL into first-party cookies, and generates a stable
   `event_id` for event deduplication.
-- **CompleteRegistration.** On the two signup pages, fires the Meta Pixel conversion event when a
-  logged-out visitor becomes a member.
-- **Persistence.** Turns those cookies into Memberstack custom fields on the `/sign-up` route.
-  The `/quiz` route is handled by [Quiz Results](./quiz-results.md) instead.
+- **CompleteRegistration.** On an armed signup surface, fires the Meta Pixel conversion event
+  when a logged-out visitor becomes a member.
+- **Persistence.** Turns those cookies into Memberstack custom fields on every signup route
+  **except** `/quiz`, which is written by [Quiz Results](./quiz-results.md) instead.
 
 ## File structure
 
 ```
-quiz-main/quiz-attribution.js   (~820 lines)
+v3/signup-attribution.js        (~1,000 lines — sitewide)
+v3/signup-attribution.test.js   focused regressions + map drift guard
 ```
 
 Load it **site-wide** with `defer` (Webflow site-wide custom code), not in a single page's
 footer:
 
 ```html
-<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/quiz-main/quiz-attribution.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/v3/signup-attribution.js"></script>
 ```
 
 The Meta Pixel base snippet (pixel `775648331097942`) must already be in Webflow **site-head**
@@ -83,26 +85,44 @@ silently drops the value.
 **The same map is duplicated in `quiz-results.js`**, which owns the write for the quiz funnel —
 see [Quiz Results → Attribution persistence](./quiz-results.md#attribution-persistence). Keep the
 two in step: a field ID present in only one of them is a value Memberstack silently drops on one
-of the two signup routes. A drift guard in `quiz-main/quiz-attribution.test.js` asserts both maps
-still match.
+of the signup routes. A drift guard in `v3/signup-attribution.test.js` asserts both maps still
+match.
 
-## Signup pages
+## Signup surfaces (path map + form detection)
 
-Exactly two pages can turn a visitor into a member, and each carries one Memberstack signup form
-and no login form — so on either page a logged-out to logged-in transition can only be that form
-succeeding. Policy for both lives in one `SIGNUP_PATH_POLICY` map:
+A page arms the signup watch when **either**:
+
+1. Its normalized path is in the hand-audited `SIGNUP_PATH_POLICY` map, **or**
+2. The DOM has at least one `form[data-ms-form="signup"]` and **no** `[data-ms-form="login"]`
+   anywhere on the page.
+
+The path map is checked first and its policy is used verbatim, so the two audited pages cannot
+regress if their markup changes:
 
 | Path | `directSave` | Who writes the fields |
 | --- | --- | --- |
 | `/quiz` | `false` | `quiz-results.js`, on the results page right after. |
 | `/sign-up` | `true` | This script, before the `/brand-dashboard` redirect. |
 
-`/login` and `/starter-login` are deliberately **absent**: they are logins, not signups.
+Form detection covers every other signup surface — starting with the signup modal on
+`/all-starters`. Detected pages use `directSave: true` (same as `/sign-up`). Detection counts
+forms **present** in the DOM and does not test visibility, so a `<dialog>` that stays
+`display:none` until opened still arms the watch.
+
+**Login is a veto on the detection branch only.** A page with both signup and login markers is
+not watched at all (a missed attribution is cheaper than stamping UTM values onto an existing
+member). Pure login pages such as `/login` and `/starter-login` fall out the same way: no signup
+form, no watch.
+
+The scan runs once during init. Call `window.StartersAttribution.rearm()` after injecting a
+signup form later — it pairs with `starters-ms-redirect.js`'s `apply()` on the same
+`form[data-ms-form="signup"]`. `rearm()` is a no-op once the watch is already armed (a second
+`onAuthChange` listener would double-fire `CompleteRegistration`).
 
 ## CompleteRegistration
 
-On a signup page the script records whether the visitor arrived logged out and fires Meta's
-`CompleteRegistration` on the transition. The event carries the `event_id` cookie as its
+On an armed signup surface the script records whether the visitor arrived logged out and fires
+Meta's `CompleteRegistration` on the transition. The event carries the `event_id` cookie as its
 **`eventID`**, so a server-side copy of the same registration deduplicates against it. It fires
 for every signup, including one with no ad parameters at all.
 
@@ -113,14 +133,15 @@ Two guards keep it honest:
   auth event only **arms** the watch; it does not fire.
 - **Once per session.** A `sessionStorage` flag (`startersCompleteRegistrationFired`) covers the
   refresh double-fire — Memberstack replays the authenticated state on the next load, which
-  without the flag would look like a second registration. The flag is **shared by both signup
-  pages**, so one session yields one event.
+  without the flag would look like a second registration. The flag is **shared by every signup
+  surface**, so one session yields one event.
 
-## Field persistence on `/sign-up`
+## Field persistence (direct-save routes)
 
-`/quiz` needs nothing here. The direct `/sign-up` route has no follow-up controller, so this
-script writes the fields itself — and it has to survive the form's own `redirect="/brand-dashboard"`
-cutting the request off mid-flight. The order is deliberate:
+`/quiz` needs nothing here — `quiz-results.js` writes the attribution fields alongside the quiz
+summary. Every other armed route (including `/sign-up` and form-detected surfaces) has no such
+follow-up writer, so this script writes the fields itself — and it has to survive the form's own
+redirect cutting the request off mid-flight. The order is deliberate:
 
 1. Snapshot the non-empty field values into `sessionStorage.startersAttributionPendingFields`.
 2. Set the `sessionStorage.startersAttributionPendingSave` marker.
@@ -130,7 +151,7 @@ cutting the request off mid-flight. The order is deliberate:
 Steps 1 and 2 are synchronous and happen first, so the marker exists before the navigation can
 kill anything. Every page load then checks that marker and re-attempts the write **from the
 snapshot, not from live cookies**, which is what lets a save killed by the redirect complete on
-`/brand-dashboard` with the values the signup actually captured.
+the next page with the values the signup actually captured.
 
 A marker found while Memberstack **positively reports the visitor logged out** is stale and gets
 cleared without a write — with one exception: if a stale marker was already present at load and
@@ -141,15 +162,16 @@ load.
 
 | Key | Storage | Purpose |
 | --- | --- | --- |
-| `startersAttributionPendingFields` | `sessionStorage` | Snapshot of the field values a `/sign-up` write still owes. |
+| `startersAttributionPendingFields` | `sessionStorage` | Snapshot of the field values a direct-save write still owes. |
 | `startersAttributionPendingSave` | `sessionStorage` | Marker that a write is owed; retried on every page load. |
-| `startersCompleteRegistrationFired` | `sessionStorage` | Once-per-session fire flag, shared by `/quiz` and `/sign-up`. |
+| `startersCompleteRegistrationFired` | `sessionStorage` | Once-per-session fire flag, shared by every signup surface. |
 
 ## Debug
 
 | Surface | Value |
 | --- | --- |
 | `window.StartersAttribution.getParams()` | Returns the current cookie values. |
+| `window.StartersAttribution.rearm()` | Re-scans the DOM for signup forms; returns whether the watch is armed. |
 | `window.StartersAttribution.release` | The file's release string, kept in sync with the header. |
 | `window.__startersAttributionBooted` | Boot guard; a second tag returns early. |
 
@@ -161,16 +183,21 @@ silent. The host suffix match is anchored on purpose, so a lookalike host such a
 Run the focused attribution regressions with:
 
 ```sh
-node --test quiz-main/quiz-attribution.test.js quiz-attribution-persistence.test.js
+node --test v3/signup-attribution.test.js quiz-attribution-persistence.test.js
 ```
 
 ## Notes & gotchas
 
 - **It is sitewide, not quiz-only.** Loading it on `/quiz` alone defeats the point: the click
   that gets attributed is usually captured pages earlier.
+- **Do not fold the path map into detection.** `/quiz` must keep `directSave: false` so it does
+  not race `quiz-results.js`. Path policy is consulted before form detection on purpose.
 - **Empty values are never written.** Only non-empty cookies become custom fields, so a later
   untagged visit cannot blank a value an earlier tagged visit captured.
 - **Renaming a field ID here breaks one signup route silently.** Change it in `quiz-results.js`
   in the same commit, or the drift guard fails.
 - The pixel is site-head Webflow custom code, not this file's job. If `CompleteRegistration`
   never fires, check that `fbq` exists before suspecting this script.
+- A new signup surface needs **no Designer attribute work** beyond Memberstack's own
+  `data-ms-form="signup"` — detection picks it up automatically. Call `rearm()` only if the form
+  is injected after init.

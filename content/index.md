@@ -33,8 +33,10 @@ embed-wrapper (Webflow component)          →  Global Embeds
 ├── Remove CMS Wrapper – JS                →  Remove CMS Wrapper
 ├── List's Sort Dropdown                   →  List Sort Dropdown
 ├── Expert Card                            →  Expert Card
+│   └── …                                  →  Expert Card Browse Loader
 ├── Featured Expert Card                   →  Featured Expert Card
 │   └── …                                  →  Featured Expert Card Price
+├── Replica List                           →  Replica List
 ├── Tabs Radio Filter                      →  Tabs Radio Filter
 ├── Custom Scrollbar                       →  Custom Scrollbar
 ├── Form Embeds                            →  Form Embeds
@@ -45,7 +47,8 @@ embed-wrapper (Webflow component)          →  Global Embeds
 │   ├── Form Input Filter                  →  Form Input Filter
 │   ├── Checkbox Toggle                    →  Checkbox Toggle
 │   ├── Timepicker                         →  Timepicker
-│   └── Input Preview – JS                 →  Input Preview
+│   ├── Input Preview – JS                 →  Input Preview
+│   └── Turnstile Contents Fix             →  Turnstile Contents Fix
 ├── Modal                                  →  Modal
 │   └── …                                  →  Reset on Close
 ├── Application Card                       →  Application Card
@@ -57,6 +60,7 @@ embed-wrapper (Webflow component)          →  Global Embeds
 ├── Start Project / Gen Contract           →  Start Project — Generate Contract
 ├── Loader                                 →  Loader
 ├── Text Methods                           →  Text Methods
+├── Millify                                →  Millify
 └── (style-only CSS embeds)                →  Style Embeds
 ```
 
@@ -74,18 +78,20 @@ The remaining main groups cover scripts that live outside `embed-wrapper`:
   pre-fill helpers).
 - **[Starters List Filter](./starters-list-filter/index.md)**: the starters list filter UI and its
   custom Algolia scripts.
+- **[Explore Search](./explore-search/index.md)**: the full-screen federated Algolia search
+  experience and its standalone enhancement embeds.
 - **[Utils](./utils/index.md)**: repo-hosted utility scripts loaded via jsDelivr (declarative form
-  validation, the env-switch script loader, the section TOC bar, the PostHog identity/track
-  helpers).
+  validation, the env-switch script loader, [Section Custom TOC](./utils/section-custom-toc/index.md),
+  the PostHog identity/track helpers).
 - **[Account Settings](./account-settings/index.md)**: the `/account-settings` page scripts —
   Memberstack plan and billing dates, and the cancel-flow success state.
 - **[Page Scripts](./page-scripts/index.md)**: whole-page controllers (Opportunities 3.0
-  including Generate Invoice, the quiz funnel + attribution + results + loader, Messages 3.0,
-  the profile message modal).
+  including project actions and Generate Invoice, the quiz funnel + Signup Attribution +
+  results + loader, Messages 3.0, the profile message modal).
 - **[V3 Platform](./v3/index.md)**: the logged-in product — the sitewide route guard, login and
-  funnel routing, accounts (including complete-profile back/loader), hire/reviews, messaging
-  tiles, scheduling, dashboards (including Action Items chrome), onboarding, favorites, and
-  xano-grabber.
+  funnel routing, accounts (including complete-profile back/loader/photo), hire/reviews,
+  messaging tiles, scheduling, dashboards (including Action Items chrome), onboarding,
+  favorites, Signup Attribution (documented under Page Scripts), and xano-grabber.
 - **[Archives](./archives/index.md)**: inventories of the v2 page footers and the Slater.app
   mirrors: version-controlled in the repo, but not part of the 3.0 embeds.
 

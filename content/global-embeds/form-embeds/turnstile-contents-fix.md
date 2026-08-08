@@ -43,6 +43,10 @@ to install site-wide: with no marked form on the page it does nothing at all. Sa
 only to read `jQuery.data(form, '.w-form')` — the store Webflow's own closures read, which has no
 second copy to write to.
 
+```html
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/global-embeds/form-embeds/turnstile-contents-fix.js"></script>
+```
+
 ## Markup contract
 
 ```html
