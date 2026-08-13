@@ -34,6 +34,7 @@ group in this sidebar; a component's page documents its JS and CSS together.
 - **Loader.** The shared `setLoader()` loading-overlay helper.
 - **Text Methods.** Shared text helpers (`truncateText`).
 - **[Millify](./millify.md).** Attribute-driven number formatting (`12345` → `12.3K`).
+- **[Logo Wall](./logo-wall/index.md).** CMS logos split into looping GSAP tracks. Testimonials-like Marquee UX; logo-only attribute contract.
 - **[Learn CTA Gate](./learn-cta-gate/index.md).** Sign-up gate on a Learn article: character-count
   sentinel or short-article timer. Memberstack decides who is gated.
 - **[Session Video](./session-video/index.md).** Learn Sessions hero player: ambient preview,
