@@ -16,8 +16,10 @@ horizontal **Tracks**. The motion is Marquee UX (continuous, no snap) — the sa
 strip's markup.
 
 On init the script unwraps Webflow Collection List / `display: contents` wrappers,
-deals unique logos round-robin across Tracks (default 3), clones inside each Track
-until it overflows, then runs GSAP's `horizontalLoop` helper. Odd Tracks run RTL.
+deals unique logos round-robin across Tracks (default 3), clones on both sides of
+each Track until it overflows, and centers that unique set in the viewport. Bands
+already reach the device edges. Then GSAP's `horizontalLoop` helper seamless-loops
+them. Even Tracks run LTR (logos travel toward the right); odd Tracks run RTL.
 Hover pauses that Track. `prefers-reduced-motion: reduce` freezes the bands.
 
 GSAP must already be on the page (it is, sitewide). Without GSAP the Tracks still
@@ -93,7 +95,8 @@ Optional config on the same wrapper node:
 | `data-logo-wall-speed` | wrapper | no | `0.4` (~40px/s) |
 | `data-logo-wall-pause-on-hover` | wrapper | no | on; set `false` to opt out |
 
-Booleans are `"true"` / `"false"`. Alternate direction is always on (odd Tracks RTL).
+Booleans are `"true"` / `"false"`. Alternate direction is always on: even Tracks
+LTR, odd Tracks RTL.
 
 ## Notes & gotchas
 
@@ -102,11 +105,16 @@ Booleans are `"true"` / `"false"`. Alternate direction is always on (odd Tracks 
   with a staging warning (`*.webflow.io` / localhost / `STARTERS_DEBUG`) — no
   class fallback.
 - **Designer canvas is skipped** (`html.wf-design-mode`) so Collection Lists stay editable.
-- **Logo size and gap stay Designer.** Companion CSS only forces column overflow,
-  flex tracks, and `column-gap: inherit` from the wrapper.
-- **Short rows clone** until the Track is at least 2× the wrapper width, capped at
-  24 extra copies, including on reduced-motion freeze and when GSAP is absent, so
-  a handful of logos still fill the band.
+- **Logo size and gap stay Designer.** Companion CSS full-bleeds the wrapper to
+  the viewport edges (`100vw`), zeros horizontal padding, centers Tracks, and
+  inherits `column-gap` from the wrapper. On init (and resize) the script also
+  measures the viewport, pulls the wrapper to `x = 0`, and sets ancestor
+  `overflow-x` to `visible` so a padded Webflow container cannot clip the band.
+  `overflow: hidden` on the wrapper is the device-edge mask, not a container mask.
+- **The unique set starts centered.** Clones go on both sides of the originals
+  until the Track is at least 2× the viewport width, capped at 24 extra copies
+  per side, including on reduced-motion freeze and when GSAP is absent, so a
+  handful of logos still fill to both device edges.
 - **A single logo still loops** once the Track is filled; there is no “need two
   children” gate.
 - **Images.** Loops arm after in-wall images have loaded (or errored), then again
