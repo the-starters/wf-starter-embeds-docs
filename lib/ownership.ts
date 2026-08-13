@@ -36,6 +36,8 @@ function scriptPathsForPage(page: {
   const seen = new Set<string>();
   const push = (p?: string) => {
     if (!p || seen.has(p)) return;
+    // Directory Script Paths never get Ownership rows (Accountable is file-birth).
+    if (!data.scripts[p]) return;
     seen.add(p);
     paths.push(p);
   };

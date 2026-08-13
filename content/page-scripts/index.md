@@ -1,5 +1,6 @@
 ---
-title: "Intro"
+title: "Page Scripts"
+description: "Whole-page controllers for Opportunities, the quiz funnel, messaging, and related 3.0 surfaces."
 ---
 
 Source: the GitHub repo [`the-starters/starters-webflow`](https://github.com/the-starters/starters-webflow) (repo root)
@@ -30,7 +31,8 @@ one exception is [Quiz Loader](./quiz-loader.md), which must load in the `<head>
   redirect, and the `/quiz` category flow that produce the saved quiz payload.
 - **[Signup Attribution](./quiz-attribution.md)** (`v3/signup-attribution.js`): sitewide
   UTM/Meta ad capture, form-detection for signup surfaces, `CompleteRegistration` on signup,
-  and Memberstack field persistence (the `/quiz` path rides those cookies into
+  write-once `signup-source` / `signup-referrer` / `signup-trigger` (homepage stored as
+  `/home`), and Memberstack field persistence (the `/quiz` path rides those cookies into
   [Quiz Results](./quiz-results.md)).
 - **[Quiz Results](./quiz-results.md)** (`quiz-results.js`): the quiz results page controller
   that renders results, fetches Algolia recommendations, and persists quiz state to
@@ -52,6 +54,9 @@ These scripts live in `v3/` but are documented here because they are page-scoped
 - **[Profile Image Auth Shim](./profile-image-auth-shim.md)** (`profile-image-auth-shim.js`): an
   interim `fetch` wrapper that adds Xano auth (and downscales the image) for profile-photo
   uploads. Temporary — see the page.
+
+`quiz-results-email-tester.js` is a QA canary in the scripts repo, not a production embed —
+it is not in this sidebar.
 
 These pages are **overviews**: enough to know what each script owns, how it loads, and which
 hooks it reads. The scripts themselves carry detailed header comments and JSDoc; treat those as

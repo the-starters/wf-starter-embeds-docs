@@ -3,6 +3,7 @@ title: "Accounts & Forms"
 source: v3/brand-account-controller.js
 sources:
   - v3/brand-account-controller.js
+  - v3/talent-application-ui.js
   - v3/talent-application.js
   - v3/password-recovery.js
   - v3/starters-ms-redirect.js
@@ -11,18 +12,20 @@ sources:
   - complete-profile-photo.js
 ---
 
-Source: `v3/brand-account-controller.js`, `v3/talent-application.js`,
-`v3/password-recovery.js`, `v3/starters-ms-redirect.js`,
-`v3/complete-profile-back.js`, `v3/complete-profile-loader.js`,
-`complete-profile-photo.js`
+Source: `v3/brand-account-controller.js`, `v3/talent-application-ui.js`,
+`v3/talent-application.js`, `v3/password-recovery.js`,
+`v3/starters-ms-redirect.js`, `v3/complete-profile-back.js`,
+`v3/complete-profile-loader.js`, `complete-profile-photo.js`
 
 ## What it is
 
 The modules that own **account creation and account editing** on the V3 site: the Brand
-signup and Build Account forms, the Talent apply intake, the shared password-recovery
-chain, the per-page signup redirect marker, and the `/complete-profile` companions — an
-in-page back button, a submit spinner, and the Brand profile-image binder. Every one of
-them keeps the Designer-authored forms intact; none generates form or link markup.
+signup and Build Account forms, the Talent apply page UI and intake, the shared
+password-recovery chain, the per-page signup redirect marker, and the `/complete-profile`
+companions — an in-page back button, a submit spinner, and the Brand profile-image binder.
+Every one of them keeps the Designer-authored forms intact; the apply UI adds only the
+searchable custom-select presentation beside the native location selects, and none of them
+generates the form itself.
 
 ## Authority contract
 
@@ -36,9 +39,16 @@ The four account modules work inside the same split:
 The back-button and submit-spinner companions sit outside that split entirely: neither
 reads Memberstack, neither calls the network, and neither needs the route guard's role
 contract — one reads `document.referrer`, the other watches one attribute on the form.
-The Brand profile-image binder sits on the Memberstack side of the split: it stamps
+The Talent apply UI sits outside it too: it reads no Memberstack session and never calls
+Xano. The Brand profile-image binder sits on the Memberstack side of the split: it stamps
 `data-ms-action="profile-image"` so Memberstack owns the upload, and Xano endpoint #1513
 mirrors the result into `brands_v3.image_link`.
+
+Native Memberstack login, signup, password recovery, and Account Profile forms, plus the
+Webflow-native pause/cancel request forms, are observed by `v3/native-form-diagnostics.js`.
+Load order and the shared receipt contract live on
+[Workflow Diagnostics](../utils/workflow-diagnostics.md) — do not invent a second receipt
+format on those surfaces.
 
 ## `brand-account-controller.js` — signup plan, Build Account, identity email
 
@@ -331,13 +341,64 @@ dev-tunnel loop. Off-path or off-host loads return early with no side effects.
 Boot guard: `window.__startersBrandProfileImageBound`. Re-run or probe with
 `window.StartersBrandProfileImage.init()`.
 
-## `talent-application.js` — the apply intake
+## `talent-application-ui.js` — page UI, never submission
 
-Install on `/freelancer-application/step-1` **only**:
+Install on `/freelancer-application/step-1` **only**, **before**
+`talent-application.js`. This is the GitHub-owned replacement for the 23 KB Webflow Code
+Embed on that page. After the CDN release is live, **remove the legacy inline
+controller** — do not keep both.
 
 ```html
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/v3/talent-application-ui.js"></script>
 <script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/v3/talent-application.js"></script>
 ```
+
+Both loaders are deferred and must remain in that order. The UI controller owns field
+validation, the conditional profile and referral blocks, location loading, and the
+searchable custom-select presentation beside the native `country` / `state` / `city`
+selects. It does **not** bind a submit handler, build a submission payload, or log
+applicant fields. Submission transport stays
+[`talent-application.js`](#talent-applicationjs--the-apply-intake). The authoritative
+split is `v3/README.md#talent-application-intake`.
+
+It sits outside the Memberstack / Xano account split: it reads no Memberstack session and
+never calls Xano. Locations come from the published Webflow CDN asset. The apply intake's
+receipts use the shared helper on
+[Workflow Diagnostics](../utils/workflow-diagnostics.md); this UI file does not write
+receipts.
+
+Boot guard: `window.__startersTalentApplicationUiBooted`. Missing
+`[application-form]`, `[form-submit]`, or `[form-next]` bails with no side effects.
+
+### Markup contract
+
+Keep the Designer-authored form. Generated IDs and styling classes are **not** selector
+fallbacks.
+
+| Hook | On | Purpose |
+| --- | --- | --- |
+| `application-form` | the `<form>` | Binding selector |
+| `[form-next]`, `[form-submit]` | inside the form | Next / Complete controls; the UI enables or disables them |
+| `#first-name`, `#email`, `#phone`, `#linkedin` | native inputs | Live validity; LinkedIn and email show inline errors |
+| `input[name="profile-type"]` (`#full-profile`, `#consult-only`) | radios | Toggles the profile blocks |
+| `[data-element="full-profile"]`, `[data-element="consult"]` | conditional blocks | Full-profile vs Consult Only |
+| `#rate`, `#rate-consult` | rate inputs | `required` only while their block is visible |
+| `#referral-source`, `#referred`, `#other` | referral controls | Referral / Other reveal their blocks |
+| `[data-element="referred"]`, `[data-element="other-option"]` | conditional blocks | Referral follow-ups |
+| `#country`, `#state`, `#city` | native selects | Populated from the locations asset; custom-select UI is added beside each |
+
+Country and state option **values** are numeric indexes into that asset; city values are
+the visible city name. The intake controller is what resolves selected options to visible
+**text** on submit — sending the raw indexes is the legacy `Country: 0` bug.
+
+The custom-select widgets (`.custom-select-container`) are presentation only. The native
+selects remain in the form and stay the source of truth.
+
+## `talent-application.js` — the apply intake
+
+Install on `/freelancer-application/step-1` **only**, **after**
+`talent-application-ui.js` (see the pair above). Never load this file instead of the UI
+controller, and never let the UI file own submission.
 
 It intercepts the multistep apply form's final submit and POSTs JSON to
 `api:KZf7nFnk/talent/application/create`. Xano owns the authoritative application row and
@@ -498,3 +559,6 @@ value like `/<tab>/evil.example` would pass a naive leading-slash check and stil
   redirect. If that latch is ever removed, the spinner drops during every successful submit
   instead of covering the navigation.
 - The Talent intake sends no browser secret: Xano performs the Airtable mirror server-side.
+- Apply-intake receipts use the shared helper on
+  [Workflow Diagnostics](../utils/workflow-diagnostics.md). Do not invent a second
+  receipt format on the apply page; the UI controller never writes one.

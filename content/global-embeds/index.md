@@ -1,5 +1,5 @@
 ---
-title: "Intro"
+title: "Global Embeds"
 description: "Site-wide Webflow embeds: interactive components, cards, and form utilities."
 source: global-embeds
 ---
@@ -29,11 +29,15 @@ group in this sidebar; a component's page documents its JS and CSS together.
 - **Start Project: Generate Contract.** Contract preview flow.
 - **Step Flow.** Multi-step form flow, plus the panel nav flow.
 - **Tabs.** Attribute-driven tabs.
-- **Tabs Radio Filter.** Reserved; no scripts yet.
+- **[Tabs Radio Filter](./tabs-radio-filter/index.md).** Reserved stub; folder removed from the CDN — do not install.
 - **Remove CMS Wrapper.** Unwraps Webflow Collection List wrappers.
 - **Loader.** The shared `setLoader()` loading-overlay helper.
 - **Text Methods.** Shared text helpers (`truncateText`).
 - **[Millify](./millify.md).** Attribute-driven number formatting (`12345` → `12.3K`).
+- **[Learn CTA Gate](./learn-cta-gate/index.md).** Sign-up gate on a Learn article: character-count
+  sentinel or short-article timer. Memberstack decides who is gated.
+- **[Session Video](./session-video/index.md).** Learn Sessions hero player: ambient preview,
+  click-to-watch, logged-out cut-point wall. Replaces the template inline script — do not run both.
 - **Style Embeds.** Inventory of the style-only CSS embeds (global styles, buttons, cards,
   spinner, scrollbar hiding, Quill overrides).
 

@@ -1,19 +1,8 @@
 {
-  "generatedAt": "2026-08-08T10:23:41.897Z",
+  "generatedAt": "2026-08-13T11:02:36.553Z",
   "scriptsRepo": "the-starters/starters-webflow",
-  "scriptsSha": "89e15924a8d08fbf6479d23b988acb25d361a859",
+  "scriptsSha": "9d795d305bdd372431748118b6bde36530ccceee",
   "scripts": {
-    "account-settings": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
     "account-settings/ms-form-cancel-state.js": {
       "accountable": {
         "login": "jericolawrence",
@@ -26,17 +15,6 @@
       "accountableOverridden": false
     },
     "account-settings/plan-dates.js": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "algolia-result-modifiers": {
       "accountable": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
@@ -110,28 +88,6 @@
       "lastEditor": {
         "login": "jpthedio",
         "displayName": "JP Dionisio"
-      },
-      "accountableOverridden": false
-    },
-    "explore-search": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "explore-search-transitions": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
@@ -234,17 +190,6 @@
       },
       "accountableOverridden": false
     },
-    "freelancer-cms": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jpthedio",
-        "displayName": "JP Dionisio"
-      },
-      "accountableOverridden": false
-    },
     "freelancer-cms/datepicker-current.js": {
       "accountable": {
         "login": "jericolawrence",
@@ -278,50 +223,6 @@
       },
       "accountableOverridden": false
     },
-    "global-embeds": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/accordions": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/application-card": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/application-form": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
     "global-embeds/button.css": {
       "accountable": {
         "login": "jericolawrence",
@@ -334,28 +235,6 @@
       "accountableOverridden": false
     },
     "global-embeds/content-rte.css": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/custom-scrollbar": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/expert-card": {
       "accountable": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
@@ -399,17 +278,6 @@
       },
       "accountableOverridden": false
     },
-    "global-embeds/featured-expert-card": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
     "global-embeds/featured-expert-card/featured-expert-card-price.js": {
       "accountable": {
         "login": "jericolawrence",
@@ -421,62 +289,7 @@
       },
       "accountableOverridden": false
     },
-    "global-embeds/form-embeds": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/form-embeds/checkbox-toggle": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/form-embeds/datepicker": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
     "global-embeds/form-embeds/disabler.js": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/form-embeds/form-input-filter": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/form-embeds/form-validation": {
       "accountable": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
@@ -509,36 +322,14 @@
       },
       "accountableOverridden": false
     },
-    "global-embeds/form-embeds/password-toggle": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/form-embeds/timepicker": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
     "global-embeds/form-embeds/turnstile-contents-fix.js": {
       "accountable": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -575,7 +366,18 @@
       },
       "accountableOverridden": false
     },
-    "global-embeds/list-sort-dropdown": {
+    "global-embeds/learn-cta-gate/learn-cta-gate.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/learn-cta-gate/learn-cta-gate.js": {
       "accountable": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
@@ -609,17 +411,6 @@
       "accountableOverridden": false
     },
     "global-embeds/millify.js": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/modal": {
       "accountable": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
@@ -674,29 +465,18 @@
       },
       "accountableOverridden": false
     },
+    "global-embeds/session-video/session-video.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
     "global-embeds/spinner.css": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/start-proj-gen-contract": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "global-embeds/step-flow": {
       "accountable": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
@@ -729,29 +509,7 @@
       },
       "accountableOverridden": false
     },
-    "global-embeds/tabs": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
     "global-embeds/text-methods/text-methods.js": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "navbar-embeds": {
       "accountable": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
@@ -796,17 +554,6 @@
       "accountableOverridden": false
     },
     "navbar-embeds/navbar-dropdown.css": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "navbar-embeds/navbar-explore": {
       "accountable": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
@@ -872,17 +619,6 @@
       },
       "accountableOverridden": false
     },
-    "quiz-main": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
     "quiz-main/quiz-home.js": {
       "accountable": {
         "login": "jpthedio",
@@ -927,7 +663,7 @@
       },
       "accountableOverridden": false
     },
-    "slater": {
+    "starter-edit-profile.js": {
       "accountable": {
         "login": "jpthedio",
         "displayName": "JP Dionisio"
@@ -935,39 +671,6 @@
       "lastEditor": {
         "login": "jpthedio",
         "displayName": "JP Dionisio"
-      },
-      "accountableOverridden": false
-    },
-    "starters-list-filter": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "starters-list-filter/custom-algolia-scripts": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "starters-list-filter/custom-algolia-scripts/clear-filter-visibility": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
@@ -1059,28 +762,6 @@
       },
       "accountableOverridden": false
     },
-    "swiper-scroll": {
-      "accountable": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
-    "utils": {
-      "accountable": {
-        "login": "jpthedio",
-        "displayName": "JP Dionisio"
-      },
-      "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
-      },
-      "accountableOverridden": false
-    },
     "utils/loader.js": {
       "accountable": {
         "login": "jpthedio",
@@ -1158,7 +839,7 @@
       },
       "accountableOverridden": false
     },
-    "v2/footers": {
+    "utils/workflow-diagnostics.js": {
       "accountable": {
         "login": "jpthedio",
         "displayName": "JP Dionisio"
@@ -1169,14 +850,14 @@
       },
       "accountableOverridden": false
     },
-    "v3": {
+    "v3/ai-recruiter.js": {
       "accountable": {
         "login": "jpthedio",
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1197,8 +878,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1208,8 +889,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1219,8 +900,8 @@
         "displayName": "jericolawrence"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1230,8 +911,118 @@
         "displayName": "jericolawrence"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/build-profile/bio-editor.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/build-profile/company-autocomplete.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/build-profile/company-experience-crud.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/build-profile/field-counters.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/build-profile/grouped-selects.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/build-profile/portfolio-crud.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/build-profile/portfolio-list.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/build-profile/profile-photo.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/build-profile/submit-diagnostics.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/build-profile/work-dates.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1263,8 +1054,8 @@
         "displayName": "jericolawrence"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1307,8 +1098,19 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/native-form-diagnostics.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1345,6 +1147,17 @@
       },
       "accountableOverridden": false
     },
+    "v3/paid-call-brand-payment.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
     "v3/password-recovery.js": {
       "accountable": {
         "login": "jpthedio",
@@ -1362,8 +1175,8 @@
         "displayName": "jericolawrence"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1395,8 +1208,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1433,6 +1246,17 @@
       },
       "accountableOverridden": false
     },
+    "v3/scheduling-availability-section.js": {
+      "accountable": {
+        "login": null,
+        "displayName": "Elvin Agaragimow"
+      },
+      "lastEditor": {
+        "login": null,
+        "displayName": "Elvin Agaragimow"
+      },
+      "accountableOverridden": false
+    },
     "v3/scheduling-availability-writer.js": {
       "accountable": {
         "login": "jpthedio",
@@ -1461,8 +1285,8 @@
         "displayName": "jericolawrence"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1472,8 +1296,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1499,6 +1323,61 @@
       },
       "accountableOverridden": false
     },
+    "v3/starter-edit-profile/company-autocomplete.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/starter-edit-profile/company-experience-crud.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/starter-edit-profile/portfolio-crud.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/starter-edit-profile/portfolio-list.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "v3/starter-project-form.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
     "v3/starters-ms-redirect.js": {
       "accountable": {
         "login": "jericolawrence",
@@ -1507,6 +1386,17 @@
       "lastEditor": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "v3/talent-application-ui.js": {
+      "accountable": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
+      },
+      "lastEditor": {
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },

@@ -46,6 +46,12 @@ if (!existsSync(path.join(scriptsRoot, '.git'))) {
 
 const authorMap = JSON.parse(readFileSync(authorMapPath, 'utf8'));
 const overrides = JSON.parse(readFileSync(overridesPath, 'utf8'));
+const reservedStubsPath = path.join(docsRoot, 'data', 'ownership-reserved-stubs.json');
+/** @type {string[]} */
+const reservedStubs = existsSync(reservedStubsPath)
+  ? JSON.parse(readFileSync(reservedStubsPath, 'utf8'))
+  : [];
+const reservedStubSet = new Set(reservedStubs);
 
 function git(args, cwd = scriptsRoot) {
   return execFileSync('git', args, {
@@ -154,6 +160,11 @@ function personPayload(identity) {
 
 function pathExistsInScripts(scriptPath) {
   return existsSync(path.join(scriptsRoot, scriptPath));
+}
+
+function isDirectoryScriptPath(scriptPath) {
+  const full = path.join(scriptsRoot, scriptPath);
+  return existsSync(full) && statSync(full).isDirectory();
 }
 
 function displayNameForLogin(login) {
@@ -274,9 +285,27 @@ function ownershipForPath(scriptPath) {
 const scriptPaths = collectScriptPaths();
 /** @type {Record<string, object>} */
 const scripts = {};
+/** @type {string[]} */
+const missing = [];
 for (const scriptPath of scriptPaths) {
+  if (reservedStubSet.has(scriptPath)) {
+    continue;
+  }
+  if (isDirectoryScriptPath(scriptPath)) {
+    continue;
+  }
+  if (!pathExistsInScripts(scriptPath) && !overrides[scriptPath]) {
+    missing.push(scriptPath);
+    continue;
+  }
   const entry = ownershipForPath(scriptPath);
   if (entry) scripts[scriptPath] = entry;
+}
+
+if (missing.length) {
+  die(
+    `Script Path(s) in frontmatter are missing from starters-webflow (add an Ownership Override, a reserved stub, or fix the path):\n  ${missing.join('\n  ')}`,
+  );
 }
 
 const payload = {

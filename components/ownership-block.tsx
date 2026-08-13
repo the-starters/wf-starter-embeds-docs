@@ -38,6 +38,11 @@ export function OwnershipBlock({ rows }: { rows: OwnershipRow[] }) {
         </span>
       </summary>
       <div className="border-t border-fd-border px-4 py-3">
+        <p className="mb-3 text-xs text-fd-muted-foreground">
+          Accountable is the first adder of the Script Path (rename follow). Last
+          editor is the last non-merge commit. An override badge means Accountable
+          was set in the ownership overrides map, not from git history.
+        </p>
         <ul className="flex flex-col gap-3 text-sm">
           {rows.map(({ path, entry }) => (
             <li key={path} className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">

@@ -6,23 +6,27 @@ sources:
   - v3/scheduling-v3-stage.js
   - v3/scheduling-availability-init.js
   - v3/scheduling-availability-writer.js
+  - v3/scheduling-availability-section.js
 ---
 
 Source: `v3/scheduling-auth.js`, `v3/scheduling-v3-stage.js`,
-`v3/scheduling-availability-init.js`, `v3/scheduling-availability-writer.js`
+`v3/scheduling-availability-init.js`, `v3/scheduling-availability-writer.js`,
+`v3/scheduling-availability-section.js`
 
 ## What it is
 
-Four modules that migrate the **legacy V2 call-scheduling component** onto authenticated V3
+Five modules that migrate the **legacy V2 call-scheduling component** onto authenticated V3
 Xano routes without rewriting the Webflow component itself. Two run synchronously and own
-the network layer; two are deferred UI modules for the Starter's availability settings.
+the network layer; three are deferred UI modules for the Starter's availability settings —
+the modal initializer, the modal writer, and the non-modal Dashboard / Calendar section.
 
 | File | Owns | Loads |
 | --- | --- | --- |
-| `scheduling-auth.js` | Bearer tokens for reviewed `/v3` scheduling routes | synchronously |
+| `scheduling-auth.js` | Bearer tokens for reviewed `/v3` scheduling routes (and the Brand paid-call payment-method paths) | synchronously |
 | `scheduling-v3-stage.js` | The legacy → `/v3` route map, and the fail-closed boundary | synchronously |
 | `scheduling-availability-init.js` | Which Calendar Settings control is visible | deferred |
 | `scheduling-availability-writer.js` | The availability form submit and OAuth grant flow | deferred |
+| `scheduling-availability-section.js` | The always-visible Dashboard / Calendar section | deferred |
 
 ## Install
 
@@ -41,6 +45,11 @@ the cloned scheduling logic embeds, and keep the cloned UI and logic embeds inta
 Auth and routing load **synchronously** on purpose: immediately-executed cloned code must
 not be able to issue a legacy request before the adapter owns `window.fetch`. The dashboard
 and availability UI modules can stay deferred.
+
+The canonical Starter dashboard's Designer **Dashboard / Calendar** section is a different
+surface. Load `scheduling-availability-section.js` there (after `scheduling-auth.js`); do
+**not** add it to the cloned modal component, and do **not** expect
+`scheduling-availability-init.js` to drive it.
 
 Do **not** replace the shared `Call Scheduling - Global Code` component while the live
 `detail_hire` template still consumes it. The isolated clone is what carries these files.
@@ -186,12 +195,105 @@ Safety boundary:
   (`blocked-test-member`), so a QA view can never submit another member's schedule.
 - It consumes the state the init module seeded and refreshes that member-scoped cache after
   a successful write. The timezone cache is member-scoped as `starter-timezone:<memberId>`.
+- When `[data-availability-element="section"]` is present, the writer **bails before
+  capturing** the Nylas `?code&state` / `?success&grant_id` return so it cannot race the
+  section module for the same one-time code. The writer stays fully active on
+  `--availability-stage`, which never carries that markup.
 
 Deliberately **not** ported from the legacy inline writer: the hardcoded test member id and
 its dashboard/onboarding redirects, the unscoped `starter-availability` localStorage key,
 the `dev-speed-test` payload override, and the bookings-list machinery (delegated to the
 page's bookings embed through guarded `window.generateBookingsList` /
 `window.clearGrantData`).
+
+## `scheduling-availability-section.js` — Dashboard / Calendar
+
+The non-modal counterpart to the writer, for the Designer **Dashboard / Calendar** section
+on the canonical `/starter-dashboard` page. Availability is always visible instead of
+living behind the `set-availability` modal, and each availability item carries its own
+inline edit form instead of sharing one. It installs on the same host/path boundary as the
+writer (staging host, and exact `/starter-dashboard` in production).
+
+It does **not** depend on `scheduling-availability-init.js`. That module's job — show/hide
+the legacy `[init-availability]` / `[update-availability]` hero controls and pick the old
+modal's initial step — has no equivalent in this component, so the section reads the
+canonical starter record itself.
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/v3/scheduling-auth.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/v3/scheduling-availability-section.js"></script>
+```
+
+Hard-requires `window.xanoAuthFetch`. Without it the section disables itself
+(`data-scheduling-availability-section="missing-auth"`) rather than falling back to
+unauthenticated writes. Real result popups (create/edit/remove/connect/disconnect) are
+intentionally deferred — every action logs its outcome to the console instead.
+
+On any page carrying this section's root, **this module is the sole consumer** of the Nylas
+`?code&state` / `?success&grant_id` return. The writer carries the matching guard above, so
+the two scripts never race to redeem the same one-time code.
+
+Google Calendar disconnect and manager switches follow the writer's provider-first
+composite clear contract; this section does not add a second clear owner.
+
+The "Live bookable slots preview" card fetches the starter's own next upcoming Nylas
+scheduler slots (`GET scheduler/get_availability/v3`) and renders a short list, replacing
+its loader.
+
+### Markup contract
+
+Root `[data-availability-element="section"]`. Every other hook is
+`data-availability-element="<name>"` unless noted.
+
+| Value | Purpose |
+| --- | --- |
+| `section` | Root. Absence reports `not-applicable` and the module stays inert |
+| `connect-wrapper` | Connect chrome |
+| `connect-info-wrapper` | Connect copy; hidden while connected / reconnecting |
+| `connect-btn-wrapper` | Three buttons, **fixed order**: platform / Google / disconnect Google |
+| `connect-label-group` | Connect labels |
+| `main-wrapper` | Hidden until any connection exists |
+| `list` | Availability item list |
+| `loading-settings` | Loading state for the item list |
+| `item-template` | Cloned per item (`data-id=""`) |
+| `item-card` | Written onto each cloned card |
+| `item-title`, `item-timezone`, `item-headline` | Per-item display |
+| `item-top-content`, `item-time-wrapper`, `item-days-wrapper`, `item-button-group` | Per-item chrome |
+| `availability-form-wrapper` | Inline edit form wrapper; closed by default |
+| `availability-form` | Inline form (`data-availability-id=""`) |
+| `slots-wrapper`, `loading-slots`, `slots-list` | Bookable-slots preview |
+
+Day selection renders as 7 Labelv2 badges per item. Selected / unselected is a Designer
+component-variant class swap (`w-variant-89402c65-…` default, `w-variant-ebea452c-…`
+selected), not a data attribute.
+
+Action buttons (connect-platform / connect-google / disconnect-google, item edit/remove,
+form cancel/submit) are Webflow Component Instances. Until thin wrapper
+`<div data-availability-action="…">`s are added around them, the script falls back to the
+button's ordinal position inside its known wrapper and logs one console warning per
+action. Prefer the wrapper attributes.
+
+| `data-availability-action` | Purpose |
+| --- | --- |
+| `connect-platform`, `connect-google`, `disconnect-google` | Manager buttons inside `connect-btn-wrapper` |
+| `item-form-open`, `item-remove` | Per-item edit / remove |
+| `item-form-close`, `item-form-submit` | Inline form cancel / save |
+| `availability-create` | Add availability window |
+
+| Runtime hook | Values |
+| --- | --- |
+| `data-scheduling-availability-section` on the document root | `loading`, `ready`, `not-applicable`, `missing-auth`, `error` |
+| `data-scheduling-calendar-state` | Shared with the writer so other dashboard widgets keep working |
+| `window.STARTER_SCHEDULING_CONNECTION` | Shared connection snapshot |
+| `starterSchedulingConnectionStateChanged` | Shared event |
+| `window.StarterSchedulingAvailabilitySection` | `initialize()`, `daysAlias`, `getAvailArray`, `applyDayBadges`, `getUpcomingTimeSlots`, `publishCalendarConnectionState` |
+
+Boot guard: `window.__tsSchedulingAvailabilitySection`.
+
+Known open items, tracked for a Designer/QA follow-up rather than blocking this module: the
+"Main schedule" tag's shown/hidden polarity for override vs. general items is a best-effort
+port of the old modal's logic; and the per-item time inputs' `data-input-timepicker` value
+format is assumed to be `HH:MM` but has no controller in this repo to confirm it.
 
 ## Notes & gotchas
 
@@ -200,7 +302,11 @@ page's bookings embed through guarded `window.generateBookingsList` /
 - Adding a scheduling endpoint means editing **both** `scheduling-auth.js`'s authenticated
   path list and `scheduling-v3-stage.js`'s route map — an unmapped route is blocked with
   `410`, by design.
-- The availability writer and [`dashboard-calls.js`](./dashboards.md) both depend on this
-  auth layer; neither works if `window.xanoAuthFetch` is missing.
+- The availability writer, the Calendar section, and [`dashboard-calls.js`](./dashboards.md)
+  all depend on this auth layer; none of them works if `window.xanoAuthFetch` is missing.
+  The Brand paid-call payment-method client is documented on
+  [Dashboards](./dashboards.md#paid-call-brand-paymentjs--brand-paid-call-payment-method)
+  (`v3/paid-call-brand-payment.js`); its two paths are allowlisted here, not on a third
+  page.
 - Releases go through the reviewed semver tag and jsDelivr purge flow, since the loader
   embed points at these exact files.

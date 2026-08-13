@@ -1,5 +1,6 @@
 ---
-title: "Intro"
+title: "Explore Search"
+description: "Standalone enhancement embeds for the full-screen federated Algolia search overlay."
 source: explore-search
 ---
 

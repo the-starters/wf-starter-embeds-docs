@@ -1,4 +1,4 @@
-name: Ownership
+name: CI
 
 on:
   pull_request:
@@ -30,3 +30,22 @@ jobs:
         env:
           STARTERS_WEBFLOW_ROOT: ${{ github.workspace }}/starters-webflow
         run: node scripts/generate-ownership.mjs --check
+
+  types:
+    name: types:check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout docs
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run types:check
