@@ -12,10 +12,11 @@ Source: `algolia-result-modifiers/subcategories.js`
 ## What it is
 
 Turns a Starter's `categories.lvl1` hierarchical paths into one element per
-**Subcategory** — the leaf after `>`. On `DOMContentLoaded` it first checks
-whether the page contains any `wf-algolia-text="categories.lvl1"` element at all
-and stops immediately if it does not. Otherwise it finds every such element
-inside a `.wf-algolia-injected` card and rewrites it.
+**Subcategory** — the leaf after `>`. It boots on `DOMContentLoaded`, or
+immediately if the document is already ready. It first checks whether the page
+contains any `wf-algolia-text="categories.lvl1"` element at all and stops
+immediately if it does not. Otherwise it finds every such element inside a
+`.wf-algolia-injected` card and rewrites it.
 
 The engine writes an array through `textContent`, which stringifies as
 `Array#toString` (comma, no spaces). Each item is a hierarchical path such as
@@ -70,8 +71,8 @@ though the component that loads it is instantiated twice per page.
 Subcategories - JS
 ```
 
-Load after the Algolia integration script, on pages that render Algolia expert
-cards, alongside the other result modifiers.
+Load after the Algolia integration script, with `defer`, on pages that render
+Algolia expert cards, alongside the other result modifiers.
 
 ## Markup contract
 
@@ -125,10 +126,11 @@ No options; the field name is hard-coded to `categories.lvl1`.
   shapes: the single-index path passes the raw Algolia response, which has
   `hits`, while the federated path used on first load passes
   `{ results, nbHits, nbPages }`, which does not. Re-query the DOM instead.
-- If neither the engine nor any container is found, the script logs a warning,
-  but only on staging hosts (`*.webflow.io`, `localhost`,
-  `*.trycloudflare.com`) or when `window.STARTERS_DEBUG` is set. Production
-  stays silent.
+- If no browse or results container exists, the script logs a warning, but
+  only on staging hosts (`*.webflow.io`, `localhost`, `*.trycloudflare.com`)
+  or when `window.STARTERS_DEBUG` is set. Production stays silent. A missing
+  engine is not a warning: the script polls for about two seconds, then runs
+  once against whatever is already in the DOM.
 - The engine fires its browse query twice per filter click, roughly 70ms apart,
   so the pass runs twice. That is harmless: the first pass strips
   `wf-algolia-text` from everything it touches, so the second finds nothing and
