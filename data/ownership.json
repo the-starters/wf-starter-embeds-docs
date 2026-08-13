@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-13T11:02:36.553Z",
+  "generatedAt": "2026-08-13T13:43:13.941Z",
   "scriptsRepo": "the-starters/starters-webflow",
-  "scriptsSha": "9d795d305bdd372431748118b6bde36530ccceee",
+  "scriptsSha": "1f5a0f4cc0fc818880d5eb81bedd11fffaa6c59a",
   "scripts": {
     "account-settings/ms-form-cancel-state.js": {
       "accountable": {
@@ -389,6 +389,28 @@
       "accountableOverridden": false
     },
     "global-embeds/loader/loader.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/logo-wall/logo-wall.css": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/logo-wall/logo-wall.js": {
       "accountable": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
