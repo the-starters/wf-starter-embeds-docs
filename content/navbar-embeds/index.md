@@ -1,5 +1,6 @@
 ---
-title: "Intro"
+title: "Navbar Embeds"
+description: "Navbar v2 custom code: Memberstack gating, Explore menu, dropdowns, and mobile scroll lock."
 source: navbar-embeds
 ---
 

@@ -1,5 +1,6 @@
 ---
-title: "Intro"
+title: "Form Embeds"
+description: "Attribute-driven form utilities: datepicker, validation, toggles, Turnstile, and shared form styles."
 source: global-embeds/form-embeds
 ---
 
@@ -21,7 +22,7 @@ custom code and wire up with `data-*` attributes.
 - **Timepicker.** Time selection for form inputs.
 - **Input Preview** (`input-preview.js`, loose in the group folder): mirrors a field's value
   into a live preview slot as the user types or selects.
-- **[Turnstile Contents Fix](./turnstile-contents-form.md)** (`turnstile-contents-fix.js`, loose
+- **[Turnstile Contents Fix](./turnstile-contents-fix.md)** (`turnstile-contents-fix.js`, loose
   in the group folder): renders the Cloudflare Turnstile widget for opt-in `display: contents`
   forms, which Webflow's own IntersectionObserver can never arm, and holds a tokenless submit
   until the token lands.

@@ -15,7 +15,7 @@ content/
 ├── index.md                     ← the Introduction page
 ├── global-embeds/               ← main group (= embed-wrapper in Webflow)
 │   ├── meta.json                ← sidebar order inside the group
-│   ├── index.md                 ← the group's Intro page
+│   ├── index.md                 ← the group's landing page
 │   ├── accordions/
 │   │   └── index.md             ← single-page component
 │   └── step-flow/
@@ -31,11 +31,13 @@ content/
 ## Add your page in 4 steps
 
 1. **Create the file** under the right group folder. Frontmatter needs at least a title; use the
-   embed's name as it appears in Webflow:
+   embed's name as it appears in Webflow. CDN pages also set optional `source:` (and `sources:`
+   for extra Script Paths):
 
    ```md
    ---
    title: "My Component"
+   source: path/in/starters-webflow
    ---
    ```
 
@@ -46,14 +48,18 @@ content/
 3. **Write the page following the standard shape** (template below) so every component page scans
    the same way.
 
-4. **Push to `main`.** Vercel redeploys the docs site automatically; your page is live in about
-   a minute.
+4. **Push to `main`.** If the page has CDN Script Paths, run `npm run ownership:generate` and
+   commit `data/ownership.json` **before** you push. Vercel redeploys the docs site
+   automatically; your page is live in about a minute.
 
 ## Page template
 
 ````md
 ---
 title: "My Component"
+source: path/in/starters-webflow
+# sources:
+#   - path/to/another-file.js
 ---
 
 Source: Webflow — `Global Embeds / My Component`
@@ -105,6 +111,9 @@ Conventions to keep:
 - **`Source:` line.** The embed's path in the Webflow **Navigator**
   (e.g. `Global Embeds / Form Embeds / Checkbox Toggle`). Use a GitHub repo path only when the
   script is actually loaded through a jsDelivr CDN URL.
+- **V3 / Learn / Page Scripts clusters.** These use **Script Paths** (repo-relative paths in
+  `starters-webflow`), not Webflow Navigator paths. Put those paths in `source` / `sources`; do
+  not invent an `embed-wrapper` location for them.
 - **`source` / `sources` frontmatter (CDN scripts).** Set `source:` to the primary
   `starters-webflow` path (renders the Source link). For multi-script pages, also set
   `sources:` for the additional Script Paths — Ownership unions `source` and `sources`,

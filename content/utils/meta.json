@@ -5,6 +5,7 @@
     "wf-validate",
     "loader",
     "multi-step-failover",
+    "workflow-diagnostics",
     "section-custom-toc",
     "posthog-identity",
     "posthog-track"

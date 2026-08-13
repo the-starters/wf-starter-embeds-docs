@@ -3,11 +3,11 @@ title: "Quiz Results"
 source: quiz-results.js
 ---
 
-Source: `quiz-results.js` (repo root) — **v1.59.131**
+Source: `quiz-results.js` (repo root) — **v1.59.199**
 
 ## What it is
 
-The **quiz results page controller**, the largest script in the repo (~5,800 lines). It picks
+The **quiz results page controller**, the largest script in the repo (~6,800 lines). It picks
 up the quiz state saved by `quiz-main.js` before signup and turns it into the results page:
 
 - **Input.** `sessionStorage.starterQuizPending`, written by the
@@ -27,7 +27,7 @@ up the quiz state saved by `quiz-main.js` before signup and turns it into the re
 ## File structure
 
 ```
-quiz-results.js       (repo root — readable source, @release v1.59.131)
+quiz-results.js       (repo root — readable source, @release v1.59.199)
 quiz-results.min.js   (repo root — minified build)
 ```
 
@@ -94,29 +94,45 @@ the attribution cookies written sitewide by
 split: `v3/signup-attribution.js` writes the fields itself on every armed signup surface except
 `/quiz`.
 
-The cookie-to-field map is the same eight pairs:
+The cookie-to-field map is the same eleven IDs as
+[Signup Attribution](./quiz-attribution.md#memberstack-field-map):
 
-| Cookie | Memberstack field ID |
-| --- | --- |
-| `utm_source` | `utm-source` |
-| `utm_campaign` | `utm-campaign` |
-| `utm_adset` | `utm-adset` |
-| `utm_content` | `utm-content` |
-| `fbclid` | `fbclid` |
-| `fbc` | `fbc` |
-| `fbp` | `fbp` |
-| `event_id` | `event-id` |
+| Cookie | Memberstack field ID | On the member |
+| --- | --- | --- |
+| `utm_source` | `utm-source` | Last-touch |
+| `utm_campaign` | `utm-campaign` | Last-touch |
+| `utm_adset` | `utm-adset` | Last-touch |
+| `utm_content` | `utm-content` | Last-touch |
+| `fbclid` | `fbclid` | Last-touch |
+| `fbc` | `fbc` | Last-touch |
+| `fbp` | `fbp` | Last-touch |
+| `event_id` | `event-id` | Last-touch |
+| `signup_source` | `signup-source` | Write-once |
+| `signup_referrer` | `signup-referrer` | Write-once |
+| `signup_trigger` | `signup-trigger` | Write-once |
 
 **This map is duplicated in `v3/signup-attribution.js` on purpose** and the two must stay in
 step; a field ID that exists in only one of them is a value Memberstack silently drops on one of
 the two signup routes.
 
-Two rules keep the ride-along from ever costing a quiz save:
+`signup_source` and `signup_referrer` are already sitting in cookies by the time this controller
+runs on `/quiz-results`, because the sitewide script captures them at the `/quiz` auth
+transition and does **not** write Memberstack fields there. Homepage `/` is stored as `/home`.
+`signup_trigger` rides along when a 72h cookie from a tagged CTA is still present.
+
+Three rules keep the ride-along from ever costing a quiz save:
 
 - **Absent and empty cookies are omitted**, so a later untagged visit never blanks a value an
   earlier tagged visit captured.
 - **Gathering them can never fail the save.** Any error reading the cookies degrades to writing
   `starter-quiz` alone.
+- **Write-once guard.** `signup-source`, `signup-referrer`, and `signup-trigger` are held back
+  when the member already has a non-empty value, so a returning member who merely logged in on
+  `/quiz` keeps the page, referrer, and trigger their original signup recorded. Each field is
+  judged on its own. The eight UTM/Meta fields stay last-touch. An unreadable existing value
+  **writes rather than skips** — skipping on a failed read would throw away real attribution on
+  most first signups to protect against the rarer overwrite. Empty, whitespace-only, and absent
+  values all count as unfilled.
 
 ## Taxonomy migration and forced retakes
 

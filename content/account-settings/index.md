@@ -1,5 +1,6 @@
 ---
-title: "Intro"
+title: "Account Settings"
+description: "Logged-in account and billing scripts for plan dates and cancel-flow success state."
 source: account-settings
 ---
 

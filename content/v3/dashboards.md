@@ -6,29 +6,36 @@ sources:
   - v3/starter-dashboard-points.js
   - v3/starter-dashboard-stripe-connect.js
   - v3/dashboard-action-items.js
+  - v3/paid-call-brand-payment.js
 ---
 
 Source: `v3/dashboard-calls.js`, `v3/starter-dashboard-points.js`,
-`v3/starter-dashboard-stripe-connect.js`, `v3/dashboard-action-items.js`
+`v3/starter-dashboard-stripe-connect.js`, `v3/dashboard-action-items.js`,
+`v3/paid-call-brand-payment.js`
 
 ## What it is
 
-Four controllers for `/starter-dashboard` and `/brand-dashboard`. Three of them bind
+Five modules for `/starter-dashboard` and `/brand-dashboard`. Four of them bind
 Designer-authored markup to an authenticated Xano read and select which authored state is
-visible; the fourth owns only the chrome of the shared Action Items panel. None of them
-creates markup, copy, links, or styling — including error and empty states, which are all
-authored in Webflow.
+visible — three paint a tile or list, the fourth owns only the chrome of the shared Action
+Items panel. The fifth is the authenticated Brand payment-method client for paid-call
+booking chrome: it creates neither form markup nor Stripe Elements. None of them creates
+copy, links, or styling — including error and empty states, which are all authored in
+Webflow.
 
 | File | Owns |
 | --- | --- |
 | `dashboard-calls.js` | The call sections on both dashboards, the Brand identity hero, and project-list filter visibility |
+| `paid-call-brand-payment.js` | Authenticated Brand payment-method setup and default-card selection for paid-call booking |
 | `starter-dashboard-points.js` | The Starter points and rank tile |
 | `starter-dashboard-stripe-connect.js` | Stripe Connect status, the Earnings tiles, and the OAuth callback |
 | `dashboard-action-items.js` | The Action Items panel **chrome only** — loading card, empty card, and live count |
 
 Related: the messages tile is
 [`starter-dashboard-messages.js`](./messaging.md), and the availability controls are
-[`scheduling-availability-init.js`](./scheduling.md).
+[`scheduling-availability-init.js`](./scheduling.md) (modal) and
+[`scheduling-availability-section.js`](./scheduling.md#scheduling-availability-sectionjs--dashboard--calendar)
+(Dashboard / Calendar).
 
 ## `dashboard-calls.js` — call sections and the Brand hero
 
@@ -116,6 +123,51 @@ values. A failed, delayed, or superseded save leaves the hero unchanged.
 
 Authored duplicate dashboard tiles whose heading is exactly `Calls` or `Call Requests` are
 hidden when they do not carry `[bookings-section]`.
+
+## `paid-call-brand-payment.js` — Brand paid-call payment method
+
+Authenticated Brand payment-method client for paid-call booking chrome on the Brand
+dashboard (and any other surface already inside the
+[scheduling auth](./scheduling.md) host/path boundary). Pick **this** page, not a third
+home. It does not create form markup and does not initialize Stripe Elements. Load it
+**after** `scheduling-auth.js`. A production Hire surface must be added to that boundary
+before this client can authenticate there:
+
+```html
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/v3/scheduling-auth.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/v3/paid-call-brand-payment.js"></script>
+```
+
+Xano derives the Brand identity and payment environment from the Bearer token. The browser
+sends neither field. The scheduling auth bridge allowlists only these two paths:
+
+- `POST /brand/payment-method/setup/v3`
+- `POST /brand/payment-method/set-default/v3`
+
+A booking controller should use this sequence:
+
+1. Call `StartersPaidCallBrandPayment.createSetupAttempt()` once for the current card-setup
+   attempt.
+2. Retry that attempt through its `.run()` method with the **same** idempotency key until
+   Xano returns the Stripe SetupIntent client secret or a terminal error.
+3. Give that client secret to Stripe.js and let Stripe Elements collect and confirm the
+   card. Never send raw card data through Webflow or Xano.
+4. After Stripe.js returns a `pm_...` PaymentMethod ID, call
+   `createDefaultSelectionAttempt(paymentMethodId)` once for that intentional selection.
+5. Retry the returned selection attempt through `.run()` with its captured key. Create a
+   **new** attempt for every later intentional selection, including an A-to-B-to-A
+   sequence.
+
+One bounded idempotency key per selection attempt: retries reuse that key; every later
+intentional selection creates a new attempt. Keys and PaymentMethod IDs are validated
+before network work (key ≤ 128 characters; PaymentMethod IDs must start with `pm_`). The
+client uses `xanoAuthFetch` when the shared bridge is present and otherwise uses
+`getXanoAuthToken`. The backend remains authoritative for customer, environment,
+default-card, and readiness state.
+
+The authoritative contract is `v3/README.md#brand-paid-call-payment-method-client`.
+`window.StartersPaidCallBrandPayment` exposes `createSetupAttempt`,
+`createDefaultSelectionAttempt`, and the path constants.
 
 ## `starter-dashboard-points.js` — points and rank
 
@@ -283,8 +335,10 @@ a `setTimeout`) because Webflow IX2 writes inline styles every frame.
 
 ## Notes & gotchas
 
-- **`dashboard-calls.js` depends on the scheduling auth layer.** Without
-  `window.xanoAuthFetch` it fails closed and renders nothing.
+- **`dashboard-calls.js` and `paid-call-brand-payment.js` depend on the scheduling auth
+  layer.** Without `window.xanoAuthFetch` (or `getXanoAuthToken` for the payment client)
+  they fail closed. Availability section markup lives on
+  [Scheduling](./scheduling.md#scheduling-availability-sectionjs--dashboard--calendar).
 - All three modules **clear** dynamic values before a session refresh and on failure. That
   is deliberate: a blank tile is correct, a previous member's data is not.
 - Every state container, sentence, and link is Designer-owned. If a state looks wrong, check

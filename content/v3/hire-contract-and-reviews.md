@@ -3,21 +3,26 @@ title: "Hire: Contract & Reviews"
 source: v3/project-form.js
 sources:
   - v3/project-form.js
+  - v3/starter-project-form.js
   - v3/reviews.js
 ---
 
-Source: `v3/project-form.js`, `v3/reviews.js`
+Source: `v3/project-form.js`, `v3/starter-project-form.js`, `v3/reviews.js`
 
 ## What it is
 
-The two adapters behind the **direct-hire loop**: a Brand generates a contract from a
-Starter's `/hire/<slug>` profile, and once the project completes, reviews it from the Brand
-dashboard — with approved reviews rendering back onto that public profile.
+The adapters behind the **direct-hire loop**: a Brand generates a contract from a
+Starter's `/hire/<slug>` profile, a Starter generates a contract from the Dashboard copy of
+that same Contract Generation component, and once the project completes, the Brand reviews
+it from the Brand dashboard — with approved reviews rendering back onto that public
+profile.
 
-Both are adapters, not renderers. Webflow owns every form control, every card, and every
+These are adapters, not renderers. Webflow owns every form control, every card, and every
 piece of copy. Xano remains authoritative for identity, ownership, project creation,
 PandaDoc, lifecycle state, duplicate prevention, review eligibility, moderation, points,
-reversals, aggregates, and ranking.
+reversals, aggregates, and ranking. The Brand `/hire/<slug>` form and the Starter Dashboard
+form are **not** interchangeable: different context markers, different endpoints, different
+triggers.
 
 ## `project-form.js` — the Contract Generation form
 
@@ -31,7 +36,8 @@ authenticated Memberstack → Xano bridge it submits through:
 Scope is deliberately narrow — the existing Hire triggers
 `[data-modal-trigger="generate-contract"]`, the existing modal
 `dialog[data-modal-target="generate-contract"]`, and the Brand Contract Generation form
-inside it. **Do not attach it to the separate `start-project` modal.**
+inside it. **Do not attach it to the separate `start-project` modal.** The Starter Dashboard
+adapter for that detached copy is [`starter-project-form.js`](#starter-project-formjs--starter-dashboard-contract-generation).
 
 The adapter binds the form to the selected Starter's stable Memberstack identity,
 serializes the existing named Webflow controls into the published
@@ -222,6 +228,113 @@ owner: it is the Starter dashboard's Generate Invoice modal in
 [Opportunities 3.0: Core](../page-scripts/opportunities-3-0.md#generate-invoice). Nothing on
 `/hire/<slug>` issues an invoice request.
 
+## `starter-project-form.js` — Starter Dashboard Contract Generation
+
+This is the Starter Dashboard adapter for a **detached copy** of Contract Generation — **not**
+the Brand `/hire/<slug>` `project-form.js`. Context
+`[data-project-form-v3="starter"]`. It reuses the commercial serializer from
+`project-form.js` (`window.StartersProjectFormV3.serialize`) and submits through the
+existing `window.Opp30` bridge (`projectOptions`, `projectSubmit`). The authoritative
+scope, endpoint, Designer, user-state, and release contract lives in
+`v3/STARTER-PROJECT-FORM-WIRING.md`.
+
+Load on the Starter Dashboard **after** `opportunities-3.0.js` and `project-form.js`, and
+**before** `global-embeds/modal/modal.js` initializes the shared modal registry — the
+adapter normalizes duplicate targets and the Navbar link during boot:
+
+```html
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/opportunities-3.0.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/v3/project-form.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@latest/v3/starter-project-form.js"></script>
+```
+
+Do not add the last loader until both V3 endpoints exist. Do not install this file on
+`/hire/<slug>`, and do not attach the Brand hire form to the `start-project` modal.
+
+### What it claims
+
+The canonical modal is the detached shared Contract Generation dialog that still contains
+the authored Starter profile marker `[element="profile_photo"]`. On boot the adapter:
+
+- Promotes that dialog to `data-project-form-v3="starter"` and
+  `data-modal-target="start-project"`.
+- Renames every **other** `start-project` dialog target to
+  `start-project-legacy-disabled-N`, so a Navbar click cannot open a leftover opportunities
+  modal.
+- Rewrites the nested `a.clickable_link` in each `[data-modal-trigger="start-project"]` to
+  `href="#start-project"`.
+- Stamps `data-starters-turnstile-fix="true"` on the native form so the sitewide Turnstile
+  repair targets the form, not a visual wrapper.
+
+If no dialog contains the Starter profile marker, it disables every `start-project` dialog
+target.
+
+### Markup contract
+
+Webflow owns the native select, placeholder, and commercial fields. JavaScript binds
+authorized Brand records as option data; it does not generate or replace the form
+structure.
+
+| Hook | Purpose |
+| --- | --- |
+| `[data-project-form-v3="starter"]` | Runtime context on the dialog / form wrapper |
+| `dialog[data-modal-target="generate-contract"]` containing `[element="profile_photo"]` | Source modal the adapter promotes |
+| `[data-modal-trigger="start-project"]` | Navbar / in-page open control |
+| `select#Brand[name="Brand"]` or `[data-project-field="brand_id"]` | Designer-authored Brand select, labeled **Select a Brand** |
+| `#brand-contract` | Stable selected Brand ID |
+| `#Company-Name`, `#Hiring-Manager-Name` | Brand display fields (legacy lowercase IDs remain supported) |
+| `[data-project-bind="starter.<field>"]` | Counterparty rail; existing `element` attributes remain supported |
+| `[data-project-form-state="error"]` / `.w-form-fail` | Error sibling |
+| `[data-project-form-state="success"]` / `.w-form-done` | Success sibling |
+| `.generate-contract_success` | Shared preview panel after a successful submit |
+
+The Brand email input is disabled and hidden — `POST projects/options/v3` does not expose
+it. Copied CMS-only identity inputs (`#brand-name-contract`, `#pushMemID`, and the rest)
+stay compatibility markup: the adapter disables them, strips Starter Memberstack bindings
+from the Brand display fields, and submits only the authenticated Starter plus the
+server-authorized `brand_id`.
+
+One eligible Brand is selected automatically. Multiple eligible Brands keep the
+placeholder (**Choose a Brand**) selected. Zero eligible Brands disable the select and
+show **No eligible Brands yet**.
+
+Commercial fields — fee structure, rates, hours caps, invoice frequency, dates, scope —
+are serialized and validated by `project-form.js`. Do not maintain a second Starter-only
+commercial form. Do not add or send Connection Type. Do not show opportunity choices or
+prefill Project Scope yet.
+
+### Endpoints
+
+Both calls authenticate the Starter through `Opp30`. Xano rechecks the relationship
+server-side; the browser's Brand value is never authority.
+
+| Call | `Opp30.API` | Contract |
+| --- | --- | --- |
+| Brand list | `projectOptions` | `POST projects/options/v3` — counterparties the server has already authorized via the V3 Brand-to-Starter message relationship. No message text. |
+| Create | `projectSubmit` | `POST projects/submit/v3` — stable `brand_id`, the shared commercial payload, and a retry-stable idempotency key |
+
+A Standard Contract enqueues PandaDoc immediately; Brand and Starter can sign in either
+order. An Own Contract uses the existing active-project branch and creates no PandaDoc
+job. The endpoint must not create a proposal row or require a later Brand **Approve
+Project** / **Decline Request** step. `brand-project-proposals.js` is superseded — do not
+install it.
+
+After a successful submit the adapter restores the native controls before it reveals
+`.generate-contract_success`, so the existing shared preview can populate Review Details
+from the values that were submitted. The success panel's **Manage Projects** link goes to
+`/starter-dashboard#projects`. The success event is `starters:project-created` with only
+`project_id` and replay state. Runtime status lives on `data-starter-project-status`.
+
+| User state | Copy |
+| --- | --- |
+| No eligible Brand | You can start a project after a Brand messages you. |
+| Successful Standard Contract | Project successfully created. Your contract is being prepared. You and the Brand can sign when it is ready. |
+| Successful Own Contract | Project successfully created. Your project is now active. |
+| Stale relationship (HTTP 403) | That Brand is no longer eligible. Refresh the Brand list. |
+
+`window.StartersStarterProjectFormV3` exposes the bind helpers. Boot guard:
+`window.__startersV3StarterProjectFormBooted`.
+
 ## `reviews.js` — Brand review form and public profile reviews
 
 Load after the authored Webflow surfaces and the wf-xano runtime:
@@ -304,7 +417,11 @@ badge, the review text, and reviewer identity from `brand.full_name` falling bac
   reviews**.
 - Do not enable any points, ranking, rank-projector, or `rank_status` write as part of the
   reviews integration.
-- Neither module contains an Airtable or Make integration, a private token, or a direct
-  authenticated fetch path of its own.
+- None of these modules contains an Airtable or Make integration, a private token, or a
+  direct authenticated fetch path of its own. The Starter adapter talks to Xano only
+  through `window.Opp30`.
 - `reviews.js` replaces the legacy CMS projection inside `data-reviews-v3-list`, so the old
   CMS-bound markup in that container is expected to disappear once the adapter runs.
+- Do not install `starter-project-form.js` on `/hire/<slug>`, and do not attach
+  `project-form.js` to the Starter `start-project` modal. The two context markers
+  (`brand` vs `starter`) are the split.

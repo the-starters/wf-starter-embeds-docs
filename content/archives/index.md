@@ -1,5 +1,6 @@
 ---
-title: "Intro"
+title: "Archives"
+description: "Inventories of v2 page footers and Slater.app mirrors that are not part of the 3.0 embeds."
 ---
 
 Source: GitHub ([`the-starters/starters-webflow`](https://github.com/the-starters/starters-webflow) `v2/` and `slater/`)

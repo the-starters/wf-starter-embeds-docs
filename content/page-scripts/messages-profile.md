@@ -3,7 +3,7 @@ title: "Profile Message Modal"
 source: v3/messages-profile.js
 ---
 
-Source: `v3/messages-profile.js` (loaded via jsDelivr CDN) — **v1.59.108**
+Source: `v3/messages-profile.js` (loaded via jsDelivr CDN) — **v1.59.199**
 
 ## What it is
 
@@ -28,7 +28,7 @@ every signed-in viewer reaches the chat.
 ## File structure
 
 ```
-v3/messages-profile.js   (~910 lines)
+v3/messages-profile.js   (~925 lines)
 ```
 
 Run-once guard: a second load returns early once `window.__startersMessagesProfileBooted` is set.
@@ -124,18 +124,20 @@ ships the dialog already open.
 
 | Viewer | Outcome |
 | --- | --- |
-| Logged out | `/quiz` — the signup funnel. The chat intent is intentionally dropped; there is no login round trip back to the modal. |
+| Logged out | The hire-page signup modal (`data-modal-target="signup-modal"`). Chat intent is dropped in v1 — no auto-continue after signup. Does **not** send the visitor to `/quiz`. Missing signup markup is a staging warning, not a bounce to `/quiz`. |
 | Free Brand | `messages-profile-upgrade` when set, else route-guard's `brandFreeHome`: `/quiz-results` once the Memberstack `starter-quiz` field records completion, `/quiz` until then. |
 | Talent | Trigger hidden; the modal closes if opened anyway. |
 | Viewer is this starter | Trigger hidden; the modal closes if opened anyway. |
 | Paid Brand | The chat. |
 | Role unknown | The chat. |
 
-The logged-out and free-Brand redirects **also** run from the capture-phase click handler, which
-calls `stopPropagation` so `modal.js` never sees the click — without that, the modal would flash
-open for a frame before the redirect. This only works once Memberstack has resolved; a click
-during that window falls through on purpose, opens the modal, and is handled by `openChat()`
-instead, so a fast click is never silently swallowed.
+The logged-out signup-modal open and the free-Brand redirect **also** run from the capture-phase
+click handler, which calls `stopPropagation` so `modal.js` never sees the click — without that,
+the message modal would flash open for a frame. This only works once Memberstack has resolved; a
+click during that window falls through on purpose, opens the message modal, and is handled by
+`openChat()` instead, so a fast click is never silently swallowed. `openChat()` itself opens the
+signup modal when the viewer is logged out, after closing the message modal so the two are not
+stacked.
 
 **Every check here is client-side**, and unlike the `/messages` route this modal never passes
 through route-guard. Treat the rules as product gating, not as an authorization boundary. A

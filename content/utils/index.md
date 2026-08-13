@@ -1,5 +1,6 @@
 ---
-title: "Intro"
+title: "Utils"
+description: "Cross-page utility scripts loaded from the starters-webflow repo via jsDelivr."
 source: utils
 ---
 
@@ -24,6 +25,10 @@ custom code:
 - **[Multi-Step Failover](./multi-step-failover.md)** (`multi-step-failover.js`): probes the
   agency-hosted multi-step form engine on the build-profile wizards and injects our mirrored
   copy (`vendor/videsigns-multi-step.js`) if it's gone.
+- **[Workflow Diagnostics](./workflow-diagnostics.md)** (`workflow-diagnostics.js`,
+  `v3/native-form-diagnostics.js`): the shared allowlisted receipt helper, plus the
+  sitewide observer for Memberstack-native login/signup/password and Account Profile
+  forms and pause/cancel requests.
 - **[Section Custom TOC](./section-custom-toc/index.md)** (`section-custom-toc/`): an
   attribute-driven section nav bar that tracks which section is in view, plus the
   [Hide Empty Sections](./section-custom-toc/hide-empty-sections.md) companion that hides a

@@ -1,5 +1,6 @@
 ---
-title: "Intro"
+title: "Style Embeds"
+description: "Style-only CSS embeds: global styles, buttons, cards, spinner, and related utilities."
 ---
 
 Source: Webflow, `Global Embeds` (the style-only CSS embeds) · repo mirror: `global-embeds/*.css`

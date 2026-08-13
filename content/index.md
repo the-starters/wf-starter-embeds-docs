@@ -61,6 +61,8 @@ embed-wrapper (Webflow component)          →  Global Embeds
 ├── Loader                                 →  Loader
 ├── Text Methods                           →  Text Methods
 ├── Millify                                →  Millify
+├── Learn CTA Gate                         →  Learn CTA Gate
+├── Session Video                          →  Session Video
 └── (style-only CSS embeds)                →  Style Embeds
 ```
 
@@ -81,7 +83,8 @@ The remaining main groups cover scripts that live outside `embed-wrapper`:
 - **[Explore Search](./explore-search/index.md)**: the full-screen federated Algolia search
   experience and its standalone enhancement embeds.
 - **[Utils](./utils/index.md)**: repo-hosted utility scripts loaded via jsDelivr (declarative form
-  validation, the env-switch script loader, [Section Custom TOC](./utils/section-custom-toc/index.md),
+  validation, the env-switch script loader, [Workflow Diagnostics](./utils/workflow-diagnostics.md),
+  [Section Custom TOC](./utils/section-custom-toc/index.md),
   the PostHog identity/track helpers).
 - **[Account Settings](./account-settings/index.md)**: the `/account-settings` page scripts —
   Memberstack plan and billing dates, and the cancel-flow success state.
@@ -89,9 +92,11 @@ The remaining main groups cover scripts that live outside `embed-wrapper`:
   including project actions and Generate Invoice, the quiz funnel + Signup Attribution +
   results + loader, Messages 3.0, the profile message modal).
 - **[V3 Platform](./v3/index.md)**: the logged-in product — the sitewide route guard, login and
-  funnel routing, accounts (including complete-profile back/loader/photo), hire/reviews,
-  messaging tiles, scheduling, dashboards (including Action Items chrome), onboarding,
-  favorites, Signup Attribution (documented under Page Scripts), and xano-grabber.
+  funnel routing, Build Profile and Starter Edit Profile, accounts (including complete-profile
+  back/loader/photo), hire/reviews (including the Starter contract adapter), messaging tiles,
+  scheduling (including the Dashboard / Calendar section), dashboards (including Action Items
+  chrome and paid-call payment), AI Recruiter, onboarding, favorites, Signup Attribution
+  (documented under Page Scripts), and xano-grabber.
 - **[Archives](./archives/index.md)**: inventories of the v2 page footers and the Slater.app
   mirrors: version-controlled in the repo, but not part of the 3.0 embeds.
 

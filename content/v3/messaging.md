@@ -47,9 +47,11 @@ Two things about it matter at the platform level:
 
 - **Its role rules depend on [the route guard](./route-guard.md).** Role comes from
   `window.StartersV3RouteGuard.memberRole`, so the guard has to be on the page for them to
-  apply at all — a logged-out visitor goes to `/quiz`, a free Brand to
-  `messages-profile-upgrade` or the guard's `brandFreeHome`, a Talent member or the Starter
-  themselves never see the trigger, and only a paid Brand reaches the chat.
+  apply at all — a logged-out visitor opens the hire-page signup modal
+  (`data-modal-target="signup-modal"`) and is **not** sent to `/quiz`, a free Brand goes to
+  `messages-profile-upgrade` or the guard's `brandFreeHome` (`/quiz-results` once the
+  Memberstack `starter-quiz` field records completion, `/quiz` until then), a Talent member or
+  the Starter themselves never see the trigger, and only a paid Brand reaches the chat.
 - **Unlike `/messages`, this modal never passes through the guard.** Every check is
   client-side, so treat them as product gating, not an authorization boundary.
 

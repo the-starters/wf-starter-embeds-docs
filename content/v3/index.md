@@ -1,5 +1,6 @@
 ---
-title: "Intro"
+title: "V3 Platform"
+description: "Logged-in product scripts: route protection, funnels, messaging, scheduling, dashboards, and onboarding."
 source: v3
 ---
 
@@ -54,22 +55,35 @@ These hold across the whole group, so the individual pages below do not repeat t
   `complete-profile-redirect.js`, `brand-profile-redirect.js`,
   `build-profile-redirect.js`): where a member lands after login, and the two
   profile-completion loops that keep them in the right funnel step.
+- **[Build Profile](./build-profile.md)** (`v3/build-profile/*`): Talent wizard
+  controllers on `/build-profile/consult` and `/build-profile/full-profile`, plus the
+  observer that routes authored success to `/starter-onboarding`.
+- **[Starter Edit Profile](./starter-edit-profile.md)** (`starter-edit-profile.js`,
+  `v3/starter-edit-profile/*`): the logged-in `/starter-edit-profile` form and its
+  portfolio/company controllers; photo and work dates reuse the Build Profile assets.
 - **[Accounts & Forms](./accounts-and-forms.md)** (`brand-account-controller.js`,
-  `talent-application.js`, `password-recovery.js`, `starters-ms-redirect.js`): signup,
-  account editing, the Talent apply intake, and password recovery — plus the two
-  `/complete-profile` companions, `complete-profile-back.js` (the in-page back button) and
-  `complete-profile-loader.js` (the submit spinner).
+  `talent-application.js`, `talent-application-ui.js`, `password-recovery.js`,
+  `starters-ms-redirect.js`): signup, account editing, the Talent apply intake and its
+  GitHub-owned page UI, and password recovery — plus the two `/complete-profile`
+  companions, `complete-profile-back.js` (the in-page back button) and
+  `complete-profile-loader.js` (the submit spinner). Native-form diagnostics live under
+  [Workflow Diagnostics](../utils/workflow-diagnostics.md).
 - **[Hire: Contract & Reviews](./hire-contract-and-reviews.md)** (`project-form.js`,
-  `reviews.js`): the `/hire/<slug>` contract-generation form and the review surfaces.
+  `starter-project-form.js`, `reviews.js`): the `/hire/<slug>` Brand contract-generation
+  form, the Starter dashboard adapter for the same component, and the review surfaces.
 - **[Messaging](./messaging.md)** (`messages.js`, `messages-profile.js`,
   `starter-dashboard-messages.js`): the TalkJS inbox, the profile chat modal, and the
   dashboard messages tile.
 - **[Scheduling](./scheduling.md)** (`scheduling-auth.js`, `scheduling-v3-stage.js`,
-  `scheduling-availability-init.js`, `scheduling-availability-writer.js`): the Bearer
-  adapter, the legacy-to-V3 route map, and the availability flow.
+  `scheduling-availability-init.js`, `scheduling-availability-writer.js`,
+  `scheduling-availability-section.js`): the Bearer adapter, the legacy-to-V3 route map,
+  the modal availability writer, and the Dashboard / Calendar section.
 - **[Dashboards](./dashboards.md)** (`dashboard-calls.js`, `starter-dashboard-points.js`,
-  `starter-dashboard-stripe-connect.js`, `dashboard-action-items.js`): the call sections,
-  the points/rank tile, Stripe Connect, and the Action Items panel chrome.
+  `starter-dashboard-stripe-connect.js`, `dashboard-action-items.js`,
+  `paid-call-brand-payment.js`): the call sections, the points/rank tile, Stripe Connect,
+  the Action Items panel chrome, and Brand paid-call payment-method.
+- **[AI Recruiter](./ai-recruiter.md)** (`ai-recruiter.js`): the lower-right, role-gated
+  recruiter panel; Designer-owned `data-ai-recruiter` markup, authenticated Xano V3 only.
 - **[Onboarding Tour](./onboarding-tour.md)** (`onboarding-tour.js`): attribute-driven
   product tours on driver.js.
 - **[Starter Onboarding](./starter-onboarding.md)** (`patch-onboarding-status.js`,
@@ -81,7 +95,8 @@ These hold across the whole group, so the individual pages below do not repeat t
 - **[Xano Grabber](./xano-grabber.md)** (`xano-grabber/xano-grabber.js`): mirrors an
   already-rendered value into another element on the page.
 - **[Signup Attribution](../page-scripts/quiz-attribution.md)** (`v3/signup-attribution.js`):
-  sitewide UTM/Meta ad capture; documented under Page Scripts next to the quiz funnel.
+  sitewide UTM/Meta capture plus write-once `signup-source`, `signup-referrer`, and
+  `signup-trigger`; documented under Page Scripts next to the quiz funnel.
 
 Most pages here are **cluster overviews**: enough to know what each script owns, where it
 installs, and which hooks it reads. The scripts carry long header comments and each has a
