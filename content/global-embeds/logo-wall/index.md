@@ -5,7 +5,7 @@ sources:
   - global-embeds/logo-wall/logo-wall.css
 ---
 
-Source: `global-embeds/logo-wall/logo-wall.js` (**v1.59.233**) · companion stylesheet:
+Source: `global-embeds/logo-wall/logo-wall.js` (**v1.59.234**) · companion stylesheet:
 `global-embeds/logo-wall/logo-wall.css` (same `@release`)
 
 ## What it is
@@ -49,11 +49,11 @@ CDN-served, not pasted into a Webflow embed. Load the CSS in **Head** and the JS
 with `defer` before `</body>` (or Footer Code), both from the same pinned ref:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@v1.59.233/global-embeds/logo-wall/logo-wall.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@v1.59.234/global-embeds/logo-wall/logo-wall.css">
 ```
 
 ```html
-<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@v1.59.233/global-embeds/logo-wall/logo-wall.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@v1.59.234/global-embeds/logo-wall/logo-wall.js"></script>
 ```
 
 Pin the tag rather than using `@latest`: CDN edges have served a stale `@latest`
