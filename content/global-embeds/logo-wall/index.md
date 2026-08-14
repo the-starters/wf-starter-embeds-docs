@@ -5,7 +5,7 @@ sources:
   - global-embeds/logo-wall/logo-wall.css
 ---
 
-Source: `global-embeds/logo-wall/logo-wall.js` (**v1.59.234**) · companion stylesheet:
+Source: `global-embeds/logo-wall/logo-wall.js` (**v1.59.240**) · companion stylesheet:
 `global-embeds/logo-wall/logo-wall.css` (same `@release`)
 
 ## What it is
@@ -49,11 +49,11 @@ CDN-served, not pasted into a Webflow embed. Load the CSS in **Head** and the JS
 with `defer` before `</body>` (or Footer Code), both from the same pinned ref:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@v1.59.234/global-embeds/logo-wall/logo-wall.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@v1.59.240/global-embeds/logo-wall/logo-wall.css">
 ```
 
 ```html
-<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@v1.59.234/global-embeds/logo-wall/logo-wall.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@v1.59.240/global-embeds/logo-wall/logo-wall.js"></script>
 ```
 
 Pin the tag rather than using `@latest`: CDN edges have served a stale `@latest`
@@ -171,7 +171,7 @@ retries the stylesheet.
   so a handful of logos still fill the container.
 - **A single logo still loops** once the Track is filled; there is no “need two
   children” gate.
-- **Images.** Loops arm after in-wall images have loaded (or errored).
+- **Images.** The script forces every in-wall image to load eagerly at init. Webflow authors CMS images as lazy, and logos clipped outside the visible band can never lazy-load, which used to deadlock arming. Loops arm once all images have loaded or errored; if any are still pending after 3 seconds the wall arms early (with a staging-only console warning) and re-arms exactly once when the stragglers finish, so slow assets delay full fidelity but never block motion.
 - **Re-arming.** The wall rebuilds when the wrapper's own width changes, watched
   with `ResizeObserver` where available and a debounced `resize` listener as a
   fallback, and only when the measured width actually differs (an iOS URL bar
