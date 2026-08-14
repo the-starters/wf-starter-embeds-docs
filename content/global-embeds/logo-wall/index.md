@@ -5,7 +5,7 @@ sources:
   - global-embeds/logo-wall/logo-wall.css
 ---
 
-Source: `global-embeds/logo-wall/logo-wall.js` (**v1.59.240**) · companion stylesheet:
+Source: `global-embeds/logo-wall/logo-wall.js` (**v1.59.244**) · companion stylesheet:
 `global-embeds/logo-wall/logo-wall.css` (same `@release`)
 
 ## What it is
@@ -49,11 +49,11 @@ CDN-served, not pasted into a Webflow embed. Load the CSS in **Head** and the JS
 with `defer` before `</body>` (or Footer Code), both from the same pinned ref:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@v1.59.240/global-embeds/logo-wall/logo-wall.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@v1.59.244/global-embeds/logo-wall/logo-wall.css">
 ```
 
 ```html
-<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@v1.59.240/global-embeds/logo-wall/logo-wall.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/the-starters/starters-webflow@v1.59.244/global-embeds/logo-wall/logo-wall.js"></script>
 ```
 
 Pin the tag rather than using `@latest`: CDN edges have served a stale `@latest`
@@ -158,6 +158,19 @@ retries the stylesheet.
   with a staging warning (`*.webflow.io` / localhost / `STARTERS_DEBUG`) — no
   class fallback.
 - **Designer canvas is skipped** (`html.wf-design-mode`) so Collection Lists stay editable.
+- **First paint is already a row.** Before the script runs, the companion CSS
+  styles the authored Collection List as a centered horizontal row clipped by the
+  wrapper, and relays the wrapper's `column-gap` through `display: contents`
+  helpers. The wrapper flips to its armed layout only once the script has built
+  the Tracks, in the same synchronous task, so a vertical stack never paints. A
+  wall the script bails on keeps the pre-init row. Custom helper classes other
+  than `u-display-contents` and `display-contents` break the gap relay until the
+  wall arms.
+- **Single-band walls do not shift at arm.** With `data-logo-wall-tracks="1"` the
+  pre-init row and the armed band have the same height and centre. A multi-band
+  wall grows by its extra Track rows when it arms, because CSS cannot know the
+  Track count ahead of time. Reserve the armed height with a `min-height` on the
+  wrapper in Designer if that shift matters on the page.
 - **Designer owns the width, the size, and the gap.** The companion CSS makes the
   wrapper a centered column with hidden overflow and makes each Track a
   `max-content` flex row that inherits the wrapper's `column-gap`. It sets no
