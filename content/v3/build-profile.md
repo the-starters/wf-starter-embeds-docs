@@ -109,7 +109,7 @@ attributes; they do not generate the wizard chrome.
 | `field-counters.js` | Authored field counters |
 | `bio-editor.js` | Bio editor and word limit |
 | `grouped-selects.js` | Grouped multi-select options |
-| `submit-diagnostics.js` | Observer-only submit outcome + onboarding route |
+| `submit-diagnostics.js` | Observer-only submit outcome (never navigates) |
 
 Photo, portfolio, and company blocks wait on `waitForMember` and exit when `MEMBER.id` is
 missing. Counters, bio, and grouped selects bind the authored widgets without that gate.
@@ -122,8 +122,19 @@ owner. This controller:
 - watches the existing human click on `[form-submit]` and the authored
   `[build-profile-success]` / `[build-profile-error]` states;
 - does **not** read fields, intercept the click, or change the coupled writer;
-- after the authored success state appears, preserves the clean success copy for **1.2
-  seconds**, then `location.replace('/starter-onboarding')`;
+- does **not** navigate. The authored success state stays put, and the member moves on by
+  clicking the authored success-state CTA ("Start onboarding", linking to
+  `/starter-onboarding`). That CTA owns the navigation as of **v1.59.245**; before it, the
+  module auto-redirected 1.2 seconds after the success state appeared;
+- treats the authored success state as terminal: once observed, the MutationObserver
+  disconnects and later submit clicks are ignored, so a second click cannot re-arm a
+  receipt and inherit the still-visible success state;
+- treats an authored error as **not** terminal, since the member may fix the form and
+  retry. Outcomes are edge-triggered on a state change, so a stale visible error is never
+  charged to the retry that follows it;
+- warns on staging only (`*.webflow.io`, localhost, `127.0.0.1`, `*.trycloudflare.com`, or
+  `window.STARTERS_DEBUG === true`) when the authored success state contains no link to
+  `/starter-onboarding`. Warning only, never a bail;
 - leaves errors on the form.
 
 It runs only on `/build-profile/consult` and `/build-profile/full-profile`, and only on
@@ -132,8 +143,10 @@ It runs only on `/build-profile/consult` and `/build-profile/full-profile`, and 
 `window.__startersBuildProfileSubmitDiagnosticsBooted`.
 
 When diagnostics are available it records a `build_profile_submit` receipt
-(`controller_version` `build-profile-submit-outcome-v2`) and loads
-`utils/workflow-diagnostics.js` from the same CDN root if needed.
+(`controller_version` `build-profile-submit-outcome-v3`) and loads
+`utils/workflow-diagnostics.js` from the same CDN root if needed. The `v2` value marks the
+auto-redirect era; `v3` is CTA-owned navigation, shipped in v1.59.245. Expect both values
+in the data while cached copies of the old file are still being served.
 
 ## Markup contract
 
