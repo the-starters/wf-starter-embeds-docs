@@ -31,13 +31,14 @@ may already be formatted.
 <div data-millify>12345</div>            <!-- → 12.3K -->
 
 <!-- From the attribute value; the visible text is ignored as a source. -->
-<div data-millify="1450000">1,450,000</div>   <!-- → 1.5M -->
+<div data-millify="1450000">1,450,000</div>   <!-- → 1.4M -->
 
 <!-- Options -->
 <div data-millify data-millify-precision="2">1450000</div>            <!-- → 1.45M -->
-<div data-millify data-millify-space="true">1450000</div>             <!-- → 1.5 M -->
-<div data-millify data-millify-lowercase="true">1450000</div>         <!-- → 1.5m -->
-<div data-millify data-millify-units=",k,m,bn">1450000</div>          <!-- → 1.5m -->
+<div data-millify data-millify-space="true">1450000</div>             <!-- → 1.4 M -->
+<div data-millify data-millify-lowercase="true">1450000</div>         <!-- → 1.4m -->
+<div data-millify data-millify-units=",k,m,bn">1450000</div>          <!-- → 1.4m -->
+<div data-millify data-millify-max="1000000">12312312</div>           <!-- → untouched -->
 ```
 
 Input text is trimmed, then commas and all whitespace (including non-breaking spaces) are stripped,
@@ -65,23 +66,38 @@ Two decimal places with a separating space:
 | `data-millify-precision` | same element | non-negative integer | `1` | Decimal places. Integers stay exact regardless. |
 | `data-millify-space` | same element | `"true"` | off | Insert a space before the unit. |
 | `data-millify-lowercase` | same element | `"true"` | off | Lowercase the unit (`1.5k`). |
-| `data-millify-units` | same element | comma-separated list | `,K,M,B,T,P,E` | Custom unit suffixes, smallest first. The first entry is the "no unit" slot. |
+| `data-millify-units` | same element | comma-separated list | `,K,M,B,T,P` | Custom unit suffixes, smallest first. The first entry is the "no unit" slot. |
+| `data-millify-max` | same element | non-negative number (commas ok) | — | Domain ceiling. A value above it is treated as bad data and the text is left untouched. `0` formats nothing but zero itself. |
 | `data-millify-raw` | same element | — | — | Written by JS: the parsed source number, used for idempotency and re-formatting. |
 
-`window.__startersMillify(value, { precision, units, space, lowercase })` exposes the pure
-formatter for testing and console use. It returns `{ ok: true, text, raw }` or `{ ok: false }`.
+`window.__startersMillify(value, { precision, units, space, lowercase, max })` exposes the pure
+formatter for testing and console use. It returns `{ ok: true, text, raw }`, or
+`{ ok: false, reason }` where `reason` is `parse`, `range`, `max`, or `units`.
 
 ## Notes & gotchas
 
 - **Failure is graceful and silent to the visitor.** A value that will not parse, is infinite,
-  falls outside the safe integer range, or is too large for the available units leaves the
-  element's text **untouched** rather than rendering something wrong.
+  falls outside the safe integer range, exceeds an authored `data-millify-max`, or is too large
+  for the available units leaves the element's text **untouched** rather than rendering
+  something wrong. This is deliberate — see ADR-0008. A value the embed cannot represent is
+  usually a data bug, and leaving it visible is what surfaces it.
+- **The practical ceiling is `Number.MAX_SAFE_INTEGER`** (9,007,199,254,740,991 → `9P`), which is
+  why the default units stop at `P`. A `1e18` value is refused, not rendered as `1E`.
 - **Rounding can promote a unit.** At precision 1, `999,999` would round to `1000K`; the formatter
   re-runs its divide loop on the rounded value and renders `1M` instead (the same edge-case fix
   upstream millify carries).
-- **The number is localized.** Output goes through `toLocaleString` with the browser's
-  `navigator.languages`, so a European locale renders `1,5K`. Fraction digits are pinned to the
+- **The number is *not* localized.** Output goes through `toLocaleString` pinned to `en-US`,
+  because every consumer renders a USD price and a European locale would turn `$1.5K` into
+  `$1,5K` — a typo at best, a hundredfold error at worst. Fraction digits are pinned to the
   count already produced by rounding, so a high-precision value is never silently re-rounded.
+- **Rounding is `toFixed`, so `.x5` rounds down.** `1450000` renders `1.4M`, not `1.5M`: the
+  binary double for `1.45` sits just under it and `toFixed(1)` follows. Raise
+  `data-millify-precision` when the extra digit matters.
+- **`data-millify-max` is a domain guard, not a formatting one.** It exists so a page can say
+  "a price above this is bad data". Exceeding it produces the same silent refusal as any other
+  unrenderable value, but the staging warning names the ceiling rather than blaming the number,
+  so the author is sent to their own attribute. The default is no ceiling; `0` is a real ceiling
+  meaning "format nothing but zero", which is how you switch formatting off for one element.
 - **Late content is handled.** A MutationObserver watches `document.body` for added nodes and
   processes any `[data-millify]` inside them, so CMS re-renders and injected cards format too. Only
   `childList` is observed, never attributes or `characterData`: the embed's own `textContent` writes
