@@ -79,8 +79,8 @@ formatter for testing and console use. It returns `{ ok: true, text, raw }`, or
 - **Failure is graceful and silent to the visitor.** A value that will not parse, is infinite,
   falls outside the safe integer range, exceeds an authored `data-millify-max`, or is too large
   for the available units leaves the element's text **untouched** rather than rendering
-  something wrong. This is deliberate — see ADR-0008. A value the embed cannot represent is
-  usually a data bug, and leaving it visible is what surfaces it.
+  something wrong. This is deliberate: a value the embed cannot represent is usually a data
+  bug, and leaving it visible is what surfaces it. Do not "fix" this into a dash or a zero.
 - **The practical ceiling is `Number.MAX_SAFE_INTEGER`** (9,007,199,254,740,991 → `9P`), which is
   why the default units stop at `P`. A `1e18` value is refused, not rendered as `1E`.
 - **Rounding can promote a unit.** At precision 1, `999,999` would round to `1000K`; the formatter
@@ -90,9 +90,11 @@ formatter for testing and console use. It returns `{ ok: true, text, raw }`, or
   because every consumer renders a USD price and a European locale would turn `$1.5K` into
   `$1,5K` — a typo at best, a hundredfold error at worst. Fraction digits are pinned to the
   count already produced by rounding, so a high-precision value is never silently re-rounded.
-- **Rounding is `toFixed`, so `.x5` rounds down.** `1450000` renders `1.4M`, not `1.5M`: the
-  binary double for `1.45` sits just under it and `toFixed(1)` follows. Raise
-  `data-millify-precision` when the extra digit matters.
+- **Rounding is `toFixed`, so a `.x5` boundary goes whichever way its double falls.**
+  `1450000` renders `1.4M` because the binary double for `1.45` sits just *under* it —
+  but `1350000` renders `1.4M` too, because `1.35`'s double sits just *over*. Don't
+  predict the direction from the decimal; raise `data-millify-precision` when the extra
+  digit matters.
 - **`data-millify-max` is a domain guard, not a formatting one.** It exists so a page can say
   "a price above this is bad data". Exceeding it produces the same silent refusal as any other
   unrenderable value, but the staging warning names the ceiling rather than blaming the number,
