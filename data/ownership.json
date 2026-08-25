@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-13T13:43:13.941Z",
+  "generatedAt": "2026-08-25T16:29:41.534Z",
   "scriptsRepo": "the-starters/starters-webflow",
-  "scriptsSha": "1f5a0f4cc0fc818880d5eb81bedd11fffaa6c59a",
+  "scriptsSha": "066fe2323d36c7d6c22250ba1be5e911fda1d6e8",
   "scripts": {
     "account-settings/ms-form-cancel-state.js": {
       "accountable": {
@@ -680,8 +680,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -900,8 +900,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jpthedio",
-        "displayName": "JP Dionisio"
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
@@ -933,8 +933,8 @@
         "displayName": "jericolawrence"
       },
       "lastEditor": {
-        "login": "jpthedio",
-        "displayName": "JP Dionisio"
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
@@ -944,8 +944,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jpthedio",
-        "displayName": "JP Dionisio"
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
@@ -977,8 +977,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jpthedio",
-        "displayName": "JP Dionisio"
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
@@ -1032,8 +1032,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jpthedio",
-        "displayName": "JP Dionisio"
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
@@ -1076,8 +1076,8 @@
         "displayName": "jericolawrence"
       },
       "lastEditor": {
-        "login": "jpthedio",
-        "displayName": "JP Dionisio"
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
@@ -1120,8 +1120,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jpthedio",
-        "displayName": "JP Dionisio"
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
@@ -1186,8 +1186,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jpthedio",
-        "displayName": "JP Dionisio"
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
@@ -1274,8 +1274,8 @@
         "displayName": "Elvin Agaragimow"
       },
       "lastEditor": {
-        "login": null,
-        "displayName": "Elvin Agaragimow"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
