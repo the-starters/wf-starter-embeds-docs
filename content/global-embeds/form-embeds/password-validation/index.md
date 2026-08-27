@@ -77,9 +77,11 @@ in production.
 </form>
 ```
 
-The wrapper is any element carrying at least one `starters-password-validation-*` attribute. It
-must sit inside the `<form>` it validates; the password input and the submit button are found on
-that form, not inside the wrapper.
+The wrapper is any element carrying at least one of the four rule toggles above, or
+`starters-password-validation-character-count`. Those five attributes are the only ones that make
+an element a wrapper; a `-rule` row or a `-icon` never qualifies on its own. The wrapper must sit
+inside the `<form>` it validates; the password input and the submit button are found on that form,
+not inside the wrapper.
 
 Author the **invalid** icon visible and the **valid** icon hidden. A wired form overwrites both
 from first paint, so that authoring only shows through on an instance that failed open, where it
@@ -91,11 +93,15 @@ binding remains a valid alternative to the auto-hide.
 
 ### The `{count}` token
 
-Any row text containing `{count}` gets it replaced with the character count actually being
-enforced, so "At least {count} characters" renders "At least 8 characters". Use the token rather
-than typing the number: a characters row whose copy hardcodes a number can drift away from the
-count the form enforces the moment either one is edited, and the script emits a staging warning
-when it sees that.
+Any row text containing `{count}` gets it replaced with a number, so "At least {count} characters"
+renders "At least 8 characters". When the characters rule is on, that number is the count actually
+being enforced, taken from the wrapper driving the form. When the rule is off, or when no wrapper
+configures the form at all, the token is still filled in, from the wrapper's own count. A rendered
+number is copy, not proof that a length rule is being enforced.
+
+Use the token rather than typing the number: a characters row whose copy hardcodes a number can
+drift away from the count the form enforces the moment either one is edited, and the script emits a
+staging warning when it sees that.
 
 ## xAttribute JSON
 
@@ -155,6 +161,10 @@ The submit button, on the wrap or on the control itself:
 { "ms-code-submit-button": "" }
 ```
 
+On a form Memberstack already wires, the button almost certainly carries this hook already. Do not
+add a second one: only the first `ms-code-submit-button` in DOM order is gated, so a stray extra
+hook higher up the form quietly takes the gating away from the real CTA.
+
 ## API
 
 ### Wrapper attributes
@@ -185,7 +195,7 @@ An element carrying only `character-count` still counts as a wrapper, but it ena
 | Attribute | On | Purpose |
 | --- | --- | --- |
 | `data-ms-member="password"` | the password input | The field being validated. Found on the form, anywhere inside it. |
-| `ms-code-submit-button` | button wrap or the control itself | The CTA that gets gated. |
+| `ms-code-submit-button` | button wrap or the control itself | The CTA that gets gated. Only the first one in the form is used, in DOM order. |
 
 ### JavaScript
 
@@ -201,37 +211,56 @@ locked whatever the button is built from:
 | Treatment | Applied to |
 | --- | --- |
 | `disabled` class | the element carrying `ms-code-submit-button` |
-| `data-button-theme="disabled"` | whichever element carries the theme; the authored theme is restored when the rules pass |
-| `aria-disabled="true"` | the control a user actually activates |
-| native `disabled` property and `tabindex="-1"` | native controls only (`button`, `input`) |
+| `data-button-theme="disabled"` | whichever element carries the theme. The authored theme is put back when the rules pass, except that a theme authored empty, or authored as `disabled` already, comes back as the house default `black` |
+| `aria-disabled="true"` | the control a user actually activates, plus the theme-carrying element when that is a different element. Both are cleared again on unlock |
+| native `disabled` property and `tabindex="-1"` | native controls only, meaning a `button` or an `input` |
 
-The greying that visitors see comes from the `data-button-theme` swap, so a CTA with no theme
-attribute and no button, input or link inside it cannot be greyed. Pressing Enter is blocked
-separately by a capture-phase submit handler, so a form with no `ms-code-submit-button` still
-cannot be submitted early; its CTA just never greys out, and a staging warning says so.
+The greying that visitors see comes from the `data-button-theme` swap, so greying needs a
+`data-button-theme` somewhere on the CTA: on the marked element, on a wrap around it, or on a
+control inside it. Without one, the fallback is the native lock, which only a `button` or an
+`input` can take. A CTA built as a link with no theme attribute gets `aria-disabled="true"` and
+nothing else, so it looks exactly the same locked or unlocked and stays focusable. The script's own
+staging warning for that case mentions links as though they could be disabled; they cannot.
+
+Pressing Enter is blocked separately by a capture-phase submit handler, so a form with no
+`ms-code-submit-button` still cannot be submitted early. Its CTA just never greys out, and a
+staging warning says so.
+
+Only the **first** `ms-code-submit-button` in the form is gated. The script takes a single match,
+so a form with two of them locks the first and leaves the other live.
 
 ## Failing open
 
-The script gates only when it is certain what to enforce. In each of these cases it does nothing at
-all: no gating, no submit blocker, rows and icons untouched, and the only signal is a staging-only
-console warning.
+The script gates only when it is certain what to enforce. In each of these cases it enforces
+nothing: no gating, no submit blocker, icons and row visibility left exactly as authored, and the
+only signal is a staging-side console warning.
 
 - Zero active rules across every wrapper in the form.
 - A wrapper that is not inside a `<form>`.
 - A form with no `input[data-ms-member="password"]`.
 
+Row **copy** is the one exception. `{count}` is substituted before any of those bail-outs, on
+purpose: a literal `{count}` left on screen is a bug a visitor can read. A wrapper with no form of
+its own falls back to its own count. So a checklist that failed open can still read "At least 8
+characters" while enforcing nothing at all, and a filled-in number is never proof that a form is
+being validated.
+
 A form that bailed out is left unmarked, so a later `rescan()` can pick it up once the missing
 piece has arrived.
 
-Staging diagnostics are console warnings prefixed `[password-validation]`. They appear only on
-`*.webflow.io`, `*.trycloudflare.com`, `localhost`, `127.0.0.1`, or when the page sets
-`window.STARTERS_DEBUG === true`. Production is silent.
+Staging diagnostics are console warnings prefixed `[password-validation]`. They appear on
+`*.webflow.io`, `*.trycloudflare.com`, `localhost` and `127.0.0.1`, and on any host at all when the
+page sets `window.STARTERS_DEBUG === true`. Production stays silent unless the page opts in with
+that flag.
 
 ## Notes & gotchas
 
 - **One validated instance per form**, however many wrappers the form holds. Webflow's way to vary
-  a component per breakpoint is two instances in the same form, so all of them are rendered and
-  flip together.
+  a component per breakpoint is two instances in the same form, so every wrapper's rows and icons
+  are rendered and flip together.
+- **Duplicating the CTA per breakpoint does not duplicate the gating.** Checklists flip in step,
+  but only the first `ms-code-submit-button` in the form is locked, so a second CTA authored for
+  another breakpoint stays live. Show and hide one CTA per breakpoint rather than shipping two.
 - **The first wrapper that actually enables a rule sets the config.** Wrappers that enable nothing
   configure nothing, so a stray `character-count` on an ancestor section, or a responsive instance
   left at its defaults, cannot decide the form's fate. A wrapper whose own config differs from the

@@ -22,7 +22,8 @@ group in this sidebar; a component's page documents its JS and CSS together.
   static-list mode from a hand-ranked Algolia replica, plus the relayout companion for lists that
   start out hidden.
 - **Form Embeds.** The form utilities: input preview, checkbox toggle, datepicker, input filter,
-  validation, password toggle, timepicker, disabler,
+  validation, password toggle,
+  [Password Validation](./form-embeds/password-validation/index.md), timepicker, disabler,
   [Turnstile Contents Fix](./form-embeds/turnstile-contents-fix.md).
 - **List Sort Dropdown.** Dropdown-driven list sorting.
 - **Modal.** Modal open/close, plus the reset-on-close helper.

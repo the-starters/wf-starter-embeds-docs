@@ -1,6 +1,6 @@
 ---
 title: "Form Embeds"
-description: "Attribute-driven form utilities: datepicker, validation, toggles, Turnstile, and shared form styles."
+description: "Attribute-driven form utilities: datepicker, validation, password validation, toggles, Turnstile, and shared form styles."
 source: global-embeds/form-embeds
 ---
 
@@ -19,6 +19,8 @@ custom code and wire up with `data-*` attributes.
 - **Form Input Filter.** Show one block of inputs based on a select or radio choice.
 - **Form Validation.** Form validation behavior.
 - **Password Toggle.** A show/hide button for password fields.
+- **[Password Validation](./password-validation/index.md).** Live password checklist on a
+  Memberstack signup form, with the submit button locked until every rule passes.
 - **Timepicker.** Time selection for form inputs.
 - **Input Preview** (`input-preview.js`, loose in the group folder): mirrors a field's value
   into a live preview slot as the user types or selects.

@@ -41,6 +41,7 @@ embed-wrapper (Webflow component)          →  Global Embeds
 ├── Custom Scrollbar                       →  Custom Scrollbar
 ├── Form Embeds                            →  Form Embeds
 │   ├── Password Toggle                    →  Password Toggle
+│   ├── Password Validation                →  Password Validation
 │   ├── Datepicker                         →  Datepicker
 │   ├── Form Validation                    →  Form Validation
 │   │   └── Email Validate – JS            →  Email Validation
