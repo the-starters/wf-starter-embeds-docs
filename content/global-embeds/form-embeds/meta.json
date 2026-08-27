@@ -2,6 +2,7 @@
   "title": "Form Embeds",
   "pages": [
     "password-toggle",
+    "password-validation",
     "datepicker",
     "form-validation",
     "form-input-filter",

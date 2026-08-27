@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-25T16:29:41.534Z",
+  "generatedAt": "2026-08-27T17:51:45.577Z",
   "scriptsRepo": "the-starters/starters-webflow",
-  "scriptsSha": "066fe2323d36c7d6c22250ba1be5e911fda1d6e8",
+  "scriptsSha": "db8f3229b5912c9bed5e9a88b019a4c8124d7c46",
   "scripts": {
     "account-settings/ms-form-cancel-state.js": {
       "accountable": {
@@ -312,6 +312,17 @@
       "accountableOverridden": false
     },
     "global-embeds/form-embeds/input-preview.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/form-embeds/password-validation/password-validation.js": {
       "accountable": {
         "login": "jericolawrence",
         "displayName": "jericolawrence"
@@ -1219,8 +1230,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jpthedio",
-        "displayName": "JP Dionisio"
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
