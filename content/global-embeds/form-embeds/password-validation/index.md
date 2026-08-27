@@ -46,7 +46,7 @@ in production.
 ## Markup contract
 
 ```html
-<form>
+<form data-ms-form="signup">
   <input type="password" data-ms-member="password" />
 
   <div starters-password-validation-characters="true"
@@ -94,10 +94,10 @@ binding remains a valid alternative to the auto-hide.
 ### The `{count}` token
 
 Any row text containing `{count}` gets it replaced with a number, so "At least {count} characters"
-renders "At least 8 characters". When the characters rule is on, that number is the count actually
-being enforced, taken from the wrapper driving the form. When the rule is off, or when no wrapper
-configures the form at all, the token is still filled in, from the wrapper's own count. A rendered
-number is copy, not proof that a length rule is being enforced.
+renders "At least 8 characters". As soon as any wrapper in the form enables a rule, that wrapper's
+count is the one substituted everywhere, into every wrapper on the form, whether or not the
+characters rule itself is on. Only when no wrapper enables anything does each wrapper fall back to
+its own count. A rendered number is copy, not proof that a length rule is being enforced.
 
 Use the token rather than typing the number: a characters row whose copy hardcodes a number can
 drift away from the count the form enforces the moment either one is edited, and the script emits a
@@ -187,15 +187,23 @@ An element carrying only `character-count` still counts as a wrapper, but it ena
 | Attribute | On | Purpose |
 | --- | --- | --- |
 | `starters-password-validation-rule` | checklist row inside the wrapper | Tags the row as `characters`, `special`, `capitalization` or `numbers`. Rows for inactive rules are set to `display: none`. |
-| `starters-password-validation-icon="valid"` | icon inside a row | Shown (`display: flex`) while the rule passes. |
-| `starters-password-validation-icon="invalid"` | icon inside a row | Shown while the rule fails. |
+| `starters-password-validation-icon="valid"` | icon inside a row | Shown while the rule passes, hidden while it fails. |
+| `starters-password-validation-icon="invalid"` | icon inside a row | Shown while the rule fails, hidden while it passes. |
+
+Showing an icon writes `display: flex` on it and hiding one writes `display: none`, on both icons
+alike. An icon authored as `inline-block` or `block` is rewritten to `flex` the first time it is
+shown, so centre its contents with flex properties rather than relying on the authored display.
 
 ### Memberstack hooks the script reuses
 
 | Attribute | On | Purpose |
 | --- | --- | --- |
-| `data-ms-member="password"` | the password input | The field being validated. Found on the form, anywhere inside it. |
+| `data-ms-member="password"` | the password input | The field being validated. The first match in the form, in DOM order, wherever it sits inside it. |
 | `ms-code-submit-button` | button wrap or the control itself | The CTA that gets gated. Only the first one in the form is used, in DOM order. |
+
+On a form that also asks the visitor to confirm their password, only the first password input is
+validated. The checklist reads the first field, and the confirm field is Memberstack's business,
+not this script's.
 
 ### JavaScript
 
@@ -216,7 +224,8 @@ locked whatever the button is built from:
 | native `disabled` property and `tabindex="-1"` | native controls only, meaning a `button` or an `input` |
 
 The greying that visitors see comes from the `data-button-theme` swap, so greying needs a
-`data-button-theme` somewhere on the CTA: on the marked element, on a wrap around it, or on a
+`data-button-theme` somewhere on the CTA: on the marked element, on a wrap around it below the
+form (the search stops before the `<form>`, so a theme on the form itself is never found), or on a
 control inside it. Without one, the fallback is the native lock, which only a `button` or an
 `input` can take. A CTA built as a link with no theme attribute gets `aria-disabled="true"` and
 nothing else, so it looks exactly the same locked or unlocked and stays focusable. The script's own
