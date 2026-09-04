@@ -64,7 +64,9 @@ The run step fires:
   already `complete`.
 - On window `resize`, debounced 120 ms, and only when a measured segment width or
   layout width actually changed.
-- On a change to the hover-capability or reduced-motion media query.
+- On a change to the reduced-motion media query.
+- On a change to the hover-capability media query, if nothing has armed yet.
+  Once tracks are running, that change only rewires the hover listeners.
 
 A run that finds no GSAP logs one warning and returns without touching the DOM.
 The next run picks GSAP up. The script captures the `gsap` object present when it
@@ -252,8 +254,8 @@ that CSS is added to the section's Webflow style embed.
 ## Notes & gotchas
 
 - **Finding it in Designer.** The component is named "Testimonials". The class on
-  its root element is `section_g2-proof`. Searching for "g2" in the Navigator
-  will not find the component.
+  its root element is `section_g2-proof`. Look for it by the component name,
+  not by the class.
 - **The Why Us page was a false positive.** Before this script existed, the
   inline embed happened to work there only because another section on that page
   loaded its own GSAP earlier in the document.
