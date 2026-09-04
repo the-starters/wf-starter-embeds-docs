@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-27T17:51:45.577Z",
+  "generatedAt": "2026-09-04T15:27:35.861Z",
   "scriptsRepo": "the-starters/starters-webflow",
-  "scriptsSha": "db8f3229b5912c9bed5e9a88b019a4c8124d7c46",
+  "scriptsSha": "f1b7ee75af976a88d2fb5be575c306f02e117868",
   "scripts": {
     "account-settings/ms-form-cancel-state.js": {
       "accountable": {
@@ -341,6 +341,17 @@
       "lastEditor": {
         "login": "jpthedio",
         "displayName": "JP Dionisio"
+      },
+      "accountableOverridden": false
+    },
+    "global-embeds/g2-proof/g2-proof.js": {
+      "accountable": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
+      },
+      "lastEditor": {
+        "login": "jericolawrence",
+        "displayName": "jericolawrence"
       },
       "accountableOverridden": false
     },
@@ -911,8 +922,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -944,8 +955,8 @@
         "displayName": "jericolawrence"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1087,8 +1098,8 @@
         "displayName": "jericolawrence"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
@@ -1230,8 +1241,8 @@
         "displayName": "JP Dionisio"
       },
       "lastEditor": {
-        "login": "jericolawrence",
-        "displayName": "jericolawrence"
+        "login": "jpthedio",
+        "displayName": "JP Dionisio"
       },
       "accountableOverridden": false
     },
